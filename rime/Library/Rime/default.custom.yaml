@@ -1,0 +1,32 @@
+patch:
+  schema_list:
+    - schema: luna_pinyin_simp
+    - schema: double_pinyin_flypy # 小鹤双拼
+
+  switcher/caption: "[方案]"
+  switcher/hotkeys:
+    - Control+Shift+grave
+  switcher/save_options:
+    - full_shape
+    - ascii_punct
+    - simplification
+    - extended_charset
+  menu/page_size: 5
+  ascii_composer/good_old_caps_lock: false
+  ascii_composer/switch_key:
+    # `inline_ascii` 在输入框内插入英文。
+    # `commit_text` 候选文字上屏并切换至英文。
+    # `commit_code` 输入拼音上屏并切换至英文。
+    # `clear` 清除拼音并切换至英文。
+    # `noop` 屏蔽此按键。
+    Shift_L: commit_code
+    Shift_R: inline_ascii
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear
+
+  key_binder:
+    bindings:
+      __patch:
+        - key_bindings:/emacs_editing

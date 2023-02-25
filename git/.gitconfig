@@ -1,0 +1,27 @@
+[user]
+    email = yangxue.cs@foxmail.com
+    name = yx
+    signingkey = 67B86CB8A5630C51!
+[core]
+    editor = vim
+    quotepath = false
+    excludesfile = ~/dot/gitignore_global
+[pull]
+    rebase = true
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[difftool]
+    prompt=false
+[color]
+    interactive = true
+    branch = true
+    status = true
+    diff = true
+    ui = true
+[commit]
+    gpgSign = true
+[gpg]
+    program = gpg
+[init]
+    defaultBranch = main
