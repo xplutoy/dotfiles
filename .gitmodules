@@ -1,0 +1,15 @@
+[submodule "emacs/.emacs.d/site-lisp/holymotion"]
+	path = emacs/.emacs.d/site-lisp/holymotion
+	url = https://github.com/Overdr0ne/holymotion.git
+[submodule "emacs/.emacs.d/site-lisp/color-rg"]
+	path = emacs/.emacs.d/site-lisp/color-rg
+	url = https://github.com/manateelazycat/color-rg.git
+[submodule "emacs/.emacs.d/site-lisp/sdcv"]
+	path = emacs/.emacs.d/site-lisp/sdcv
+	url = https://github.com/manateelazycat/sdcv.git
+[submodule "emacs/.emacs.d/site-lisp/combobulate"]
+	path = emacs/.emacs.d/site-lisp/combobulate
+	url = https://github.com/mickeynp/combobulate.git
+[submodule "spacemacs/.spacemacs.d/.emacs.d"]
+	path = spacemacs/.spacemacs.d/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs.git
