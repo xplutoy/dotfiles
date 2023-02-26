@@ -226,8 +226,9 @@
 (setq
  dired-dwim-target t
  dired-mouse-drag-files t
- dired-recursive-deletes 'top
  dired-recursive-copies 'always
+ dired-recursive-deletes 'top
+ dired-kill-when-opening-new-dired-buffer t
  dired-listing-switches "-aBhl  --group-directories-first"
  )
 

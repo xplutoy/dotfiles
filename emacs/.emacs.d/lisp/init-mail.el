@@ -30,9 +30,9 @@
 
 ;; gnus
 (setq gnus-inhibit-startup-message t
-      gnus-init-file (concat user-emacs-directory "gnus.el")
-      gnus-startup-file (concat yx/share-data-path "newsrc")
-      gnus-directory (concat yx/share-data-path "news"))
+      gnus-directory (expand-file-name "gnus.d" yx/share-data-path)
+      gnus-init-file (expand-file-name "gnus.el" user-emacs-directory)
+      gnus-startup-file (expand-file-name "newsrc" user-emacs-directory))
 
 ;; notmuch
 (use-package notmuch

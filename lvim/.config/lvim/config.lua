@@ -2,7 +2,7 @@
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
 ]]
-vim.cmd "source ~/dot/vimrc"
+vim.cmd "source ~/.vimrc"
 
 -- vim options
 vim.o.laststatus = 2

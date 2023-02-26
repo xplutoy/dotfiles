@@ -10,6 +10,18 @@
 [submodule "emacs/.emacs.d/site-lisp/combobulate"]
 	path = emacs/.emacs.d/site-lisp/combobulate
 	url = https://github.com/mickeynp/combobulate.git
-[submodule "spacemacs/.spacemacs.d/.emacs.d"]
-	path = spacemacs/.spacemacs.d/.emacs.d
+[submodule "zsh/.zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/.zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/.zsh/plugins/zsh-completions"]
+	path = zsh/.zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zsh/.zsh/plugins/zsh-autosuggestions"]
+	path = zsh/.zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh/plugins/pure"]
+	path = zsh/.zsh/plugins/pure
+	url = https://github.com/sindresorhus/pure.git
+[submodule "spacemacs/.spacemacs.d/emacs.d"]
+	path = spacemacs/.spacemacs.d/emacs.d
 	url = https://github.com/syl20bnr/spacemacs.git

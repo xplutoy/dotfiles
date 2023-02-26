@@ -14,20 +14,19 @@
  org-tags-column 0
  org-tag-alist '(("crypt" . ?c) ("urgent" . ?w)("important" . ?i)))
 
+(defvar yx/org-journal-file (expand-file-name "journal.org" org-directory))
+(defvar yx/org-anniversary-file (expand-file-name "anniversary.org" org-directory))
+(defvar yx/org-solid-note-dir (expand-file-name "solid_notes" org-directory))
+(defvar yx/org-fleeting-note-dir (expand-file-name "fleeting_notes" org-directory))
+
 (setq
  org-capture-templates
- '(("t" "任务" entry (file+headline org-default-notes-file "任务")
-    "* TODO [#B] %^{Title}\n%?")
-   ("p" "项目" entry (file+headline org-default-notes-file "项目")
-    "* TODO [#B] %^{Title} :project:\n%?")
+ '(("t" "任务" entry (file+headline org-default-notes-file "任务") "* TODO [#B] %^{Title}\n%?")
+   ("p" "项目" entry (file+headline org-default-notes-file "项目") "* TODO [#B] %^{Title} :project:\n%?")
    ("h" "习惯" entry (file+headline org-default-notes-file "习惯")
-    "* NEXT [#B] %^{Title}\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
-   ("f" "灵光" entry (file+headline org-default-notes-file "灵光")
-    "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n:%i\n%?")
-   ("j" "日志" entry (file+olp+datetree org-default-notes-file "日志")
-    "* %?" :tree-type week)
-   ("a" "纪念" plain (file+headline org-default-notes-file "纪念")
-    "%% (org-anniversary %(format-time-string \"%Y %m %d\")\) %?")
+    "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?")
+   ("j" "日记" entry (file+datetree yx/org-journal-file) "* %?" :tree-type week)
+   ("a" "纪念" plain (file yx/org-anniversary-file) "%% (org-anniversary %(format-time-string \"%Y %m %d\")\) %?")
    ))
 
 (setq
@@ -37,7 +36,7 @@
 
 (setq
  org-agenda-span 'day
- org-agenda-files '("inbox.org")
+ org-agenda-files '("inbox.org" "anniversary.org")
  org-agenda-sticky t
  org-agenda-include-diary t
  org-agenda-compact-blocks t
@@ -84,7 +83,7 @@
 (setq
  org-ellipsis " ▾"
  ;; org-hidden-keywords t
- org-startup-indented t
+ org-startup-indented nil
  org-adapt-indentation nil
  org-startup-folded 'content
  org-hide-emphasis-markers t
@@ -153,6 +152,25 @@
   (setq org-super-agenda-groups '((:auto-outline-path t)))
   )
 
+(use-package org-journal
+  :ensure t
+  :defer 1
+  :init
+  (setq org-journal-prefix-key "C-c j ")
+  :config
+  (setq org-journal-dir yx/org-fleeting-note-dir
+        org-journal-file-format "%F.org"
+        org-journal-file-type 'month
+        org-journal-find-file 'find-file)
+  (defun org-journal-find-location ()
+    (org-journal-new-entry t)
+    (unless (eq org-journal-file-type 'daily)
+      (org-narrow-to-subtree))
+    (goto-char (point-max)))
+  (add-to-list 'org-capture-templates
+               '("f" "碎记" plain (function org-journal-find-location)
+                 "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?"))
+  )
 
 (use-package valign
   :after org
@@ -162,7 +180,7 @@
 (use-package denote
   :defer 1
   :init
-  (setq denote-directory (expand-file-name "denotes" org-directory)
+  (setq denote-directory yx/org-solid-note-dir
         denote-prompts '(title keywords)
         denote-known-keywords nil
         denote-infer-keywords t

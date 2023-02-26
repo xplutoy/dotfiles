@@ -43,7 +43,8 @@ This function should only modify configuration layer settings."
      semantic
 
      (ibuffer
-      :variables ibuffer-group-buffers-by 'projects)
+      :variables
+      ibuffer-group-buffers-by 'projects)
 
      (auto-completion
       :variables
@@ -52,7 +53,8 @@ This function should only modify configuration layer settings."
       auto-completion-use-company-posframe t)
 
      (shell
-      :variables shell-default-shell 'eshell
+      :variables
+      shell-default-shell 'eshell
       shell-default-position 'bottom
       shell-default-height 40
       shell-default-term-shell "/bin/zsh"
@@ -229,10 +231,7 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style '(hybrid :variables
-                                       hybrid-mode-default-state 'normal
-                                       hybrid-mode-enable-evilified-state nil
-                                       hybrid-mode-enable-hjkl-bindings nil)
+   dotspacemacs-editing-style '(hybrid)
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
@@ -264,8 +263,7 @@ It should only modify the values of Spacemacs settings."
    ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-lists '((recents . 5) (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
@@ -657,10 +655,9 @@ before packages are loaded."
                                (2 . (variable-pitch 1.1))
                                (t . (variable-pitch 1.0))))
     (mapc #'disable-theme custom-enabled-themes)
-    (setq ef-themes-to-toggle '(ef-duo-light ef-dark))
+    (setq ef-themes-to-toggle '(ef-spring ef-night))
 
     :config
-    (ef-themes-select 'ef-cherie))
+    (ef-themes-select 'ef-spring))
 
- )
-
+  )
