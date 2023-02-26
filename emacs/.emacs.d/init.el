@@ -16,11 +16,16 @@
 (setq package-quickstart t)
 
 (yx/dumped-if
- (progn
-   (setq load-path yx/dumped-load-path)
-   (transient-mark-mode 1)
-   (global-font-lock-mode 1))
- (package-activate-all))
+    (progn
+      (setq load-path yx/dumped-load-path)
+      (transient-mark-mode 1)
+      (global-font-lock-mode 1)
+      (add-hook #'after-init-hook
+                #'(lambda ()
+                    (save-excursion
+                      (switch-to-buffer "*scratch*")
+                      (lisp-interaction-mode)))))
+  (package-activate-all))
 
 (require 'init-ui)
 (require 'init-basic)

@@ -68,9 +68,12 @@
            major-mode-hydra
            general
            ;; misc
+           elfeed
            posframe
            shackle
            gcmh
+           ace-window
+           avy
            ibuffer-vc
            indent-guide
            golden-ratio
@@ -80,6 +83,7 @@
            zoxide
            move-text
            which-key
+           cal-china-x
            aggressive-indent
            rainbow-delimiters
            buffer-move

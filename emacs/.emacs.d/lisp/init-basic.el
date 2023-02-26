@@ -23,6 +23,7 @@
  use-short-answers  t
  auto-window-vscroll nil
  initial-scratch-message ""
+ ;; system-time-locale "zh_CN"
  ring-bell-function 'ignore
  delete-by-moving-to-trash ON-MAC
  enable-recursive-minibuffers t

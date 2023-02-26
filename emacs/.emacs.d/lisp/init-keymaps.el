@@ -48,8 +48,8 @@
    )
   ;; for programimg
   (general-create-definer yx-comma-leader-def
-    :prefix ","
-    :non-normal-prefix "s-,"
+    :prefix ";"
+    :non-normal-prefix "s-;"
     :states '(normal visual insert emacs))
   (yx-comma-leader-def
     "M"  'yx/hydra-smerge/body

@@ -161,7 +161,7 @@
   :config
   (setq org-journal-dir yx/org-fleeting-note-dir
         org-journal-file-format "%F.org"
-        org-journal-file-type 'month
+        org-journal-file-type 'monthly
         org-journal-find-file 'find-file)
   (defun org-journal-find-location ()
     (org-journal-new-entry t)

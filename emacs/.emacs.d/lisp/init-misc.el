@@ -67,9 +67,10 @@
   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "C-v" "M-v" "<delete>")
         rime-librime-root "~/.emacs.d/librime/dist"
         rime-user-data-dir "~/Library/Rime"
+        rime-cursor "˰"
+        rime-commit1-forall t
         rime-show-candidate 'posframe
         rime-posframe-style 'simple
-        rime-cursor "˰"
         rime-show-preedit 'inline
         rime-posframe-fixed-position t
         rime-inline-ascii-trigger 'shift-r
@@ -87,8 +88,11 @@
           rime-predicate-org-in-src-block-p
           rime-predicate-after-alphabet-char-p
           rime-predicate-current-uppercase-letter-p))
-  :bind (:map rime-mode-map
-              ("M-j" . rime-force-enable))
+  :bind (
+         :map rime-mode-map
+         ("s-," . rime-force-enable)
+         :map rime-active-mode-map
+         ("s-." . rime-inline-ascii))
   )
 
 (use-package keyfreq
@@ -288,7 +292,7 @@
               ([remap backward-word]      . holymotion-backward-word)
               ([remap forward-sentence]   . holymotion-forward-sentence)
               ([remap backward-sentence]  . holymotion-backward-sentence)
-              ([remap beginning-of-defun] .  holymotion-backward-beginning-of-defun)
+              ([remap beginning-of-defun] . holymotion-backward-beginning-of-defun)
               ([remap end-of-defun]       . holymotion-forward-end-of-defun)
               )
   :config
