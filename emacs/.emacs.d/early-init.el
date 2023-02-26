@@ -40,19 +40,4 @@
 (setq gc-cons-threshold (* 512 1024 1024)
       gc-cons-percentage 0.6)
 
-;; custom.el
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
-
-;; elpa-init
-(require 'package)
-(setq package-archives
-      '(("melpa"         . "https://melpa.org/packages/")
-        ("melpa-stable"  . "https://stable.melpa.org/packages/")
-        ("gnu"           . "https://elpa.gnu.org/packages/")
-        ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
-(setq package-quickstart t)
-(package-activate-all)
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'init-ui)
 ;;; early-init.el ends here

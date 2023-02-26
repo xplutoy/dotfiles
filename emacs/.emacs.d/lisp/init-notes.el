@@ -95,6 +95,7 @@
 
 ;; misc
 (setq
+ org-modules nil                        ; performance
  org-id-method 'uuid
  org-special-ctrl-k t
  org-special-ctrl-a/e t

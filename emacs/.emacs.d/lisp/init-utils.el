@@ -1,16 +1,33 @@
 ;;; init-utils.el --- const variable global variable and useful function.  -*- coding: utf-8; lexical-binding: t; -*-
 ;;; code:
-;; const
 (defconst ON-LINUX   (eq system-type 'gnu/linux))
 (defconst ON-MAC     (eq system-type 'darwin))
 (defconst ON-WINDOWS (memq system-type '(cygwin windows-nt ms-dos)))
 
-(defvar yx/org-root "~/personal/org/")
-(defvar yx/gpg-sign-key "67B86CB8A5630C51!")
-(defvar yx/gpg-encrypt-key "8B1F9B207AF00BCF!")
-(defvar yx/share-data-path "~/personal/local/share/")
+(defvar yx/org-root         "~/personal/org/")
+(defvar yx/gpg-sign-key     "67B86CB8A5630C51!")
+(defvar yx/gpg-encrypt-key  "8B1F9B207AF00BCF!")
+(defvar yx/share-data-path  "~/personal/local/share/")
 
-;; funtions
+(defvar yx/dumped nil)
+(defvar yx/dumped-load-path nil)
+
+(defmacro yx/dumped-if (then &rest else)
+  "Evaluate THEN if running with a dump file, else evaluate ELSE."
+  (declare (indent 1))
+  `(if yx/dumped
+       ,then
+     ,@else))
+
+(defun yx/dump-emacs ()
+  (interactive)
+  (make-process
+   :name "dump"
+   :buffer "*dump process*"
+   :command (list "emacs" "--batch" "-q" "-l"
+                  (expand-file-name "dump.el" user-emacs-directory)))
+  )
+
 (defun yx/eshell-toggle ()
   "eshell toggle"
   (interactive)
