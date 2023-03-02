@@ -37,7 +37,15 @@
   (add-hook #'emacs-startup-hook
             #'yx/restore-file-name-handler-alist))
 
+;; To suppress flashing at startup
+(setq inhibit-message t
+      inhibit-redisplay t)
+(add-hook #'window-setup-hook
+          #'(lambda ()
+              (setq inhibit-message nil
+                    inhibit-redisplay nil)
+              (redisplay)))
+
 (setq gc-cons-threshold (* 512 1024 1024)
       gc-cons-percentage 0.6)
-
 ;;; early-init.el ends here

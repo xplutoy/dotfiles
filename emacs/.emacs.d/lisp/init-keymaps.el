@@ -3,6 +3,7 @@
 (use-package hydra)
 (use-package major-mode-hydra
   :after hydra
+  :bind ("M-SPC" . major-mode-hydra)
   :config
   (pretty-hydra-define yx/hydra-smerge
     (:hint nil :color pink :quit-key "q" :title "hydra-smerge")
@@ -37,6 +38,7 @@
    [remap kill-whole-line]        'crux-kill-whole-line ;; C-S-<backspace>
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
+   [remap comment-dwim]           'yx/comment-or-uncomment
    ;; global keybindings used requently
    "C-;"   'embark-act
    "C-`"   'vterm-toggle-cd

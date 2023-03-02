@@ -19,6 +19,12 @@
        ,then
      ,@else))
 
+(defmacro yx/measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message " Execution time: %.06f" (float-time (time-since time)))))
+
 (defun yx/dump-emacs ()
   (interactive)
   (make-process
@@ -52,11 +58,14 @@ and `optipng' to reduce the file size if the program is present."
     (when (eq major-mode 'org-mode)
       (org-redisplay-inline-images))))
 
-(defmacro yx/measure-time (&rest body)
-  "Measure the time it takes to evaluate BODY."
-  `(let ((time (current-time)))
-     ,@body
-     (message " Execution time: %.06f" (float-time (time-since time)))))
+(defun yx/comment-or-uncomment ()
+  "Comments or uncomments the current line or region."
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region
+       (region-beginning)(region-end))
+    (comment-or-uncomment-region
+     (line-beginning-position)(line-end-position))))
 
 (provide 'init-utils)
  ;;; init-utils.el ends here

@@ -86,7 +86,6 @@
           rime-predicate-prog-in-code-p
           rime-predicate-auto-english-p
           rime-predicate-org-in-src-block-p
-          rime-predicate-after-alphabet-char-p
           rime-predicate-current-uppercase-letter-p))
   :bind (
          :map rime-mode-map
@@ -201,8 +200,9 @@
 (use-package shackle
   :defer 1
   :init
-  (setq shackle-select-reused-windows t
-        shackle-default-size 0.33)
+  (setq shackle-default-size 0.33
+        shackle-select-reused-windows t
+        shackle-inhibit-window-quit-on-same-windows t)
   :config
   (setq
    shackle-rules
@@ -231,6 +231,7 @@
        "\\*Agenda Commands\\*"
        "^\\*Org Note"
        "^\\*Org Select"
+       "\\*Capture\\*"
        "\\*Shell Command Output\\*")
       :regexp t :select nil :popup t :align below)
      (("^magit")
@@ -266,19 +267,6 @@
   :defer 1
   :config
   (move-text-default-bindings)
-  )
-
-(use-package cal-china-x
-  :defer 1
-  :config
-  (setq mark-holidays-in-calendar t
-        cal-china-x-always-show-jieqi t
-        cal-china-x-force-chinese-week-day t
-        cal-china-x-important-holidays cal-china-x-chinese-holidays
-        cal-china-x-general-holidays '((holiday-lunar 1 15 "元宵节")))
-  (setq calendar-holidays
-        (append cal-china-x-important-holidays
-                cal-china-x-general-holidays))
   )
 
 (use-package holymotion

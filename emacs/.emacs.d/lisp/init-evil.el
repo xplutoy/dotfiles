@@ -14,6 +14,7 @@
         evil-move-beyond-eol t
         evil-want-integration t
         evil-want-keybinding nil
+        evil-motion-state-modes nil
         evil-disable-insert-state-bindings t)
 
   :config

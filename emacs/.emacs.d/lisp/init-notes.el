@@ -40,7 +40,6 @@
  org-agenda-sticky t
  org-agenda-include-diary t
  org-agenda-compact-blocks t
- org-agenda-inhibit-startup t
  org-agenda-include-deadlines t
  org-agenda-todo-list-sublevels t
  org-agenda-window-setup 'current-window)
@@ -134,6 +133,15 @@
 
 (use-package org
   :ensure nil
+  :init
+  (major-mode-hydra-define org-mode nil
+    ("Link"
+     (("l" org-toggle-link-display)
+      ("ta" org-transclusion-add)
+      ("tA" org-transclusion-add-all)
+      ("tf" org-transclusion-make-from-link)
+      ))
+    )
   :config
   (org-crypt-use-before-save-magic)
   (org-babel-do-load-languages
@@ -172,6 +180,8 @@
                '("f" "碎记" plain (function org-journal-find-location)
                  "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?"))
   )
+
+(use-package org-transclusion)
 
 (use-package valign
   :after org

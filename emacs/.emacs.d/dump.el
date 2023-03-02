@@ -31,6 +31,10 @@
 (package-initialize)
 (setq yx/dumped-load-path load-path
       yx/dumped t)
+
+;; 一些需要在包加载之前设置的参数
+(setq evil-disable-insert-state-bindings t)
+
 (dolist (package
          '(elec-pair
            savehist
@@ -52,6 +56,7 @@
            ;; org
            org
            org-journal
+           org-transclusion
            ;; org-super-agenda (dont dump this package)
            olivetti
            denote
@@ -83,7 +88,6 @@
            zoxide
            move-text
            which-key
-           cal-china-x
            aggressive-indent
            rainbow-delimiters
            buffer-move

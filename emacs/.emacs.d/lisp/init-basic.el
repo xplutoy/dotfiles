@@ -219,6 +219,7 @@
 (setq
  calendar-latitude 30.67
  calendar-longitude 104.07
+ calendar-mode-line-format nil
  calendar-mark-diary-entries-flag t
  diary-file (expand-file-name "diary" yx/org-root))
 
@@ -286,6 +287,7 @@
    word-wrap-by-category t
    truncate-lines nil)
   (setq show-trailing-whitespace t)
+  (auto-fill-mode      1)
   (visual-line-mode    1)
   (variable-pitch-mode 1))
 (add-hook #'text-mode #'yx/text-mode-setup)
