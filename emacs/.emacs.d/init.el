@@ -31,6 +31,7 @@
 (require 'init-basic)
 (require 'init-keymaps)
 (require 'init-completion)
+(require 'init-chinese)
 (require 'init-evil)
 (require 'init-misc)
 (require 'init-notes)

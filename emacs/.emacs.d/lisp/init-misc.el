@@ -59,41 +59,6 @@
         sdcv-dictionary-data-dir "/Users/yx/.local/share/stardict/dic")
   )
 
-(use-package rime
-  :when ON-MAC
-  :defer 1
-  :init
-  (setq default-input-method "rime")
-  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "C-v" "M-v" "<delete>")
-        rime-librime-root "~/.emacs.d/librime/dist"
-        rime-user-data-dir "~/Library/Rime"
-        rime-cursor "˰"
-        rime-commit1-forall t
-        rime-show-candidate 'posframe
-        rime-posframe-style 'simple
-        rime-show-preedit 'inline
-        rime-posframe-fixed-position t
-        rime-inline-ascii-trigger 'shift-r
-        rime-inline-ascii-holder ?x)
-  (setq rime-posframe-properties
-        '( :background-color "#333333"
-           :foreground-color "#dcdccc"
-           :internal-border-width 3)
-        rime-disable-predicates
-        '(rime-predicate-hydra-p
-          rime-predicate-evil-mode-p
-          rime-predicate-ace-window-p
-          rime-predicate-prog-in-code-p
-          rime-predicate-auto-english-p
-          rime-predicate-org-in-src-block-p
-          rime-predicate-current-uppercase-letter-p))
-  :bind (
-         :map rime-mode-map
-         ("s-," . rime-force-enable)
-         :map rime-active-mode-map
-         ("s-." . rime-inline-ascii))
-  )
-
 (use-package keyfreq
   :defer 5
   :init

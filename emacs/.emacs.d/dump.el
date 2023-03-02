@@ -74,6 +74,8 @@
            general
            ;; misc
            elfeed
+           pyim
+           pyim-basedict
            posframe
            shackle
            gcmh
