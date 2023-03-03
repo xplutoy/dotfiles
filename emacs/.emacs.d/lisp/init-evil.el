@@ -88,46 +88,8 @@
   (global-evil-vimish-fold-mode 1)
   )
 
-(use-package evil-mc
-  :init
-  (defvar evil-mc-key-map (make-sparse-keymap))
-  :config
-  (defhydra yx/hydra-evil-mc ( :color pink
-                               :hint nil
-                               :pre (evil-mc-pause-cursors))
-    "
- _M_ all match          _m_ here           _u_ undo
- _n_ next match         _J_ next line      _s_ suspend
- _p_ prev match         _K_ previous line  _r_ resume
- _N_ skip & next match  _H_ first cursor   _q_ quit
- _P_ skip & prev match  _L_ last cursor    _U_ undo all
-    "
-    ("m" evil-mc-make-cursor-here)
-    ("M" evil-mc-make-all-cursors)
-    ("n" evil-mc-make-and-goto-next-match)
-    ("p" evil-mc-make-and-goto-prev-match)
-    ("N" evil-mc-skip-and-goto-next-match)
-    ("P" evil-mc-skip-and-goto-prev-match)
-    ("J" evil-mc-make-cursor-move-next-line)
-    ("K" evil-mc-make-cursor-move-prev-line)
-    ("H" evil-mc-make-and-goto-first-cursor)
-    ("L" evil-mc-make-and-goto-last-cursor)
-    ("u" evil-mc-undo-last-added-cursor)
-    ("U" evil-mc-undo-all-cursors)
-    ("s" evil-mc-pause-cursors)
-    ("r" evil-mc-resume-cursors :exit t)
-    ("q" evil-mc-undo-all-cursors :exit t)
-    )
-
-  (evil-define-key '(normal visual) 'global
-    (kbd "M") 'yx/hydra-evil-mc/body)
-
-  (evil-define-key 'visual evil-mc-key-map
-    "A" 'evil-mc-make-cursor-in-visual-selection-end
-    "I" 'evil-mc-make-cursor-in-visual-selection-beg)
-  )
-
 (use-package evil-owl
+  :defer 1
   :init
   (setq evil-owl-idle-delay 0.2)
   :config

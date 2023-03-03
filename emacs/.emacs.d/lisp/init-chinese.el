@@ -23,6 +23,9 @@
 ;;
 
 ;;; Code:
+(setq default-input-method "pyim") ; rime or pyim
+(add-hook 'text-mode-hook 'toggle-input-method)
+
 (use-package rime
   :disabled t
   :when ON-MAC
@@ -82,8 +85,16 @@
          ([remap backward-word] . pyim-backward-word))
   )
 
-(setq default-input-method "pyim") ; rime or pyim
-(add-hook 'text-mode-hook 'toggle-input-method)
+;; sdcv
+(use-package sdcv
+  :ensure nil
+  :defer 5
+  :load-path "site-lisp/sdcv"
+  :init
+  (setq sdcv-dictionary-simple-list (list "朗道英汉字典5.0")
+        sdcv-dictionary-complete-list (list "朗道英汉字典5.0")
+        sdcv-dictionary-data-dir "/Users/yx/.local/share/stardict/dic")
+  )
 
 (provide 'init-chinese)
 ;;; init-chinese.el ends here

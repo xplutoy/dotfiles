@@ -14,7 +14,7 @@
      (:name "all mail" :query "*" :key "a")
      (:name "deleted" :query "+deleted")))
  '(package-selected-packages
-   '(pyim-basedict pyim org-transclusion org-journal org-super-agenda py-isort move-text evil-owl olivetti htmlize esup zoxide evil-mc symbol-overlay major-mode-hydra hydra imenu-list consult-notes denote vundo vimrc-mode evil-vimish-fold vimish-fold vim-empty-lines-mode vim-empty-lines bug-hunter yaml-mode winum dired-narrow shackle ialign eshell-z dired-collapse valign diredfl gcmh dired-hide-dotfiles golden-ratio evil-visualstar minions corfu-terminal indent-guide evil-matchit general evil-escape evil-surround pyvenv notmuch corfu consult-project-extra vertico posframe ibuffer-vc consult-eglot mixed-pitch yasnippet-snippets which-key terminal-focus-reporting showtip pos-tip persist consult-yasnippet consult-dir buffer-move)))
+   '(pyim-basedict pyim org-transclusion org-journal org-super-agenda py-isort move-text evil-owl olivetti htmlize esup zoxide symbol-overlay major-mode-hydra hydra imenu-list consult-notes denote vundo vimrc-mode evil-vimish-fold vimish-fold vim-empty-lines-mode vim-empty-lines bug-hunter yaml-mode winum dired-narrow shackle ialign eshell-z dired-collapse valign diredfl gcmh dired-hide-dotfiles golden-ratio evil-visualstar minions corfu-terminal indent-guide evil-matchit general evil-escape evil-surround pyvenv notmuch corfu consult-project-extra vertico posframe ibuffer-vc consult-eglot mixed-pitch yasnippet-snippets which-key terminal-focus-reporting showtip pos-tip persist consult-yasnippet consult-dir buffer-move)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

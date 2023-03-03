@@ -46,7 +46,6 @@
            ;; evil
            evil
            evil-owl
-           evil-mc
            evil-escape
            evil-surround
            evil-matchit

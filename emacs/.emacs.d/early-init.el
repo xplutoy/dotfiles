@@ -18,9 +18,11 @@
       inhibit-compacting-font-caches t
       frame-resize-pixelwise         t
       frame-inhibit-implied-resize   t
+      fast-but-imprecise-scrolling   t
+      redisplay-skip-fontification-on-input t
       use-file-dialog                nil
       use-dialog-box                 nil
-      load-prefer-newer              t
+      load-prefer-newer              nil
       package-enable-at-startup      nil
       package--init-file-ensured     t
       read-process-output-max        (* 1024 1024)

@@ -88,6 +88,7 @@
  org-hide-emphasis-markers t
  org-use-sub-superscripts '{}
  org-fontify-quote-and-verse-blocks t
+ org-footnote-auto-adjust t
  org-startup-with-inline-images t
  org-image-actual-width '(600)
  )

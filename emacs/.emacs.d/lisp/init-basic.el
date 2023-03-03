@@ -8,8 +8,9 @@
  truncate-lines t
  case-fold-search t
  indent-tabs-mode nil
+ tab-always-indent 'complete
  show-trailing-whitespace nil
- tab-always-indent 'complete)
+ cursor-in-non-selected-windows nil)
 
 (prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)
@@ -43,6 +44,7 @@
  kill-do-not-save-duplicates t
  backward-delete-char-untabify-method 'hungry
  require-final-newline t
+ highlight-nonselected-windows nil
  confirm-kill-processes nil
  create-lockfiles nil
  make-backup-files nil
@@ -50,7 +52,6 @@
  hippie-expand-max-buffers 10
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
- cursor-in-non-selected-windows nil
  )
 
 ;; use-package
@@ -224,15 +225,14 @@
  diary-file (expand-file-name "diary" yx/org-root))
 
 ;; dired
-(put 'dired-find-alternate-file 'disabled nil)
 (setq
  dired-dwim-target t
  dired-mouse-drag-files t
  dired-recursive-copies 'always
  dired-recursive-deletes 'top
  dired-kill-when-opening-new-dired-buffer t
- dired-listing-switches "-aBhl  --group-directories-first"
- )
+ dired-listing-switches "-aBhl  --group-directories-first")
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; ispell
 (setq ispell-dictionary "en_US"

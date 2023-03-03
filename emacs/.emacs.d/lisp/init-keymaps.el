@@ -88,7 +88,6 @@
     "8" 'winum-select-window-8
     "9" 'winum-select-window-9
     ;; hydra
-    "M" 'yx/hydra-evil-mc/body
     "N" 'yx/hydra-denote/body
     ;; The `f' prefix is for file
     "ff"  'find-file

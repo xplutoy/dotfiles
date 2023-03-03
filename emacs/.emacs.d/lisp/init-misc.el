@@ -49,15 +49,6 @@
   )
 
 (use-package posframe)
-(use-package sdcv
-  :ensure nil
-  :defer 5
-  :load-path "site-lisp/sdcv"
-  :init
-  (setq sdcv-dictionary-simple-list (list "朗道英汉字典5.0")
-        sdcv-dictionary-complete-list (list "朗道英汉字典5.0")
-        sdcv-dictionary-data-dir "/Users/yx/.local/share/stardict/dic")
-  )
 
 (use-package keyfreq
   :defer 5
