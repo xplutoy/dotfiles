@@ -4,13 +4,13 @@
 
 (setq rmail-preserve-inbox t
       rmail-primary-inbox-list nil
-      rmail-file-name "~/personal/RMAIL"
+      rmail-file-name "~/.mail"
       )
 
 (setq mail-yank-prefix   "> ")
 (setq mail-user-agent    'gnus-user-agent)
 
-(setq message-directory "~/personal/mail/")
+(setq message-directory "~/.mail")
 (setq message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "/usr/local/bin/msmtp"
       mail-specify-envelope-from t
@@ -30,7 +30,7 @@
 
 ;; gnus
 (setq gnus-inhibit-startup-message t
-      gnus-directory (expand-file-name "gnus.d" yx/share-data-path)
+      gnus-directory (expand-file-name ".gnus.d" user-emacs-directory)
       gnus-init-file (expand-file-name "gnus.el" user-emacs-directory)
       gnus-startup-file (expand-file-name "newsrc" user-emacs-directory))
 

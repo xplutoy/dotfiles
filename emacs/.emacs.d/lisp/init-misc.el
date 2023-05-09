@@ -83,8 +83,8 @@
           self-insert-command
           yank))
   :custom
-  (keyfreq-file "~/.emacs.d/keyfreq")
-  (keyfreq-file-lock "~/.emacs.d/keyfreq.lock")
+  (keyfreq-file "~/.emacs.d/.keyfreq")
+  (keyfreq-file-lock "~/.emacs.d/.keyfreq.lock")
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1)
