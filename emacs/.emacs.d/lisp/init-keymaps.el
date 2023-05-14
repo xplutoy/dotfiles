@@ -34,8 +34,6 @@
    ;; beter defaults
    [remap zap-to-char]            'zap-up-to-char
    [remap list-buffers]           'ibuffer
-   [remap move-beginning-of-line] 'crux-move-beginning-of-line
-   [remap kill-whole-line]        'crux-kill-whole-line ;; C-S-<backspace>
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
@@ -56,7 +54,6 @@
   (yx-comma-leader-def
     "M"  'yx/hydra-smerge/body
 
-    "//" 'crux-indent-defun
     ;; the `e' prefix is for error
     "en" 'flymake-goto-next-error
     "ep" 'flymake-goto-prev-error
@@ -95,11 +92,6 @@
     "fp"  'project-find-file
     "fr"  'consult-recent-file
     "fo"  'find-file-other-window
-    "fD"  'crux-delete-file-and-buffer
-    "fR"  'crux-rename-buffer-and-file
-    "fE"  'crux-sudo-edit
-    "fO"  'crux-open-with
-    "fc"  'crux-copy-file-preserve-attributes
     ;; The `j' prefix is for jumping(in buffer), joining and splitting.
     "jj"  'evil-avy-goto-char-timer
     "jw"  'evil-avy-goto-word-or-subword-1
@@ -144,7 +136,6 @@
     ;; the `b' prefix is for buffer
     "bk"  'kill-buffer
     "bK"  'kill-buffer-and-window
-    "b1"  'crux-kill-other-buffers
     "bn"  'next-buffer
     "bp"  'previous-buffer
     ;; the `s' prefix is for search

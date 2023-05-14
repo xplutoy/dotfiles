@@ -52,6 +52,7 @@
  hippie-expand-max-buffers 10
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
+ syntax-wholeline-max 120
  )
 
 ;; use-package
@@ -334,7 +335,7 @@
      (winner-mode 1)
      (savehist-mode 1)
      (save-place-mode 1)
-     (show-paren-mode 1)
+     ;; (show-paren-mode 1)
      (auto-insert-mode 1)
      (desktop-save-mode -1)
      (blink-cursor-mode -1)

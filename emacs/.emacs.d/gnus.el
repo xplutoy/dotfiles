@@ -16,7 +16,7 @@
  gnus-select-method '(nnnil "")
  gnus-secondary-select-methods
  '(
-   (nntp "news.gwene.org")
+   ;; (nntp "news.gwene.org")
    (nnml "qqmail")
    (nnimap "outlook"
            (nnimap-address "outlook.office365.com")

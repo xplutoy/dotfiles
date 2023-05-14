@@ -90,15 +90,6 @@
   (keyfreq-autosave-mode 1)
   )
 
-(use-package crux
-  :config (progn (crux-with-region-or-buffer indent-region)
-                 (crux-reopen-as-root-mode))
-  :bind (("C-c C-o"                      . crux-open-with)
-         ("S-<return>"                   . crux-smart-open-line)
-         ("C-S-<return>"                 . smart-open-line-above)
-         ("C-c C-k"                      . crux-kill-other-buffers)
-         )
-  )
 
 (use-package easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
@@ -243,6 +234,7 @@
   (holymotion-make-motion
    holymotion-forward-end-of-defun #'end-of-defun)
   )
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
