@@ -31,13 +31,11 @@
 (require 'init-basic)
 (require 'init-keymaps)
 (require 'init-completion)
-(require 'init-chinese)
 (require 'init-evil)
 (require 'init-misc)
 (require 'init-notes)
 (require 'init-mail)
 (require 'init-elfeed)
 (require 'init-ide)
-(require 'init-lang)
 
 ;;; init.el ends here

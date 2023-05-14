@@ -235,6 +235,32 @@
    holymotion-forward-end-of-defun #'end-of-defun)
   )
 
+(setq default-input-method "pyim")
+(use-package pyim
+  :init
+  (setq default-input-method "pyim"
+        pyim-page-length 5
+        pyim-page-tooltip 'posframe
+        pyim-default-scheme 'quanpin
+        pyim-indicator-list '(pyim-indicator-with-modeline)
+        )
+  (setq-default pyim-punctuation-translate-p '(auto))
+  (setq-default pyim-english-input-switch-functions
+                '(pyim-probe-program-mode
+                  pyim-probe-auto-english
+                  pyim-probe-evil-normal-mode
+                  pyim-probe-org-speed-commands))
+  (setq-default pyim-punctuation-half-width-functions
+                '(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation))
+  :config
+  (use-package pyim-basedict
+    :init
+    (pyim-basedict-enable))
+  :bind (([remap forward-word] . pyim-forward-word)
+         ([remap backward-word] . pyim-backward-word))
+  )
+
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
