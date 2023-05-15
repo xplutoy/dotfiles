@@ -1,55 +1,31 @@
-;;; init-completion.el --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
+;;; init-comp.el --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
 ;;; Code:
 (use-package vertico
   :demand t
-  :init
-  (setq vertico-cycle t
-        vertico-scroll-margin 1
-        vertico-resize t)
   :config
   (vertico-mode 1)
   (vertico-mouse-mode 1)
   (vertico-indexed-mode 1)
   :bind ( :map vertico-map
-          ("M-q" . vertico-quick-insert) ;;vertico-quick
-          ("C-q" . vertico-quick-exit)
-          ("RET" . vertico-directory-enter) ;;vertico-directory
-          ("DEL" . vertico-directory-delete-char)
-          ("M-DEL" . vertico-directory-delete-word))
+          ("RET" . vertico-directory-enter)
+          ("DEL" . vertico-directory-delete-char))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   )
 
-;; orderless ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package orderless
   :init
-  (setq completion-styles             '(basic orderless)
-        completion-category-defaults  nil)
-  (setq completion-category-overrides
-        '((file (styles . (basic partial-completion orderless)))
-          (imenu (styles . (basic substring orderless)))
-          (kill-ring (styles . (basic substring orderless)))
-          (project-file (styles . (basic substring partial-completion orderless)))))
-  )
+  (setq completion-styles '(orderless basic)))
 
-
-;; consult ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package consult
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref)
-  (setq register-preview-delay 0.5
-        register-preview-function #'consult-register-format)
-  (advice-add #'register-preview :override #'consult-register-window)
 
   :config
-  (setq consult-narrow-key "<")
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
-   consult-ripgrep consult-git-grep consult-grep
-   consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-file-register
-   consult--source-recent-file consult--source-project-recent-file
+   consult-ripgrep consult-git-grep consult-recent-file consult-xref
    :preview-key '(:debounce 0.4 any))
 
   :bind (([remap goto-line]                     . consult-goto-line)
@@ -68,7 +44,6 @@
          :map minibuffer-local-map
          ("M-s" . consult-history)
          ("M-r" . consult-history))
-  :hook (completion-list-mode . consult-preview-at-point-mode)
   )
 
 ;; consult-*** ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,14 +63,10 @@
 
 ;; corfu ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package corfu
+  :demand t
   :init
   (setq corfu-auto t  ;; set befor global-corfu-mode
-        corfu-cycle t
-        corfu-quit-at-boundary nil
-        corfu-quit-no-match 'separator
-        corfu-auto-delay 0
-        corfu-auto-prefix 1
-        corfu-preselect 'prompt
+        corfu-preselect 'first
         corfu-echo-documentation nil)
   :config
   (global-corfu-mode 1)
@@ -106,9 +77,7 @@
   :bind (:map corfu-map
               ("TAB"   . corfu-next)
               ("S-TAB" . corfu-previous)
-              ("SPC"   . corfu-insert-separator)
-              ("M-q"   . corfu-quick-complete)
-              ("C-q"   . corfu-quick-insert))
+              ("SPC"   . corfu-insert-separator))
   )
 
 (use-package corfu-terminal
@@ -120,15 +89,10 @@
 (use-package cape
   :defer 1
   :init
-  (setq cape-dabbrev-min-length 2)
-  (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  (add-to-list 'completion-at-point-functions #'cape-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-ispell)
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
-  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
+  (setq cape-dabbrev-min-length 2
+        completion-at-point-functions
+        '(cape-ispell cape-dabbrev cape-file cape-symbol cape-abbrev))
   )
 
-(provide 'init-completion)
-;;; init-completion.el ends here
+(provide 'init-comp)
+;;; init-comp.el ends here

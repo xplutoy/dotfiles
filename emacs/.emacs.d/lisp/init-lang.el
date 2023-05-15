@@ -1,4 +1,9 @@
-;;; init-ide.el --- plugin about ide. -*- coding: utf-8; lexical-binding: t; -*-
+;;; init-lang.el --- plugin about ide. -*- coding: utf-8; lexical-binding: t; -*-
+(add-hook #'before-save-hook
+          #'(lambda ()
+            (delete-trailing-whitespace)
+            (whitespace-cleanup)))
+
 (use-package eglot
   :ensure nil
   :config
@@ -61,14 +66,6 @@
 ;; magit
 (use-package magit)
 
-(use-package symbol-overlay
-  :bind (("M-i" . symbol-overlay-put)
-         ("M-I" . symbol-overlay-remove-all)
-         :map symbol-overlay-map
-         ("C-g"  . symbol-overlay-remove-all))
-  :hook (prog-mode . symbol-overlay-mode)
-  )
-
 (use-package color-rg
   :defer 2
   :load-path "site-lisp/color-rg"
@@ -98,14 +95,6 @@
 (use-package pyvenv-auto
   :hook (python-mode . pyvenv-auto-mode))
 
-;; c/c++
-(add-hook
- #'c-mode-common-hook
- #'(lambda ()
-     (c-set-style "linux"))
- )
-
-
 ;; yaml
 (use-package yaml-mode)
 
@@ -115,5 +104,5 @@
   (add-to-list 'auto-mode-alist '("\\.?vim\\(rc\\)?\\'" . vimrc-mode))
   )
 
-(provide 'init-ide)
-;;; init-ide.el ends here
+(provide 'init-lang)
+;;; init-lang.el ends here

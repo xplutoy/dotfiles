@@ -49,26 +49,6 @@
   :hook (after-init . minions-mode)
   )
 
-(use-package diredfl
-  :hook (dired-mode . diredfl-mode))
-
-(use-package dired-hide-dotfiles
-  :hook
-  (dired-mode . dired-hide-dotfiles-mode)
-  :bind
-  (:map dired-mode-map ("." . dired-hide-dotfiles-mode)))
-
-(use-package dired-collapse
-  :hook (dired-mode . dired-collapse-mode))
-
-(use-package dired-narrow
-  :bind (:map dired-mode-map
-              ([remap dired-do-man] . dired-narrow))
-  )
-
-(use-package eshell-z
-  :after eshell)
-
 (use-package golden-ratio
   :defer 1
   :init
@@ -134,19 +114,6 @@
   (shackle-mode 1)
   )
 
-(use-package vim-empty-lines-mode
-  :hook (prog-mode . vim-empty-lines-mode)
-  )
-
-(use-package imenu-list
-  :init
-  (setq imenu-list-size 0.25
-        imenu-list-position 'right
-        imenu-list-auto-resize nil
-        imenu-list-focus-after-activation t)
-  )
-
-(use-package zoxide)
 (use-package move-text
   :defer 1
   :config
@@ -172,32 +139,40 @@
    holymotion-forward-end-of-defun #'end-of-defun)
   )
 
-(setq default-input-method "pyim")
 (use-package pyim
   :init
   (setq default-input-method "pyim"
-        pyim-page-length 5
-        pyim-page-tooltip 'posframe
         pyim-default-scheme 'quanpin
-        pyim-indicator-list '(pyim-indicator-with-modeline)
-        )
-  (setq-default pyim-punctuation-translate-p '(auto))
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-program-mode
-                  pyim-probe-auto-english
-                  pyim-probe-evil-normal-mode
-                  pyim-probe-org-speed-commands))
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation))
+        pyim-cloudim        'baidu
+        pyim-indicator-list '(pyim-indicator-with-modeline))
+  (setq-default
+   pyim-punctuation-translate-p '(auto)
+   pyim-english-input-switch-functions
+   '(pyim-probe-program-mode
+     pyim-probe-auto-english
+     pyim-probe-evil-normal-mode
+     pyim-probe-org-speed-commands)
+   pyim-punctuation-half-width-functions
+   '(pyim-probe-punctuation-line-beginning
+     pyim-probe-punctuation-after-punctuation))
   :config
   (use-package pyim-basedict
-    :init
-    (pyim-basedict-enable))
-  :bind (([remap forward-word] . pyim-forward-word)
-         ([remap backward-word] . pyim-backward-word))
+    :init (pyim-basedict-enable))
   )
 
+(use-package elfeed
+  :init
+  (setq elfeed-feeds
+        '(
+          ("https://ruder.io/rss/index.rss" ai nlp)
+          ("https://www.inference.vc/rss" ai)
+          ("https://emacsredux.com/atom.xml" emacs)
+          ("https://sachachua.com/blog/category/emacs/feed/" emacs)
+          ("https://manateelazycat.github.io/feed.xml" emacs)
+          ("https://linuxhandbook.com/rss/" linux)
+          ("http://www.ruanyifeng.com/blog/atom.xml" 技术 软件))
+        )
+  )
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
