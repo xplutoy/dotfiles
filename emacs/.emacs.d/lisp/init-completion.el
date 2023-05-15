@@ -30,54 +30,6 @@
           (project-file (styles . (basic substring partial-completion orderless)))))
   )
 
-;; embark ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package embark
-  :defer 2
-  :init
-  (setq prefix-help-command #'embark-prefix-help-command)
-  (setq embark-help-key "?")
-  ;; which-key style indicator
-  (defun embark-which-key-indicator ()
-    (lambda (&optional keymap targets prefix)
-      (if (null keymap)
-          (which-key--hide-popup-ignore-command)
-        (which-key--show-keymap
-         (if (eq (plist-get (car targets) :type) 'embark-become)
-             "Become"
-           (format "Act on %s '%s'%s"
-                   (plist-get (car targets) :type)
-                   (embark--truncate-target (plist-get (car targets) :target))
-                   (if (cdr targets) "…" "")))
-         (if prefix
-             (pcase (lookup-key keymap prefix 'accept-default)
-               ((and (pred keymapp) km) km)
-               (_ (key-binding prefix 'accept-default)))
-           keymap)
-         nil nil t (lambda (binding)
-                     (not (string-suffix-p "-argument" (cdr binding))))))))
-  (setq embark-indicators
-        '(embark-which-key-indicator
-          embark-highlight-indicator
-          embark-isearch-highlight-indicator))
-
-  (defun embark-hide-which-key-indicator (fn &rest args)
-    "Hide the which-key indicator immediately when using the completing-read prompter."
-    (which-key--hide-popup-ignore-command)
-    (let ((embark-indicators
-           (remq #'embark-which-key-indicator embark-indicators)))
-      (apply fn args)))
-  (advice-add #'embark-completing-read-prompter
-              :around #'embark-hide-which-key-indicator)
-
-  :config
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none))))
-
-  :bind ( :map embark-symbol-map
-          ("D" . sdcv-search-pointer+))
-  )
 
 ;; consult ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package consult
@@ -90,7 +42,6 @@
 
   :config
   (setq consult-narrow-key "<")
-  ;; (setq consult-preview-key "C-SPC")
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
@@ -113,25 +64,6 @@
          ("M-#"     . consult-register-load)
          ("M-'"     . consult-register-store)
          ("C-M-#"   . consult-register)
-         ("M-g e"   . consult-compile-error)
-         ("M-g f"   . consult-flymake)
-         ("M-g o"   . consult-outline)
-         ("M-g m"   . consult-mark)
-         ("M-g k"   . consult-global-mark)
-         ("M-s f"   . consult-find)
-         ("M-s d"   . consult-locate)
-         ("M-s G"   . consult-git-grep)
-         ("M-s g"   . consult-ripgrep)
-         ("M-s l"   . consult-line)
-         ("M-s L"   . consult-line-multi)
-         ("M-s k"   . consult-keep-lines)
-         ("M-s u"   . consult-focus-lines)
-         ("M-s e"   . consult-isearch-history)
-         :map  isearch-mode-map
-         ("M-s e" . consult-isearch-history)
-         ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)
-         :map  minibuffer-local-map
          ("M-s" . consult-history)
          ("M-r" . consult-history))
   :hook (completion-list-mode . consult-preview-at-point-mode)
@@ -152,9 +84,7 @@
   :bind
   (("C-c p f" . consult-project-extra-find)
    ("C-c p o" . consult-project-extra-find-other-window)))
-(use-package consult-yasnippet
-  :bind (("M-s y" . consult-yasnippet))
-  )
+
 (use-package consult-eglot
   :bind (("M-s s" . consult-eglot-symbols))
   )
@@ -169,11 +99,9 @@
         corfu-auto-delay 0
         corfu-auto-prefix 1
         corfu-preselect 'prompt
-        ;; corfu-preselect-first nil
         corfu-echo-documentation nil)
   :config
-  ;; (global-corfu-mode 1)
-  ;; corfu plugin
+  (global-corfu-mode 1)
   (corfu-echo-mode 1)
   (corfu-history-mode 1)
   (corfu-indexed-mode 1)
@@ -184,7 +112,6 @@
               ("SPC"   . corfu-insert-separator)
               ("M-q"   . corfu-quick-complete)
               ("C-q"   . corfu-quick-insert))
-  :hook (prog-mode . corfu-mode)
   )
 
 (use-package corfu-terminal
@@ -202,11 +129,7 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-ispell)
-  ;; Silence the pcomplete capf, no errors or messages!
-  ;; Important for corfu
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
-  ;; Ensure that pcomplete does not write to the buffer
-  ;; and behaves as a pure `completion-at-point-function'.
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
   )
 

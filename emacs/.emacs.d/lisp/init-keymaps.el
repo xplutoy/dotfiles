@@ -38,7 +38,6 @@
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
    ;; global keybindings used requently
-   "C-;"   'embark-act
    "C-`"   'yx/eshell-toggle
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
@@ -126,7 +125,6 @@
     "x1"  'delete-other-windows
     "x2"  'split-window-vertically
     "x3"  'split-window-horizontally
-    "xo"  'ace-window
     ;; the `b' prefix is for buffer
     "bk"  'kill-buffer
     "bK"  'kill-buffer-and-window
