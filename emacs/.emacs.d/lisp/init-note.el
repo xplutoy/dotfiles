@@ -17,9 +17,8 @@
 (setq
  org-ellipsis ""
  org-tags-column 0
- org-startup-folded 'content
- org-pretty-entities t
- org-startup-indented t
+ org-num-max-level 2
+ org-log-into-drawer t
  org-hide-emphasis-markers t
  ;; org-use-sub-superscripts '{}
  org-fontify-quote-and-verse-blocks t
@@ -30,14 +29,21 @@
  org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id
  )
 
-(org-crypt-use-before-save-magic)
+(use-package org
+  :ensure nil
+  :defer 2
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((emacs-lisp . t) (python . t)))
+  (org-crypt-use-before-save-magic)
+  )
 
 (use-package org-journal
-  :defer 2
+  :after org
   :init
-  (setq org-journal-prefix-key "C-c j ")
   (setq org-journal-dir "~/privacy/fleeting_notes"
         org-journal-file-format "%F.org"
+        org-journal-encrypt-journal t
         org-journal-file-type 'monthly
         org-journal-find-file 'find-file)
   )

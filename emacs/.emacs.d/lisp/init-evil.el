@@ -15,6 +15,7 @@
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
    "C-c l" 'org-store-link
+   "C-c j" 'org-journal-new-entry
    )
   (general-create-definer yx-space-leader-def
     :prefix "SPC"
@@ -118,7 +119,9 @@
   :config
   (defvar yx-initial-evil-state-setup
     '((conf-mode . normal)
-      (prog-mode . normal))
+      (text-mode . normal)
+      (prog-mode . normal)
+      (color-rg-mode . emacs))
     "Default evil state per major mode.")
   (dolist (p yx-initial-evil-state-setup)
     (evil-set-initial-state (car p) (cdr p)))
