@@ -27,18 +27,6 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
 
-;; vterm ;;;;;;;;;;;;;;;
-(use-package vterm
-  :init
-  (setq vterm-kill-buffer-on-exit t)
-  :bind (:map vterm-mode-map
-              ("C-q" . vterm-send-next-key))
-  )
-(use-package vterm-toggle
-  :after vterm
-  :init
-  (setq vterm-toggle-fullscreen-p nil))
-
 ;; project
 (with-eval-after-load "project"
   (keymap-set project-prefix-map "m" 'magit))

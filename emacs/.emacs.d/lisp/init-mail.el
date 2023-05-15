@@ -3,16 +3,13 @@
 (setq user-mail-address  "yangxue.cs@foxmail.com")
 
 (setq rmail-preserve-inbox t
-      rmail-primary-inbox-list nil
-      rmail-file-name "~/.mail"
-      )
+      rmail-primary-inbox-list nil)
 
 (setq mail-yank-prefix   "> ")
 (setq mail-user-agent    'gnus-user-agent)
 
 (setq message-directory "~/.mail")
 (setq message-send-mail-function 'message-send-mail-with-sendmail
-      sendmail-program "/usr/local/bin/msmtp"
       mail-specify-envelope-from t
       message-sendmail-envelope-from 'header
       mail-envelope-from 'header)
@@ -33,16 +30,5 @@
       gnus-directory (expand-file-name ".gnus.d" user-emacs-directory)
       gnus-init-file (expand-file-name "gnus.el" user-emacs-directory)
       gnus-startup-file (expand-file-name "newsrc" user-emacs-directory))
-
-;; notmuch
-(use-package notmuch
-  :init
-  (setq notmuch-show-logo nil
-        notmuch-show-all-tags-list  t
-        notmuch-hello-auto-refresh t
-        notmuch-hello-recent-searches-max 20
-        notmuch-address-command 'internal
-        notmuch-crypto-process-mime t))
-
 
 (provide 'init-mail)

@@ -39,8 +39,7 @@
    [remap comment-dwim]           'yx/comment-or-uncomment
    ;; global keybindings used requently
    "C-;"   'embark-act
-   "C-`"   'vterm-toggle-cd
-   "M-`"   'yx/eshell-toggle
+   "C-`"   'yx/eshell-toggle
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
@@ -108,8 +107,6 @@
     "gn"  'consult-notes
     ;; The `w' prefix is for windows
     "w="  'balance-windows-area
-    "wd"  'ace-delete-window
-    "wD"  'ace-delete-other-windows
     "wh"  'evil-window-left
     "wH"  'evil-window-move-far-left
     "wl"  'evil-window-right
@@ -119,9 +116,6 @@
     "wk"  'evil-window-up
     "wK"  'evil-window-move-very-top
     "wo"  'other-window
-    "ww"  'ace-window
-    "wS"  'ace-swap-window
-    "wm"  'ace-maximize-window
     "wu"  'winner-undo
     "wU"  'winner-redo
     "w-"  'split-window-below
@@ -169,7 +163,6 @@
     "xa"  'align-regexp
     "xu"  'downcase-region
     "xU"  'upcase-region
-    "xm"  'yx/hydra-evil-mc/body
     ;; `r' is for register and bookmark
     "rj"  'jump-to-register
     "ri"  'insert-register
@@ -183,10 +176,6 @@
     "tS"  'flyspell-mode
     "tI"  'imenu-list-smart-toggle
     "tG"  'golden-ratio-mode
-
-    ;; misc
-    "ds" 'sdcv-search-input
-    "dt" 'sdcv-search-pointer+
     ))
 
 (provide 'init-keymaps)

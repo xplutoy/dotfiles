@@ -19,16 +19,6 @@
   (which-key-mode 1)
   )
 
-(use-package buffer-move)
-(use-package ace-window
-  :init
-  (setq aw-background nil
-        aw-scope 'frame
-        aw-dispatch-always nil
-        ;; aw-ignored-buffers
-        aw-minibuffer-flag nil)
-  :bind ("M-o" . ace-window))
-
 (use-package winum
   :defer 1
   :init
@@ -49,47 +39,6 @@
   )
 
 (use-package posframe)
-
-(use-package keyfreq
-  :defer 5
-  :init
-  (setq keyfreq-excluded-commands
-        '(backward-char
-          dap-tooltip-mouse-motion
-          delete-backward-char
-          execute-extended-command
-          forward-char
-          keyboard-quit
-          kill-buffer
-          left-char
-          minibuffer-keyboard-quit
-          mouse-drag-region
-          mouse-set-point
-          move-beginning-of-line
-          move-end-of-line
-          next-line
-          org-delete-backward-char
-          org-end-of-line
-          org-return
-          org-self-insert-command
-          pixel-scroll-precision
-          previous-line
-          previous-line
-          right-char
-          right-word
-          save-buffer
-          selectrum-next-candidate
-          selectrum-select-current-candidate
-          self-insert-command
-          yank))
-  :custom
-  (keyfreq-file "~/.emacs.d/.keyfreq")
-  (keyfreq-file-lock "~/.emacs.d/.keyfreq.lock")
-  :config
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1)
-  )
-
 
 (use-package easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
@@ -119,8 +68,6 @@
 
 (use-package eshell-z
   :after eshell)
-
-(use-package ialign)
 
 (use-package golden-ratio
   :defer 1
@@ -187,13 +134,9 @@
   (shackle-mode 1)
   )
 
-(use-package bug-hunter)
-
 (use-package vim-empty-lines-mode
   :hook (prog-mode . vim-empty-lines-mode)
   )
-
-(use-package vundo)
 
 (use-package imenu-list
   :init
@@ -204,12 +147,6 @@
   )
 
 (use-package zoxide)
-
-(use-package esup
-  :init
-  (setq esup-depth 0)
-  )
-
 (use-package move-text
   :defer 1
   :config

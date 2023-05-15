@@ -38,13 +38,13 @@
   (:states 'normal
            "C-p" 'previous-line
            "C-n" 'next-line
-           "C-a" 'crux-move-beginning-of-line
+           "C-a" 'move-beginning-of-line
            "C-e" 'end-of-line
            "C-y" 'yank
            "M-." 'xref-find-definitions)
   (:states 'insert
-           "C-a" 'crux-move-beginning-of-line)
-  (evil-ex-completion-map "C-a" 'crux-move-beginning-of-line
+           "C-a" 'move-beginning-of-line)
+  (evil-ex-completion-map "C-a" 'move-beginning-of-line
                           "C-b" 'backward-char
                           "M-n" 'next-complete-history-element
                           "M-p" 'previous-complete-history-element)
