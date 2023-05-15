@@ -10,7 +10,7 @@
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
    "<f1> f" 'toggle-frame-maximized
-   "C-`"   'yx/eshell-toggle
+   "C-,"   'yx/eshell-toggle
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb

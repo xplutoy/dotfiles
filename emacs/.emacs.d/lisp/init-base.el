@@ -8,13 +8,13 @@
  tab-always-indent 'complete)
 
 (setq
- desktop-save t
  use-short-answers  t
  ring-bell-function 'ignore
  help-window-select t
  help-window-keep-selected t
  create-lockfiles nil
  make-backup-files nil
+ flyspell-issue-message-flag nil
  display-line-numbers-type 'relative
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
@@ -50,14 +50,6 @@
  ibuffer-display-summary nil
  ibuffer-show-empty-filter-groups nil
  ibuffer-never-show-predicates '("^\\*"))
-
-;; ispell
-(setq ispell-dictionary "en_US"
-      flyspell-issue-message-flag nil)
-(when (executable-find "aspell")
-  (setq ispell-list-command "--list"
-        ispell-program-name "aspell"
-        ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")))
 
 ;; epa
 (setq
@@ -121,6 +113,12 @@
      (minibuffer-depth-indicate-mode 1)
      )
  )
+
+(defun yx/eshell-toggle ()
+  (interactive)
+  (if (equal major-mode 'eshell-mode)
+      (delete-window)
+    (eshell)))
 
 (defun font-installed-p (font-name)
   (find-font (font-spec :name font-name)))
