@@ -27,8 +27,6 @@ alias ll='ls -lahF'
 alias la='ls -A'
 alias grep='grep --color=auto'
 # emacs alias
-alias em='emacs -q -l ~/.emacs.d/init-mini.el -nw "$@"'
-alias emx='emacs -q -l ~/.emacs.d/init-mini.el "$@"'
 alias ec='TERM=xterm-256color emacsclient -s server -t "$@"'
 alias ecx='emacsclient -s server -n -c "$@"'
 # alias esx='emacs --init-directory=~/.spacemacs.d/emacs.d "$@"'

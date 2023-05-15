@@ -248,7 +248,6 @@
  epa-file-encrypt-to yx/gpg-encrypt-key
  epa-file-select-keys nil
  epa-pinentry-mode 'loopback
- epa-file-inhibit-auto-save t
  epa-file-cache-passphrase-for-symmetric-encryption t
  )
 (add-to-list 'auth-sources (concat user-emacs-directory "authinfo.gpg"))

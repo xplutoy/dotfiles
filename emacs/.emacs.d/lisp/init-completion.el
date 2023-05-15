@@ -1,12 +1,13 @@
 ;;; init-completion.el --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
 ;;; Code:
 (use-package vertico
+  :demand t
   :init
   (setq vertico-cycle t
         vertico-scroll-margin 1
         vertico-resize t)
-  (vertico-mode 1)
   :config
+  (vertico-mode 1)
   (vertico-mouse-mode 1)
   (vertico-indexed-mode 1)
   :bind ( :map vertico-map
@@ -64,15 +65,11 @@
          ("M-#"     . consult-register-load)
          ("M-'"     . consult-register-store)
          ("C-M-#"   . consult-register)
+         :map minibuffer-local-map
          ("M-s" . consult-history)
          ("M-r" . consult-history))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   )
-
-(use-package embark-consult
-  :after (embark consult)
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
 
 ;; consult-*** ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package consult-dir
@@ -121,7 +118,7 @@
 
 ;; cape
 (use-package cape
-  :defer 2
+  :defer 1
   :init
   (setq cape-dabbrev-min-length 2)
   (add-to-list 'completion-at-point-functions #'cape-abbrev)

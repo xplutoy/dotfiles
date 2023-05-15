@@ -125,7 +125,7 @@
   :init
   (setq org-journal-prefix-key "C-c j ")
   :config
-  (setq org-journal-dir yx/org-fleeting-note-dir
+  (setq org-journal-dir
         org-journal-file-format "%F.org"
         org-journal-file-type 'monthly
         org-journal-find-file 'find-file)

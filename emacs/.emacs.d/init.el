@@ -21,7 +21,7 @@
 (require 'init-completion)
 (require 'init-evil)
 (require 'init-misc)
-(require 'init-notes)
+(require 'init-org)
 (require 'init-mail)
 (require 'init-elfeed)
 (require 'init-ide)

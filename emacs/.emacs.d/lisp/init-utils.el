@@ -4,10 +4,9 @@
 (defconst ON-MAC     (eq system-type 'darwin))
 (defconst ON-WINDOWS (memq system-type '(cygwin windows-nt ms-dos)))
 
-(defvar yx/org-root         "~/personal/org/")
+(defvar yx/org-root         "~/privacy")
 (defvar yx/gpg-sign-key     "67B86CB8A5630C51!")
 (defvar yx/gpg-encrypt-key  "8B1F9B207AF00BCF!")
-(defvar yx/share-data-path  "~/personal/local/share/")
 
 (defun yx/eshell-toggle ()
   "eshell toggle"
