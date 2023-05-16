@@ -17,6 +17,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # pass
-export PASSWORD_STORE_DIR=$HOME/personal/password-store/
-# scdv
-export STARDICT_DATA_DIR="$HOME/.local/share/stardict/dic/"
+export PASSWORD_STORE_DIR=$HOME/privacy/password-store/
+
+# pinentry
+export GPG_TTY=$(tty)
