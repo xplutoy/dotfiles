@@ -2,6 +2,7 @@
 
 (setq
  gnus-select-method '(nnnil "")
+ gnus-inhibit-startup-message t
  gnus-secondary-select-methods
  '(
    ;; (nntp "news.gwene.org")
@@ -15,7 +16,6 @@
            (nnimap-split-methods default)
            (nnimap-search-engine imap))
    )
-   gnus-inhibit-startup-message t
  )
 
 (setq

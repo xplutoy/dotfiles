@@ -9,11 +9,12 @@
 
 (setq
  use-short-answers  t
- ring-bell-function 'ignore
  help-window-select t
- help-window-keep-selected t
  create-lockfiles nil
  make-backup-files nil
+ find-file-visit-truename t
+ ring-bell-function 'ignore
+ help-window-keep-selected t
  flyspell-issue-message-flag nil
  display-line-numbers-type 'relative
  compilation-scroll-output 'first-error
