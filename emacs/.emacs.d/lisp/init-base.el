@@ -57,12 +57,6 @@
  epa-file-select-keys yx/gpg-encrypt-key)
 (add-to-list 'auth-sources "~/.emacs.d/authinfo.gpg")
 
-;; gnus
-(setq
- gnus-inhibit-startup-message t
- gnus-directory "~/.cache/gnus.d"
- gnus-init-file "~/.emacs.d/gnus.el")
-
 ;; os specific settings stay here
 (when (eq system-type 'darwin)
   (setq
