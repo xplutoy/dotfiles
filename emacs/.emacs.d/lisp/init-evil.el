@@ -9,7 +9,7 @@
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
-   "<f1> f" 'toggle-frame-maximized
+   "<f10>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
