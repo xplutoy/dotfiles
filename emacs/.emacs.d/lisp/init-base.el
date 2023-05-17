@@ -1,5 +1,4 @@
 ;;; init-base --- basic settings. -*- coding: utf-8; lexical-binding: t; -*-
-;;; code:
 (setq-default
  tab-width 2
  abbrev-mode t
@@ -12,6 +11,7 @@
  help-window-select t
  create-lockfiles nil
  make-backup-files nil
+ show-trailing-whitespace t
  find-file-visit-truename t
  ring-bell-function 'ignore
  help-window-keep-selected t
@@ -65,26 +65,24 @@
    ns-use-thin-smoothing      t
    insert-directory-program   "gls"))
 
-;; text-mode
-(defun yx/text-mode-setup ()
-  (setq-local
-   word-wrap t
-   word-wrap-by-category t
-   truncate-lines nil)
-  (setq show-trailing-whitespace t)
-  (auto-fill-mode      1)
-  (visual-line-mode    1)
-  (variable-pitch-mode 1))
-(add-hook #'text-mode #'yx/text-mode-setup)
+(add-hook
+ #'text-mode
+ (lambda ()
+   (setq-local
+    word-wrap t
+    word-wrap-by-category t
+    truncate-lines nil)
+   (auto-fill-mode 1)
+   (visual-line-mode 1)
+   (variable-pitch-mode 1)
+   )
+ )
 
-;; prog-mode
-(defun yx/prog-mode-setup ()
-  (setq show-trailing-whitespace t)
-  (flymake-mode               1)
-  (display-line-numbers-mode  1)
-  (hs-minor-mode              1))
-(add-hook #'prog-mode-hook #'yx/prog-mode-setup)
-(add-hook #'conf-mode-hook #'yx/prog-mode-setup)
+(add-hook
+ #'prog-mode-hook
+ (lambda ()
+   (hs-minor-mode 1)
+   (display-line-numbers-mode 1)))
 
 (add-hook
  #'after-init-hook
