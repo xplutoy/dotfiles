@@ -117,7 +117,7 @@
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (when (display-graphic-p)
-    (set-face-attribute 'default nil :family "Inconsolata" :height 140)
+    (set-face-attribute 'default nil :family "Inconsolata" :height 150)
     (set-face-attribute 'fixed-pitch nil :family "Inconsolata" :height 1.0)
     (set-face-attribute 'variable-pitch nil :family "Source Sans Pro" :height 1.0)
     (set-face-attribute 'fixed-pitch-serif nil :family "Latin Modern Mono" :height 1.0)
