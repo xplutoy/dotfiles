@@ -11,6 +11,7 @@
  help-window-select t
  create-lockfiles nil
  make-backup-files nil
+ confirm-kill-processes nil
  show-trailing-whitespace t
  find-file-visit-truename t
  ring-bell-function 'ignore
