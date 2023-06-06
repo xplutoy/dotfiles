@@ -9,7 +9,8 @@
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
-   "<f10>" 'toggle-frame-maximized
+   [remap kill-buffer] 'kill-current-buffer
+   "s-<return>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
@@ -47,7 +48,6 @@
     "gg"  'consult-ripgrep
     "gl"  'consult-line
     "gL"  'consult-line-multi
-    "gn"  'consult-notes
     "gf" 'find-function
     "gv" 'find-variable
     "gd" 'xref-find-definitions
@@ -69,14 +69,12 @@
     "x2"  'split-window-vertically
     "x3"  'split-window-horizontally
     ;; the `b' prefix is for buffer
-    "bk"  'kill-buffer-and-window
     "bn"  'next-buffer
     "bp"  'previous-buffer
     ;; the `s' prefix is for search
     "ss"  'color-rg-search-symbol
     "sp"  'color-rg-search-input-in-project
     "sb"  'color-rg-search-input-in-current-file
-    "sN"  'consult-notes-search-in-all-notes
     ;; the `S' prefix is for flyspell
     "Sb"  'flyspell-buffer
     "Sn"  'evil-next-flyspell-error

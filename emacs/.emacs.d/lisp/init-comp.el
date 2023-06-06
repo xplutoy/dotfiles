@@ -38,7 +38,7 @@
          ([remap apropos]                       . consult-apropos)
          ([remap bookmark-jump]                 . consult-bookmark)
          ([remap imenu]                         . consult-imenu)
-         ([remap find-file-read-only]           . consult-recent-file)
+         ("s-r" . consult-recent-file)
          ("C-x p b" . consult-project-buffer)
          ("M-#"     . consult-register-load)
          ("M-'"     . consult-register-store)

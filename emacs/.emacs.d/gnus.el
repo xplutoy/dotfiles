@@ -1,12 +1,9 @@
 ;;; -*- lexical-binding: t no-byte-compile: t -*-
-
 (setq
  gnus-select-method '(nnnil "")
  gnus-inhibit-startup-message t
  gnus-secondary-select-methods
- '(
-   ;; (nntp "news.gwene.org")
-   (nnml "qqmail")
+ '((nnml "qqmail")
    (nnimap "outlook"
            (nnimap-address "outlook.office365.com")
            (nnimap-server-port 993)

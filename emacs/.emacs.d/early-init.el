@@ -1,6 +1,6 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 ;; no menu bar, toolbar, scroll bar
-(dolist (var '(default-frame-alist initial-frame-alist))
+(dolist (var '(default-frame-alist))
   (add-to-list var '(tool-bar-lines . 0))
   (add-to-list var '(menu-bar-lines . 0))
   (add-to-list var '(undecorated-round . t))
