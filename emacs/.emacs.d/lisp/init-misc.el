@@ -71,6 +71,26 @@
   (golden-ratio-mode 1)
   )
 
+(use-package popper
+  :defer 1
+  :bind (("C-`" . popper-toggle-latest)
+         ("M-`" . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :config
+  (setq popper-group-function #'popper-group-by-directory)
+  (setq popper-reference-buffers
+        '("\\*Ibuffer\\*"
+          "\\*evil-registers\\*"
+          "\\*evil-owl\\*"
+          "^\\*eshell.*\\*$" eshell-mode
+          help-mode
+          occur-mode
+          compilation-mode
+          ))
+  (popper-mode 1)
+  (popper-echo-mode 1)
+  )
+
 (use-package shackle
   :defer 1
   :init
@@ -82,22 +102,17 @@
    shackle-rules
    '((("\\*Ibuffer\\*"
        "\\*Help\\*"
-       "\\*helpful .*"
        "\\*es?hell\\*"
        "\\*info\\*"
        "\\*[Wo]*Man.*\\*"
-       "\\*SDCV\\*"
        "\\*Dictionary\\*"
        "\\*Flymake .*"
-       "\\*vterm\\*"
        "^CAPTURE-"
        dired-mode
        occur-mode
-       vterm-mode
        color-rg-mode)
       :regexp t :select t :popup t :align below)
-     (("\\*Go-Translate\\*"
-       "\\*Warnings\\*"
+     (("\\*Warnings\\*"
        "\\*Messages\\*"
        "\\*evil-registers\\*"
        "\\*evil-owl\\*"

@@ -22,6 +22,8 @@
         xref-show-definitions-function #'consult-xref)
 
   :config
+  (setq consult-ripgrep-args
+        (concat consult-ripgrep-args " --hidden"))
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
