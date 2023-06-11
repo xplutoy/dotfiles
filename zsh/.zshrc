@@ -50,6 +50,8 @@ alias gstd='git stash drop'
 alias gstp='git stash pop'
 alias gstc='git stash clear'
 
+alias r='radian'
+
 # plugins
 source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

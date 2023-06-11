@@ -178,8 +178,7 @@
 (use-package elfeed
   :init
   (setq elfeed-feeds
-        '(
-          ("https://ruder.io/rss/index.rss" ai nlp)
+        '(("https://ruder.io/rss/index.rss" ai nlp)
           ("https://www.inference.vc/rss" ai)
           ("https://emacsredux.com/atom.xml" emacs)
           ("https://sachachua.com/blog/category/emacs/feed/" emacs)

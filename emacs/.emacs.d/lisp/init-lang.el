@@ -81,6 +81,9 @@
   :hook ((python-ts-mode c++-ts-mode c-ts-mode bash-ts-mode) . combobulate-mode)
   )
 
+;; Julia
+(use-package julia-mode)
+
 ;; python
 (add-hook
  #'python-mode-hook
@@ -100,7 +103,7 @@
 
 ;; vim-script
 (use-package vimrc-mode
-  :config
+  :init
   (add-to-list 'auto-mode-alist '("\\.?vim\\(rc\\)?\\'" . vimrc-mode))
   )
 

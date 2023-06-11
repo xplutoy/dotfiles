@@ -12,6 +12,7 @@
    [remap kill-buffer] 'kill-current-buffer
    "s-<return>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
+   "C-;"   'yx/comment-or-uncomment
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
@@ -53,6 +54,9 @@
     "gd" 'xref-find-definitions
     "gr" 'xref-find-references
     "go" 'xref-find-definitions-other-window
+
+    ;; the `e' pregix is for eglot or error
+    "es" 'consult-eglot-symbols
     "en" 'flymake-goto-next-error
     "ep" 'flymake-goto-prev-error
     "eb" 'flymake-diagnostic-buffer
