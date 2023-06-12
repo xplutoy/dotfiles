@@ -24,6 +24,7 @@
 (require 'init-misc)
 (require 'init-note)
 (require 'init-mail)
+(require 'init-feed)
 (require 'init-lang)
 
 ;;; init.el ends here
