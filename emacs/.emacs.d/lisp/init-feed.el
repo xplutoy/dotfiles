@@ -9,3 +9,5 @@
           ("http://www.ruanyifeng.com/blog/atom.xml" 技术 软件))
         )
   )
+
+(provide 'init-feed)

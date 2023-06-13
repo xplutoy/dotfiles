@@ -4,6 +4,8 @@
  abbrev-mode t
  truncate-lines t
  indent-tabs-mode nil
+ require-final-newline t
+ show-trailing-whitespace t
  tab-always-indent 'complete)
 
 (setq
@@ -12,7 +14,6 @@
  create-lockfiles nil
  make-backup-files nil
  confirm-kill-processes nil
- show-trailing-whitespace t
  find-file-visit-truename t
  ring-bell-function 'ignore
  help-window-keep-selected t
