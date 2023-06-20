@@ -10,6 +10,7 @@
           ("https://www.juliabloggers.com/feed/" julia)
           ("https://feeds.feedburner.com/RBloggers" r-lang)
           ;; 科研、数学、物理
+          ("https://spaces.ac.cn/feed" AI)
           ("https://ruder.io/rss/index.rss" AI)
           ("https://www.inference.vc/rss" AI)
           ("https://lilianweng.github.io/index.xml" AI)
