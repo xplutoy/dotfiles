@@ -86,6 +86,10 @@
   :hook ((python-ts-mode c++-ts-mode c-ts-mode bash-ts-mode) . combobulate-mode)
   )
 
+(use-package devdocs
+  :init
+  (setq devdocs-data-dir "~/.emacs.d/.cache/devdocs"))
+
 ;; Julia
 (use-package julia-mode)
 

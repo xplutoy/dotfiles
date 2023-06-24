@@ -1,4 +1,6 @@
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (use-package elfeed
+  ;; -*- coding: utf-8; lexical-binding: t; -*-
   :init
   (setq elfeed-feeds
         '(;; 工具、技术

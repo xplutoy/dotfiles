@@ -1,11 +1,14 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
-;; no menu bar, toolbar, scroll bar
-(dolist (var '(default-frame-alist))
-  (add-to-list var '(tool-bar-lines . 0))
-  (add-to-list var '(menu-bar-lines . 0))
-  (add-to-list var '(undecorated-round . t))
-  (add-to-list var '(vertical-scroll-bars . nil))
-  )
+;;; -*- coding: utf-8; lexical-binding: t; -*-
+(setq
+ tool-bar-mode nil
+ menu-bar-mode nil
+ scroll-bar-mode nil
+ default-frame-alist
+ '((tool-bar-lines . 0)
+   (menu-bar-lines . 0)
+   (alpha-background . 75)
+   (undecorated-round . t)
+   (vertical-scroll-bars . nil)))
 
 (setq
  use-dialog-box nil

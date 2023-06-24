@@ -8,12 +8,11 @@
    [remap list-buffers]           'ibuffer
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
-   [remap comment-dwim]           'yx/comment-or-uncomment
    [remap kill-buffer]            'kill-current-buffer
    [remap toggle-input-method]    'sis-switch
+   [remap comment-dwim]           'evilnc-comment-or-uncomment-lines
    "s-<return>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
-   "C-;"   'yx/comment-or-uncomment
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
@@ -24,8 +23,27 @@
     :prefix "SPC"
     :non-normal-prefix "M-SPC"
     :states '(normal visual insert emacs))
+  (yx-space-leader-def :keymaps 'prog-mode-map
+    "d" '(:ignore t :which-key "code docs")
+    "de" 'eldoc
+    "dd" 'devdocs-lookup
+    "g" '(:ignore t :which-key "code navigate")
+    "gf" 'find-function
+    "gv" 'find-variable
+    "gs" 'consult-eglot-symbols
+    "gd" 'xref-find-definitions
+    "gr" 'xref-find-references
+    "go" 'xref-find-definitions-other-window
+    "e" '(:ignore t :which-key "code lint")
+    "en" 'flymake-goto-next-error
+    "ep" 'flymake-goto-prev-error
+    "eb" 'flymake-diagnostic-buffer
+    "h" '(:ignore t :which-key "code hilight")
+    "hh" 'symbol-overlay-put
+    "hc" 'symbol-overlay-remove-all
+    )
   (yx-space-leader-def
-    ;; 0 - 9 for window select
+    "SPC" 'execute-extended-command-for-buffer
     "0" 'winum-select-window-0-or-10
     "1" 'winum-select-window-1
     "2" 'winum-select-window-2
@@ -36,32 +54,19 @@
     "7" 'winum-select-window-7
     "8" 'winum-select-window-8
     "9" 'winum-select-window-9
-    "fp"  'project-find-file
     ;; The `j' prefix is for jumping(in buffer), joining and splitting.
+    "j" '(:ignore t :which-key "jump in buffer")
     "jj"  'evil-avy-goto-char-timer
     "jw"  'evil-avy-goto-word-or-subword-1
-    "jc"  'goto-last-change
-    "jd"  'dired-jump
+    "jl"  'consult-line
+    "jL"  'consult-line-multi
     "ji"  'consult-imenu
     "jo"  'consult-outline
     "jm"  'consult-mark
     "jM"  'consult-global-mark
     ;; the `g' pregix is for goto
+    "g;"  'evil-goto-last-change
     "gg"  'consult-ripgrep
-    "gl"  'consult-line
-    "gL"  'consult-line-multi
-    "gf" 'find-function
-    "gv" 'find-variable
-    "gd" 'xref-find-definitions
-    "gr" 'xref-find-references
-    "go" 'xref-find-definitions-other-window
-    ;; the `e' pregix is for eglot or error
-    "es" 'consult-eglot-symbols
-    "en" 'flymake-goto-next-error
-    "ep" 'flymake-goto-prev-error
-    "eb" 'flymake-diagnostic-buffer
-    "hh" 'symbol-overlay-put
-    "hc" 'symbol-overlay-remove-all
     ;; The `w' prefix is for windows
     "wu"  'winner-undo
     "wr"  'winner-redo
@@ -73,9 +78,6 @@
     "x1"  'delete-other-windows
     "x2"  'split-window-vertically
     "x3"  'split-window-horizontally
-    ;; the `b' prefix is for buffer
-    "bn"  'next-buffer
-    "bp"  'previous-buffer
     ;; the `s' prefix is for search
     "ss"  'color-rg-search-symbol
     "sp"  'color-rg-search-input-in-project
@@ -85,7 +87,7 @@
     "Sn"  'evil-next-flyspell-error
     "Sp"  'evil-prev-flyspell-error
     "Sc"  'flyspell-correct-word-before-point
-    ;; the `p' prefix is for project
+    "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer
     "pd"  'project-find-dir
@@ -96,7 +98,7 @@
     "pr"  'project-query-replace-regexp
     "pg"  'project-find-regexp
     "px"  'project-execute-extended-command
-    ;; `r' is for register and bookmark
+    "r" '(:ignore t :which-key "register & bookmark")
     "rj"  'jump-to-register
     "ri"  'insert-register
     "rS"  'copy-to-register
@@ -112,6 +114,7 @@
   (evil-undo-system 'undo-redo)
   :init
   (setq evil-default-state 'emacs
+        evil-want-fine-undo t
         evil-want-C-u-scroll t
         evil-want-Y-yank-to-eol t
         evil-want-integration t
@@ -134,12 +137,17 @@
     [S-tab] 'org-shifttab)
   :general
   (:states 'normal
+           ;; more emacs style
            "C-p" 'previous-line
            "C-n" 'next-line
            "C-a" 'move-beginning-of-line
            "C-e" 'end-of-line
            "C-y" 'yank
-           "M-." 'xref-find-definitions)
+           "M-." 'xref-find-definitions
+           ",,"  'evilnc-comment-operator
+
+           "gD"  'devdocs-lookup
+           )
   (:states 'insert
            "C-a" 'move-beginning-of-line)
   (evil-ex-completion-map "C-a" 'move-beginning-of-line
@@ -147,6 +155,8 @@
                           "M-n" 'next-complete-history-element
                           "M-p" 'previous-complete-history-element)
   )
+
+(use-package evil-nerd-commenter)
 
 (use-package vimish-fold)
 (use-package evil-vimish-fold
