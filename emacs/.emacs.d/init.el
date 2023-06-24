@@ -7,7 +7,6 @@
 (load custom-file 'noerror)
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-;; elpa-init
 (require 'package)
 (setq package-archives
       '(("melpa"         . "https://melpa.org/packages/")

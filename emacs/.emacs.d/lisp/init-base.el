@@ -19,6 +19,7 @@
  ring-bell-function 'ignore
  delete-by-moving-to-trash t
  help-window-keep-selected t
+ display-line-numbers-width-start t
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
  backward-delete-char-untabify-method 'hungry
@@ -86,6 +87,7 @@
   (setq
    mac-command-modifier       'super
    ns-use-thin-smoothing      t
+   ns-use-native-fullscreen   nil
    insert-directory-program   "gls"))
 
 (add-hook
@@ -121,7 +123,7 @@
    (blink-cursor-mode -1)
    (electric-pair-mode 1)
    (global-so-long-mode 1)
-   (global-hl-line-mode 1)
+   ;; (global-hl-line-mode 1)
    (auto-compression-mode 1)
    (delete-selection-mode 1)
    (auto-save-visited-mode 1)
@@ -135,35 +137,6 @@
   (if (equal major-mode 'eshell-mode)
       (delete-window)
     (eshell)))
-
-(defun font-installed-p (font-name)
-  (find-font (font-spec :name font-name)))
-(defun yx/setup-fonts ()
-  (when (display-graphic-p)
-    (set-face-attribute 'default nil :family "Inconsolata" :height 150)
-    (set-face-attribute 'fixed-pitch nil :family "Inconsolata" :height 1.0)
-    (set-face-attribute 'variable-pitch nil :family "Source Sans Pro" :height 1.0)
-    (set-face-attribute 'fixed-pitch-serif nil :family "Latin Modern Mono" :height 1.0)
-    (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
-    (set-fontset-font t '(#x4e00 . #x9fff) (font-spec :family "LXGW WenKai Mono"))
-    (cl-loop for font in '("Segoe UI Symbol" "Symbola" "Symbol")
-             when (font-installed-p font)
-             return (set-fontset-font t 'symbol (font-spec :family font)))
-    (cl-loop for font in '("Noto Color Emoji" "Apple Color Emoji" "Segoe UI Emoji")
-             when (font-installed-p font)
-             return (set-fontset-font t 'emoji (font-spec :family font)))
-    ))
-(add-hook 'window-setup-hook #'yx/setup-fonts)
-
-;; (:dark ef-cherie ef-winter ef-dark ef-autumn) (:light ef-duo-light)
-(use-package ef-themes
-  :init
-  (setq
-   ef-themes-mixed-fonts t
-   ef-themes-to-toggle '(ef-duo-light ef-winter)
-   ef-themes-headings '((1 . (variable-pitch 1.3)) (2 . (regular 1.2)) (3 . (1.1)) (agenda-date . (1.3)) (agenda-structure . (variable-pitch 1.3)) (t . (t))))
-  (ef-themes-select 'ef-duo-light)
-  )
 
 (provide 'init-base)
 ;;; init-base.el ends here
