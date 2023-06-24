@@ -9,7 +9,8 @@
    [remap dabbrev-expand]         'hippie-expand
    [remap undo]                   'undo-only
    [remap comment-dwim]           'yx/comment-or-uncomment
-   [remap kill-buffer] 'kill-current-buffer
+   [remap kill-buffer]            'kill-current-buffer
+   [remap toggle-input-method]    'sis-switch
    "s-<return>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
    "C-;"   'yx/comment-or-uncomment

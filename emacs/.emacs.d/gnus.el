@@ -4,12 +4,6 @@
  gnus-inhibit-startup-message t
  gnus-secondary-select-methods
  '((nnml "qqmail")
-   (nnimap "gmail"
-           (nnimap-address "imap.gmail.com")
-           (nnimap-stream ssl)
-           (nnimap-server-port 993)
-           (nnimap-search-engine imap)
-           (nnimap-split-methods default))
    (nnimap "outlook"
            (nnimap-address "outlook.office365.com")
            (nnimap-stream ssl)

@@ -154,25 +154,30 @@
    holymotion-forward-end-of-defun #'end-of-defun)
   )
 
-(use-package pyim
+(use-package sis
+  :defer 1
+  :hook
+  ((org-capture-mode . sis-set-other))
   :init
-  (setq default-input-method "pyim"
-        pyim-default-scheme 'quanpin
-        pyim-cloudim        'baidu
-        pyim-indicator-list '(pyim-indicator-with-modeline))
-  (setq-default
-   pyim-punctuation-translate-p '(auto)
-   pyim-english-input-switch-functions
-   '(pyim-probe-program-mode
-     pyim-probe-auto-english
-     pyim-probe-evil-normal-mode
-     pyim-probe-org-speed-commands)
-   pyim-punctuation-half-width-functions
-   '(pyim-probe-punctuation-line-beginning
-     pyim-probe-punctuation-after-punctuation))
+  ;; C-s/r 默认优先使用英文
+  (setq
+   sis-respect-go-english-triggers
+   '(isearch-forward isearch-backward)
+   sis-respect-restore-triggers
+   '(isearch-exit isearch-abort))
+  (setq
+   sis-inline-with-other t
+   sis-other-cursor-color "#FF2121"
+   sis-auto-refresh-seconds nil
+   sis-inline-tighten-tail-rule 'all)
   :config
-  (use-package pyim-basedict
-    :init (pyim-basedict-enable))
+  (sis-ism-lazyman-config
+   "com.apple.keylayout.US"
+   "com.sogou.inputmethod.sogou.pinyin")
+  (sis-global-inline-mode 1)
+  (sis-global-context-mode 1)
+  (sis-global-respect-mode 1)
+  (sis-global-cursor-color-mode 1)
   )
 
 (provide 'init-misc)
