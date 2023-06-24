@@ -3,9 +3,7 @@
   (setq elfeed-feeds
         '(;; 工具、技术
           ("https://sachachua.com/blog/category/emacs/feed/" emacs)
-          ("https://manateelazycat.github.io/feed.xml" emacs)
           ("https://planet.emacslife.com/atom.xml" emacs)
-          ("https://xenodium.com/rss.xml" emacs)
           ("http://www.ruanyifeng.com/blog/atom.xml" tech)
           ;; 数据、R、Python、Julia等
           ("https://www.juliabloggers.com/feed/" julia)

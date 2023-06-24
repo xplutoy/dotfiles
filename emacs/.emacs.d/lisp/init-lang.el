@@ -63,6 +63,11 @@
   :hook (prog-mode . indent-guide-mode)
   )
 
+;; symbol-overlay
+(use-package symbol-overlay
+  :hook (prog-mode . symbol-overlay-mode)
+  )
+
 ;; magit
 (use-package magit)
 

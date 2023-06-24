@@ -55,13 +55,13 @@
     "gd" 'xref-find-definitions
     "gr" 'xref-find-references
     "go" 'xref-find-definitions-other-window
-
     ;; the `e' pregix is for eglot or error
     "es" 'consult-eglot-symbols
     "en" 'flymake-goto-next-error
     "ep" 'flymake-goto-prev-error
     "eb" 'flymake-diagnostic-buffer
-    "hs" 'symbol-overlay-put
+    "hh" 'symbol-overlay-put
+    "hc" 'symbol-overlay-remove-all
     ;; The `w' prefix is for windows
     "wu"  'winner-undo
     "wr"  'winner-redo

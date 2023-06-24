@@ -15,7 +15,8 @@
  frame-resize-pixelwise t
  inhibit-startup-message t
  package-enable-at-startup nil
- frame-inhibit-implied-resize t)
+ frame-inhibit-implied-resize t
+ inhibit-compacting-font-caches t)
 
 (let ((old-file-name-handler-alist file-name-handler-alist))
   (setq-default file-name-handler-alist nil)

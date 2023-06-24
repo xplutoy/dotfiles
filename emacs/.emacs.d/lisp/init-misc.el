@@ -85,6 +85,7 @@
           "^\\*eshell.*\\*$" eshell-mode
           help-mode
           occur-mode
+          dired-mode
           compilation-mode
           ))
   (popper-mode 1)
@@ -178,6 +179,16 @@
   (sis-global-context-mode 1)
   (sis-global-respect-mode 1)
   (sis-global-cursor-color-mode 1)
+  )
+
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
+  :init
+  (setq
+   doom-modeline-icon nil
+   doom-modeline-height 1
+   doom-modeline-modal-icon nil
+   doom-modeline-project-detection 'project)
   )
 
 (provide 'init-misc)
