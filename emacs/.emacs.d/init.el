@@ -8,12 +8,13 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (require 'package)
-(setq package-archives
-      '(("melpa"         . "https://melpa.org/packages/")
-  ("melpa-stable"  . "https://stable.melpa.org/packages/")
-  ("gnu"           . "https://elpa.gnu.org/packages/")
-  ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
-(setq package-quickstart t)
+(setq
+ package-quickstart t
+ package-archives
+ '(("melpa"         . "https://melpa.org/packages/")
+   ("melpa-stable"  . "https://stable.melpa.org/packages/")
+   ("gnu"           . "https://elpa.gnu.org/packages/")
+   ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
 (package-activate-all)
 
 (require 'init-base)
