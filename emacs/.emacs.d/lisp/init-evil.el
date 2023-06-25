@@ -107,7 +107,7 @@
   :init
   (setq evil-default-state 'emacs
         evil-want-fine-undo t
-        evil-want-C-u-scroll nil
+        evil-want-C-u-scroll t
         evil-want-Y-yank-to-eol t
         evil-want-integration t
         evil-want-keybinding nil

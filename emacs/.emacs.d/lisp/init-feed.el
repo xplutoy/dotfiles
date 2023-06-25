@@ -1,6 +1,12 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
+(defun elfeed-eww-browse ()
+  "Wrapper to open eww and mark elfeed as read"
+  (interactive)
+  (let ((link (elfeed-entry-link elfeed-show-entry)))
+    (when link
+      (eww-browse-url link))))
+
 (use-package elfeed
-  ;; -*- coding: utf-8; lexical-binding: t; -*-
   :init
   (setq elfeed-feeds
         '(;; 工具、技术
@@ -17,6 +23,9 @@
           ("https://lilianweng.github.io/index.xml" AI)
           )
         )
+
+  :config
+  (define-key elfeed-show-mode-map (kbd "B") 'elfeed-eww-browse)
   )
 
 (provide 'init-feed)
