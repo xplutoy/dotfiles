@@ -2,6 +2,7 @@
 (use-package general
   :config
   (general-evil-setup t)
+  (general-unbind flyspell-mode-map "C-," "C-.")
   (general-define-key
    ;; beter defaults
    [remap zap-to-char]            'zap-up-to-char
@@ -12,7 +13,7 @@
    [remap toggle-input-method]    'sis-switch
    [remap comment-dwim]           'evil-commentary-line
    "s-<return>" 'toggle-frame-maximized
-   "C-,"   'yx/eshell-toggle
+   "C-,"   'yx/toggole-eshell
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
@@ -79,6 +80,8 @@
     "ss"  'color-rg-search-symbol
     "sp"  'color-rg-search-input-in-project
     "sb"  'color-rg-search-input-in-current-file
+    "t" '(:ignore t :which-key "toggole")
+    "tg"  'golden-ratio-mode
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer

@@ -1,8 +1,22 @@
 ;;; init-lang.el --- plugin about ide. -*- coding: utf-8; lexical-binding: t; -*-
-(add-hook #'before-save-hook
-          #'(lambda ()
-            (delete-trailing-whitespace)
-            (whitespace-cleanup)))
+(defun yx/toggole-eshell ()
+  (interactive)
+  (if (equal major-mode 'eshell-mode)
+      (quit-window)
+    (eshell 123))
+  )
+
+(add-hook
+ 'eshell-mode-hook
+ (lambda ()
+   (define-key eshell-mode-map (kbd "C-l") 'eshell/clear))
+ )
+
+(add-hook
+ #'before-save-hook
+ #'(lambda ()
+     (delete-trailing-whitespace)
+     (whitespace-cleanup)))
 
 (use-package eglot
   :ensure nil

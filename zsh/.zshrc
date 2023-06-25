@@ -26,6 +26,7 @@ alias ls='ls --color=auto'
 alias ll='ls -lahF'
 alias la='ls -A'
 alias grep='grep --color=auto'
+alias vim='nvim'
 # emacs alias
 alias ec='TERM=xterm-256color emacsclient -s server -t "$@"'
 alias ecx='emacsclient -s server -n -c "$@"'

@@ -75,6 +75,12 @@
  ispell-hunspell-dictionary-alist ispell-local-dictionary-alist
  )
 
+;; perference
+(setq
+ jit-lock-defer-time 0.1
+ jit-lock-stealth-time 1.5
+ jit-lock-stealth-nice 0.2)
+
 ;; dired
 (setq
  dired-mouse-drag-files t
@@ -97,7 +103,6 @@
     word-wrap t
     word-wrap-by-category t
     truncate-lines nil)
-   (flyspell-mode 1)
    (auto-fill-mode 1)
    (visual-line-mode 1)
    (variable-pitch-mode 1))
@@ -131,12 +136,6 @@
    (pixel-scroll-precision-mode 1)
    (minibuffer-depth-indicate-mode 1))
  )
-
-(defun yx/eshell-toggle ()
-  (interactive)
-  (if (equal major-mode 'eshell-mode)
-      (delete-window)
-    (eshell)))
 
 (provide 'init-base)
 ;;; init-base.el ends here

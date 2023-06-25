@@ -50,7 +50,6 @@
   )
 
 (use-package golden-ratio
-  :defer 1
   :init
   (setq golden-ratio-auto-scale t
         golden-ratio-max-width nil)
@@ -66,9 +65,9 @@
   (dolist (re '("^\\*Ilist"
                 "^\\*Org"
                 "^\\*Agenda"
+                "^\\*eshell"
                 "^nnrs"))
     (add-to-list 'golden-ratio-exclude-buffer-regexp re))
-  (golden-ratio-mode 1)
   )
 
 (use-package popper
@@ -103,7 +102,7 @@
    shackle-rules
    '((("\\*Ibuffer\\*"
        "\\*Help\\*"
-       "\\*es?hell\\*"
+       "\\*es?hell.*"
        "\\*info\\*"
        "\\*[Wo]*Man.*\\*"
        "\\*Dictionary\\*"
