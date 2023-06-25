@@ -39,8 +39,8 @@
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (when (display-graphic-p)
-    (set-face-attribute 'default nil :family "Inconsolata" :height 150)
-    (set-face-attribute 'fixed-pitch nil :family "Inconsolata" :height 1.0)
+    (set-face-attribute 'default nil :family "Inconsolata Nerd Font Mono" :height 150)
+    (set-face-attribute 'fixed-pitch nil :family "Incosolata Nerd Font Mono" :height 1.0)
     (set-face-attribute 'variable-pitch nil :family "Source Sans Pro" :height 1.0)
     (set-face-attribute 'fixed-pitch-serif nil :family "Latin Modern Mono" :height 1.0)
     (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
@@ -54,6 +54,5 @@
     ))
 (add-hook 'window-setup-hook #'yx/setup-fonts)
 ;; (load-theme 'modus-operandi)
-
 
 ;;; early-init.el ends here

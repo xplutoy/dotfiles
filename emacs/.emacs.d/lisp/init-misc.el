@@ -185,9 +185,9 @@
   :hook (after-init . doom-modeline-mode)
   :init
   (setq
-   doom-modeline-icon nil
+   doom-modeline-icon t
    doom-modeline-height 1
-   doom-modeline-modal-icon nil
+   doom-modeline-modal-icon t
    doom-modeline-project-detection 'project)
   )
 
@@ -196,6 +196,12 @@
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t)
   )
+
+(use-package nerd-icons)
+(use-package nerd-icons-dired
+  :hook (dired-mode . nerd-icons-dired-mode))
+(use-package nerd-icons-ibuffer
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package dirvish
   :hook (after-init . dirvish-override-dired-mode)
