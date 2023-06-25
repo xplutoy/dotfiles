@@ -112,6 +112,7 @@
         evil-want-integration t
         evil-want-keybinding nil
         evil-motion-state-modes nil
+        evil-search-module 'evil-search
         evil-respect-visual-line-mode t
         evil-disable-insert-state-bindings t)
 

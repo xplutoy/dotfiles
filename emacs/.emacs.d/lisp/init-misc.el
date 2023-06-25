@@ -237,9 +237,9 @@
   :init
   (setq
    ef-themes-mixed-fonts t
-   ef-themes-to-toggle '(ef-duo-light ef-winter)
+   ef-themes-to-toggle '(ef-light ef-night)
    ef-themes-headings '((1 . (variable-pitch 1.3)) (2 . (regular 1.2)) (3 . (1.1)) (agenda-date . (1.3)) (agenda-structure . (variable-pitch 1.3)) (t . (t))))
-  (ef-themes-select 'ef-duo-light))
+  (ef-themes-select 'ef-light))
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
