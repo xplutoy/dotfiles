@@ -3,14 +3,22 @@
     name = yx
     signingkey = 67B86CB8A5630C51!
 [core]
+    pager = delta
     editor = vim
     quotepath = false
     excludesfile = ~/dot/gitignore_global
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    light = true
 [pull]
     rebase = true
 [merge]
     tool = vimdiff
     conflictstyle = diff3
+[diff]
+colorMoved = default
 [difftool]
     prompt=false
 [color]

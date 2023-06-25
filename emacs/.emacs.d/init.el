@@ -26,4 +26,6 @@
 (require 'init-feed)
 (require 'init-lang)
 
+(defun display-startup-echo-area-message ()
+  (message nil))
 ;;; init.el ends here

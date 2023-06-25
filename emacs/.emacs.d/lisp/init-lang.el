@@ -70,6 +70,8 @@
 
 ;; magit
 (use-package magit)
+(use-package magit-delta
+  :hook (magit-mode . magit-delta-mode))
 
 (use-package color-rg
   :defer 2

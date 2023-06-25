@@ -10,7 +10,7 @@
    [remap undo]                   'undo-only
    [remap kill-buffer]            'kill-current-buffer
    [remap toggle-input-method]    'sis-switch
-   [remap comment-dwim]           'evilnc-comment-or-uncomment-lines
+   [remap comment-dwim]           'evil-commentary-line
    "s-<return>" 'toggle-frame-maximized
    "C-,"   'yx/eshell-toggle
    "C-c a" 'org-agenda
@@ -137,8 +137,6 @@
            "C-e" 'end-of-line
            "C-y" 'yank
            "M-." 'xref-find-definitions
-           ",,"  'evilnc-comment-operator
-
            "gD"  'devdocs-lookup
            )
   (:states 'insert
@@ -149,7 +147,9 @@
                           "M-p" 'previous-complete-history-element)
   )
 
-(use-package evil-nerd-commenter)
+(use-package evil-commentary
+  :hook (prog-mode . evil-commentary-mode)
+  )
 
 (use-package vimish-fold)
 (use-package evil-vimish-fold
