@@ -65,28 +65,20 @@
     "jm"  'consult-mark
     "jM"  'consult-global-mark
     ;; the `g' pregix is for goto
-    "g;"  'evil-goto-last-change
     "gg"  'consult-ripgrep
-    ;; The `w' prefix is for windows
+    "g;"  'evil-goto-last-change
+
+    "w" '(:ignore t :which-key "windows")
     "wu"  'winner-undo
     "wr"  'winner-redo
-    "w-"  'split-window-below
-    "ws"  'split-window-below
-    "w/"  'split-window-right
-    "wv"  'split-window-right
-    "x0"  'delete-window
-    "x1"  'delete-other-windows
-    "x2"  'split-window-vertically
-    "x3"  'split-window-horizontally
-    ;; the `s' prefix is for search
+    "w0"  'delete-window
+    "w1"  'delete-other-windows
+    "w2"  'split-window-vertically
+    "w3"  'split-window-horizontally
+    "s" '(:ignore t :which-key "search")
     "ss"  'color-rg-search-symbol
     "sp"  'color-rg-search-input-in-project
     "sb"  'color-rg-search-input-in-current-file
-    ;; the `S' prefix is for flyspell
-    "Sb"  'flyspell-buffer
-    "Sn"  'evil-next-flyspell-error
-    "Sp"  'evil-prev-flyspell-error
-    "Sc"  'flyspell-correct-word-before-point
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer
@@ -115,11 +107,12 @@
   :init
   (setq evil-default-state 'emacs
         evil-want-fine-undo t
-        evil-want-C-u-scroll t
+        evil-want-C-u-scroll nil
         evil-want-Y-yank-to-eol t
         evil-want-integration t
         evil-want-keybinding nil
         evil-motion-state-modes nil
+        evil-respect-visual-line-mode t
         evil-disable-insert-state-bindings t)
 
   :config
@@ -167,8 +160,6 @@
 
 (use-package evil-owl
   :defer 1
-  :init
-  (setq evil-owl-idle-delay 0.2)
   :config
   (evil-owl-mode 1)
   )
