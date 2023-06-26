@@ -45,10 +45,6 @@
          ([remap mark-sexp] . easy-mark))
   )
 
-(use-package minions
-  :hook (after-init . minions-mode)
-  )
-
 (use-package golden-ratio
   :init
   (setq golden-ratio-auto-scale t
@@ -179,27 +175,11 @@
   (sis-global-cursor-color-mode 1)
   )
 
-(use-package doom-modeline
-  :hook (after-init . doom-modeline-mode)
-  :init
-  (setq
-   doom-modeline-icon t
-   doom-modeline-height 1
-   doom-modeline-modal-icon t
-   doom-modeline-project-detection 'project)
-  )
-
 (use-package diredfl
   :hook (dired-mode . diredfl-mode)
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t)
   )
-
-(use-package nerd-icons)
-(use-package nerd-icons-dired
-  :hook (dired-mode . nerd-icons-dired-mode))
-(use-package nerd-icons-ibuffer
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package dirvish
   :hook (after-init . dirvish-override-dired-mode)
@@ -230,14 +210,6 @@
    ("M-j" . dirvish-fd-jump)
    )
   )
-
-(use-package ef-themes
-  :init
-  (setq
-   ef-themes-mixed-fonts t
-   ef-themes-to-toggle '(ef-light ef-night)
-   ef-themes-headings '((1 . (variable-pitch 1.3)) (2 . (regular 1.2)) (3 . (1.1)) (agenda-date . (1.3)) (agenda-structure . (variable-pitch 1.3)) (t . (t))))
-  (ef-themes-select 'ef-light))
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

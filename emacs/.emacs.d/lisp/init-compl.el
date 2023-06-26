@@ -1,4 +1,4 @@
-;;; --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (use-package vertico
   :demand t
   :config

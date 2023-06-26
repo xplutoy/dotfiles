@@ -18,6 +18,7 @@
    ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
 (package-activate-all)
 
+(require 'init-ui)
 (require 'init-basic)
 (require 'init-compl)
 (require 'init-evil)
