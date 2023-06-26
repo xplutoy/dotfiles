@@ -93,6 +93,13 @@
   :init
   (setq devdocs-data-dir "~/.emacs.d/.cache/devdocs"))
 
+;; lisp
+(add-hook
+ 'emacs-lisp-mode
+ (lambda ()
+   (prettify-symbols-mode)
+   (eldoc-mode)))
+
 ;; Julia
 (use-package julia-mode)
 

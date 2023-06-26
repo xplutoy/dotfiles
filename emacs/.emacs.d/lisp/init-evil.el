@@ -113,12 +113,14 @@
   (setq evil-default-state 'emacs
         evil-want-fine-undo t
         evil-want-C-u-scroll t
-        evil-want-Y-yank-to-eol t
         evil-want-integration t
         evil-want-keybinding nil
+        evil-want-Y-yank-to-eol t
         evil-motion-state-modes nil
+        evil-magic 'very-magic
         evil-search-module 'evil-search
         evil-respect-visual-line-mode t
+        evil-ex-search-vim-style-regexp t
         evil-disable-insert-state-bindings t)
 
   :config

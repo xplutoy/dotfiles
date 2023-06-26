@@ -3,7 +3,7 @@
   (interactive)
   (if (equal major-mode 'eshell-mode)
       (quit-window)
-    (eshell 123))
+    (eshell))
   )
 
 (defun eshell/gst (&rest args)
@@ -22,21 +22,27 @@
   (add-hook 'eshell-mode-hook
             (lambda ()
               (define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
-
-              (add-to-list 'eshell-visual-commands "ssh")
-              (add-to-list 'eshell-visual-commands "tail")
-              (add-to-list 'eshell-visual-commands "top")
+              (setq eshell-visual-commands
+                    '("vim" "ssh" "tail" "top" "htop" "tmux" "less" "more")
+                    eshell-visual-subcommands
+                    '(("git" "log" "diff" "show")))
 
               (eshell/alias "dd"   "dired $1")
               (eshell/alias "ff"   "find-file $1")
-              (eshell/alias "ee"   "find-file-other-windows $1")
+              (eshell/alias "fo"   "find-file-other-windows $1")
               (eshell/alias "gs"   "git status")
               (eshell/alias "gd"   "magit-diff-unstaged")
               (eshell/alias "gds"  "magit-diff-staged")
 
-              (eshell/alias "ll" (concat ls "-AlohG --color=always"))
+              (eshell/alias "ll"   "ls -AlohG --color=always")
               )
             )
+  )
+(use-package eshell-git-prompt-yx
+  :load-path "site-lisp/eshell-git-prompt-yx"
+  :commands eshell-git-prompt-multiline
+  :init
+  (setq eshell-prompt-function 'eshell-git-prompt-multiline)
   )
 
 (provide 'init-eshell)

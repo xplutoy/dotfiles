@@ -22,3 +22,6 @@
 [submodule "spacemacs/.spacemacs.d/emacs.d"]
 	path = spacemacs/.spacemacs.d/emacs.d
 	url = https://github.com/syl20bnr/spacemacs.git
+[submodule "emacs/.emacs.d/site-lisp/eshell-git-prompt-yx"]
+	path = emacs/.emacs.d/site-lisp/eshell-git-prompt-yx
+	url = https://github.com/xplutoy/eshell-git-prompt-yx.git

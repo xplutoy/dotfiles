@@ -81,7 +81,6 @@
         '("\\*Ibuffer\\*"
           "\\*evil-registers\\*"
           "\\*evil-owl\\*"
-          "^\\*eshell.*\\*$" eshell-mode
           help-mode
           occur-mode
           dired-mode
