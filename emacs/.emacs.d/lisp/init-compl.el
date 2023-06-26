@@ -1,5 +1,4 @@
-;;; init-comp.el --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
-;;; Code:
+;;; --- minibuffer enhancement. -*- coding: utf-8; lexical-binding: t; -*-
 (use-package vertico
   :demand t
   :config
@@ -68,7 +67,7 @@
   :demand t
   :init
   (setq corfu-auto t  ;; set befor global-corfu-mode
-        corfu-preselect 'first
+        corfu-preselect 'valid
         corfu-echo-documentation nil)
   :config
   (global-corfu-mode 1)
@@ -96,5 +95,4 @@
         '(cape-ispell cape-dabbrev cape-file cape-symbol cape-abbrev))
   )
 
-(provide 'init-comp)
-;;; init-comp.el ends here
+(provide 'init-compl)

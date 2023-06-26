@@ -1,17 +1,4 @@
 ;;; init-lang.el --- plugin about ide. -*- coding: utf-8; lexical-binding: t; -*-
-(defun yx/toggole-eshell ()
-  (interactive)
-  (if (equal major-mode 'eshell-mode)
-      (quit-window)
-    (eshell 123))
-  )
-
-(add-hook
- 'eshell-mode-hook
- (lambda ()
-   (define-key eshell-mode-map (kbd "C-l") 'eshell/clear))
- )
-
 (add-hook
  #'before-save-hook
  #'(lambda ()

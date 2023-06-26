@@ -1,4 +1,4 @@
-;;; init-base --- basic settings. -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (setq-default
  tab-width 2
  abbrev-mode t
@@ -19,6 +19,7 @@
  ring-bell-function 'ignore
  delete-by-moving-to-trash t
  help-window-keep-selected t
+ display-line-numbers 'visual
  display-line-numbers-width-start t
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
@@ -67,6 +68,10 @@
  mouse-drag-and-drop-region-cross-program t
  )
 
+;; eww
+(setq
+ browse-url-browser-function 'eww-browse-url)
+
 ;; flyspell
 (setq
  ispell-program-name "hunspell"
@@ -78,7 +83,7 @@
 ;; perference
 (setq
  jit-lock-defer-time 0.1
- jit-lock-stealth-time 1.5
+ jit-lock-stealth-time 1.0
  jit-lock-stealth-nice 0.2)
 
 ;; dired
@@ -127,8 +132,6 @@
    (save-place-mode 1)
    (blink-cursor-mode -1)
    (electric-pair-mode 1)
-   (global-so-long-mode 1)
-   (global-hl-line-mode 1)
    (auto-compression-mode 1)
    (delete-selection-mode 1)
    (auto-save-visited-mode 1)
@@ -137,5 +140,4 @@
    (minibuffer-depth-indicate-mode 1))
  )
 
-(provide 'init-base)
-;;; init-base.el ends here
+(provide 'init-basic)

@@ -82,6 +82,8 @@
     "sb"  'color-rg-search-input-in-current-file
     "t" '(:ignore t :which-key "toggole")
     "tg"  'golden-ratio-mode
+    "tl"  'so-long-minor-mode
+    "tt"  'hl-line-mode
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer

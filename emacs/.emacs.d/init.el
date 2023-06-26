@@ -17,14 +17,15 @@
    ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
 (package-activate-all)
 
-(require 'init-base)
-(require 'init-comp)
+(require 'init-basic)
+(require 'init-compl)
 (require 'init-evil)
 (require 'init-misc)
 (require 'init-note)
 (require 'init-mail)
-(require 'init-feed)
 (require 'init-lang)
+(require 'init-eshell)
+(require 'init-elfeed)
 
 (defun display-startup-echo-area-message ()
   (message nil))
