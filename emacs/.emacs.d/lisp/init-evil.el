@@ -2,7 +2,7 @@
 (use-package general
   :config
   (general-evil-setup t)
-  (general-unbind flyspell-mode-map "C-," "C-.")
+  (general-unbind flyspell-mode-map "C-," "C-." "C-;")
   (general-define-key
    ;; beter defaults
    [remap zap-to-char]            'zap-up-to-char
@@ -13,7 +13,10 @@
    [remap toggle-input-method]    'sis-switch
    [remap comment-dwim]           'evil-commentary-line
    "s-<return>" 'toggle-frame-maximized
-   "C-,"   'yx/toggole-eshell
+   "C-;"   'yx/toggole-eshell
+   "C-."   'embark-act
+   "C-,"   'embark-dwim
+   "C-h B" 'embark-bindings
    "C-c a" 'org-agenda
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
@@ -77,9 +80,12 @@
     "w2"  'split-window-vertically
     "w3"  'split-window-horizontally
     "s" '(:ignore t :which-key "search")
-    "ss"  'color-rg-search-symbol
-    "sp"  'color-rg-search-input-in-project
-    "sb"  'color-rg-search-input-in-current-file
+    "sg"  'color-rg-search-symbol
+    "sh"  'color-rg-search-input
+    "sj"  'color-rg-search-symbol-in-project
+    "sk"  'color-rg-search-input-in-project
+    "s,"  'color-rg-search-symbol-in-current-file
+    "s."  'color-rg-search-input-in-current-file
     "t" '(:ignore t :which-key "toggole")
     "tg"  'golden-ratio-mode
     "tl"  'so-long-minor-mode

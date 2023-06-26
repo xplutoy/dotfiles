@@ -14,6 +14,7 @@
  isearch-lazy-count t
  create-lockfiles nil
  make-backup-files nil
+ system-time-locale "C"
  confirm-kill-processes nil
  find-file-visit-truename t
  ring-bell-function 'ignore

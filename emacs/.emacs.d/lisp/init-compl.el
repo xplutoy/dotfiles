@@ -6,6 +6,7 @@
   (vertico-mouse-mode 1)
   (vertico-indexed-mode 1)
   :bind ( :map vertico-map
+          ("C-q" . vertico-quick-insert)
           ("RET" . vertico-directory-enter)
           ("DEL" . vertico-directory-delete-char))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
@@ -14,6 +15,12 @@
 (use-package orderless
   :init
   (setq completion-styles '(orderless basic)))
+
+(use-package embark
+  :init
+  (setq embark-selection-indicator nil))
+(use-package embark-consult
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package consult
   :init
