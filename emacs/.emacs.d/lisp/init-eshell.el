@@ -45,6 +45,8 @@
   (setq eshell-prompt-function 'eshell-git-prompt-multiline)
   )
 
+(use-package pcmpl-args :defer 1)
+
 (use-package vterm
   :bind (:map vterm-mode-map
               ("C-y" . vterm-yank)

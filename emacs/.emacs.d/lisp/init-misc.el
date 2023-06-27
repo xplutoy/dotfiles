@@ -85,6 +85,7 @@
           "\\*eshell.*\\*$" eshell-mode
           "\\*term.*\\*$" term-mode
           "\\*vterm.*\\*$" vterm-mode
+          "\\*julia\\*$"
           help-mode
           occur-mode
           dired-mode
@@ -191,6 +192,12 @@
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t)
   )
+
+(use-package dired-narrow
+  :bind (:map dired-mode-map
+              ([remap dired-do-man] . dired-narrow-fuzzy)))
+(use-package dired-collapse
+  :hook (dired-mode . dired-collapse-mode))
 
 (use-package no-littering
   :demand

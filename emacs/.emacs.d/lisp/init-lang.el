@@ -28,6 +28,7 @@
    )
   (setq major-mode-remap-alist
         '((c-mode . c-ts-mode)
+          (julia-mode . julia-ts-mode)
           (python-mode . python-ts-mode)))
   )
 
@@ -88,7 +89,7 @@
   :ensure nil
   :after treesit
   :load-path "site-lisp/combobulate"
-  :hook ((python-ts-mode c++-ts-mode c-ts-mode bash-ts-mode) . combobulate-mode)
+  :hook ((python-ts-mode c-ts-mode julia-ts-mode) . combobulate-mode)
   )
 
 (use-package devdocs)
@@ -98,11 +99,13 @@
  'emacs-lisp-mode
  (lambda ()
    (prettify-symbols-mode)
-   (eldoc-mode)))
+   ))
 
 ;; Julia
-(use-package julia-mode
-  :mode "\\.ji\\'")
+(use-package julia-mode)
+(use-package julia-ts-mode
+  :mode "\\.jl$")
+
 (use-package eglot-jl
   :init
   (with-eval-after-load 'eglot
@@ -111,7 +114,7 @@
 (use-package julia-snail
   :custom
   (julia-snail-terminal-type :eat)
-  :hook (julia-mode . julia-snail-mode)
+  :hook (julia-ts-mode . julia-snail-mode)
   )
 
 ;; python

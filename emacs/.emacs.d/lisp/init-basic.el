@@ -6,29 +6,28 @@
  truncate-lines t
  indent-tabs-mode nil
  require-final-newline t
- show-trailing-whitespace t
  tab-always-indent 'complete)
 
 (setq
  use-short-answers  t
  help-window-select t
- isearch-lazy-count t
  create-lockfiles nil
  system-time-locale "C"
+ auto-revert-verbose nil
  confirm-kill-processes nil
  find-file-visit-truename t
  ring-bell-function 'ignore
+ initial-scratch-message ""
  delete-by-moving-to-trash t
  help-window-keep-selected t
- display-line-numbers 'visual
- display-line-numbers-width-start t
+ hippie-expand-max-buffers 10
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
+ switch-to-buffer-obey-display-actions t
  backward-delete-char-untabify-method 'hungry
- uniquify-buffer-name-style 'post-forward-angle-brackets
  sentence-end-double-space nil
  sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
- recentf-exclude '("\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$")
+
  )
 
 ;; use-package
@@ -37,6 +36,38 @@
  use-package-always-defer       t
  use-package-expand-minimally   t
  )
+
+;; auto save
+(setq
+ auto-save-no-message t
+ auto-save-visited-interval 30
+ )
+
+;; uniquify
+(setq
+ uniquify-strip-common-suffix t
+ uniquify-after-kill-buffer-p t
+ uniquify-ignore-buffers-re "^\\*"
+ uniquify-buffer-name-style 'post-forward-angle-brackets
+ )
+
+;; line number
+(setq
+ display-line-numbers-type 'visual
+ display-line-numbers-width-start t
+ )
+
+;; recentf
+(setq
+ recentf-auto-cleanup 'never
+ recentf-max-saved-items 200
+ recentf-exclude '("\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$")
+ )
+
+;; whitespace
+(setq
+ whitespace-line-column nil
+ show-trailing-whitespace nil)
 
 ;; xref
 (setq
@@ -50,12 +81,40 @@
  xref-show-definitions-function 'xref-show-definitions-completing-read
  )
 
+;; completion
+(setq
+ completion-ignore-case t
+ completions-format 'one-column
+ completions-detailed t
+ completions-header-format nil
+ completions-max-height 30
+ completion-auto-help 'visible
+ completion-cycle-threshold 3
+ completion-show-help nil
+ completion-show-inline-help nil
+ completion-auto-select 'second-tab
+ )
+
 ;; ibuffer
 (setq
  ibuffer-expert t
  ibuffer-display-summary nil
  ibuffer-show-empty-filter-groups nil
  ibuffer-never-show-predicates '("^\\*"))
+(add-hook
+ 'ibuffer-mode-hook
+ (lambda ()
+   (ibuffer-do-sort-by-recency)
+   (ibuffer-auto-mode 1)))
+
+;; isearch
+(setq
+ isearch-lazy-count t
+ isearch-allow-motion t
+ apropos-sort-by-scores t
+ lazy-highlight-no-delay-length 3
+ )
+
 
 ;; epa
 (setq
@@ -67,12 +126,17 @@
 ;; mouse
 (setq
  mouse-yank-at-point t
+ mouse-wheel-tilt-scroll t
+ mouse-drag-mode-line-buffer t
  mouse-drag-and-drop-region-cross-program t
  )
 
 ;; eww
 (setq
- browse-url-browser-function 'eww-browse-url)
+ eww-auto-rename-buffer 'title
+ eww-search-prefix "https://www.bing.com/?q="
+ browse-url-browser-function 'eww-browse-url
+ )
 
 ;; flyspell
 (setq
@@ -92,10 +156,45 @@
  font-lock-multiline 'undecided
  )
 
+;; savehist
+(setq
+ history-delete-duplicates t
+ savehist-additional-variables
+ '(mark-ring
+   global-mark-ring
+   search-ring
+   regexp-search-ring
+   extended-command-history
+   )
+ )
+
+;; emacs session
+(setq
+ desktop-save 'if-exists
+ desktop-restore-eager 5
+ desktop-auto-save-timeout   60
+ desktop-load-locked-desktop nil)
+
+;; tabbar
+(setq
+ tab-bar-tab-hints t
+ tab-bar-select-tab-modifiers '(super))
+
+;; calendar chendu (30.67 104.07)
+(setq
+ calendar-latitude 30.67
+ calendar-longitude 104.07
+ calendar-mode-line-format nil
+ calendar-mark-diary-entries-flag t
+ )
+
 ;; dired
 (setq
+ dired-dwim-target t
  dired-mouse-drag-files t
  dired-omit-files "^\\..*$"
+ dired-recursive-copies 'always
+ dired-kill-when-opening-new-dired-buffer t
  dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group")
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 
@@ -116,16 +215,23 @@
     truncate-lines nil)
    (auto-fill-mode 1)
    (visual-line-mode 1)
+   (goto-address-mode 1)
    (variable-pitch-mode 1))
  )
 
 (add-hook
  #'prog-mode-hook
  (lambda ()
+   (setq-local
+    whitespace-style
+    '(face trailing lines-char space-before-tab space-after-tab))
    (hs-minor-mode 1)
+   (whitespace-mode 1)
    (elide-head-mode 1)
    (flyspell-prog-mode)
-   (display-line-numbers-mode 1)))
+   (display-line-numbers-mode 1)
+   (electric-indent-local-mode 1)
+   ))
 
 (add-hook
  #'after-init-hook

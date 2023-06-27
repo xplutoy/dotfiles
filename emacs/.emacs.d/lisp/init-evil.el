@@ -101,11 +101,16 @@
     "sk"  'color-rg-search-input-in-project
     "s,"  'color-rg-search-symbol-in-current-file
     "s."  'color-rg-search-input-in-current-file
-    "t" '(:ignore t :which-key "toggole")
-    "tgr" 'golden-ratio-mode
-    "tsl" 'so-long-minor-mode
-    "thi" 'hi-lock-mode
-    "thl" 'hl-line-mode
+    "T" '(:ignore t :which-key "Taggol")
+    "Tgr" 'golden-ratio-mode
+    "Tsl" 'so-long-minor-mode
+    "Thi" 'hi-lock-mode
+    "Thl" 'hl-line-mode
+    "t" '(:ignore t :which-key "tabbar && tabline")
+    "tt"  'tab-bar-mode
+    "tn"  'tab-bar-new
+    "tc"  'tab-bar-close
+    "tl"  'tab-line-mode
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer

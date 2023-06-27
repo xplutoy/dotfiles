@@ -83,9 +83,15 @@
   (corfu-history-mode 1)
   (corfu-indexed-mode 1)
   (corfu-popupinfo-mode 1)
+  (add-hook
+   'eshell-mode-hook
+   (lambda ()
+     (setq-local corfu-auto nil)
+     (corfu-mode -1)))
   :bind (:map corfu-map
               ("TAB"   . corfu-next)
               ("S-TAB" . corfu-previous)
+              ("C-q"   . corfu-quick-insert)
               ("SPC"   . corfu-insert-separator))
   )
 
