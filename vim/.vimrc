@@ -90,7 +90,6 @@ sunmap Q
 noremap 0  ^
 noremap ^  0
 nnoremap x  "_x
-nnoremap p  :pu<cr>
 xnoremap p  "_dP
 xnoremap <  <gv
 xnoremap >  >gv

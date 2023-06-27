@@ -59,7 +59,8 @@
 ;; epa
 (setq
  epa-pinentry-mode 'loopback
- auth-sources (expand-file-name "authinfo.gpg" yx/etc-dir)
+ auth-sources
+ (list (expand-file-name "authinfo.gpg" yx/etc-dir))
  epa-file-select-keys yx/gpg-encrypt-key)
 
 ;; mouse
