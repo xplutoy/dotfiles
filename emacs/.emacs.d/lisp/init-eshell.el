@@ -40,7 +40,7 @@
   )
 (use-package eshell-git-prompt-yx
   :load-path "site-lisp/eshell-git-prompt-yx"
-  :commands eshell-git-prompt-multiline
+  :autoload eshell-git-prompt-multiline
   :init
   (setq eshell-prompt-function 'eshell-git-prompt-multiline)
   )

@@ -101,15 +101,16 @@
    (eldoc-mode)))
 
 ;; Julia
-(setq eglot-connect-timeout 100000000)
-(use-package julia-mode)
+(use-package julia-mode
+  :mode "\\.ji\\'")
 (use-package eglot-jl
   :init
   (with-eval-after-load 'eglot
     (eglot-jl-init))
   )
 (use-package julia-snail
-  :custom (julia-snail-terminal-type :eat)
+  :custom
+  (julia-snail-terminal-type :eat)
   :hook (julia-mode . julia-snail-mode)
   )
 

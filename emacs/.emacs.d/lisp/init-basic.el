@@ -13,7 +13,6 @@
  help-window-select t
  isearch-lazy-count t
  create-lockfiles nil
- make-backup-files nil
  system-time-locale "C"
  confirm-kill-processes nil
  find-file-visit-truename t
@@ -60,7 +59,7 @@
 ;; epa
 (setq
  epa-pinentry-mode 'loopback
- auth-sources '("~/.emacs.d/authinfo.gpg")
+ auth-sources (expand-file-name "authinfo.gpg" yx/etc-dir)
  epa-file-select-keys yx/gpg-encrypt-key)
 
 ;; mouse

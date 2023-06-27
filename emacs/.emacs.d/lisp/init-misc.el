@@ -112,6 +112,7 @@
        "\\*Dictionary\\*"
        "\\*Flymake .*"
        "^CAPTURE-"
+       "^\\*julia.*"
        vterm-mode
        dired-mode
        occur-mode
@@ -219,6 +220,21 @@
    ("M-e" . dirvish-emerge-menu)
    ("M-j" . dirvish-fd-jump)
    )
+  )
+
+(use-package no-littering
+  :demand
+  :init
+  (setq no-littering-var-directory yx/var-dir
+        no-littering-etc-directory yx/etc-dir
+        )
+
+  (with-eval-after-load 'recentf
+    (add-to-list 'recentf-exclude
+                 (recentf-expand-file-name no-littering-var-directory))
+    )
+  :config
+  (no-littering-theme-backups)
   )
 
 (provide 'init-misc)

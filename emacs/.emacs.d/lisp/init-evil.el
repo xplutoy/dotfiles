@@ -46,7 +46,7 @@
     "eh" 'eglot-help-at-point
     "en" 'flymake-goto-next-error
     "ep" 'flymake-goto-prev-error
-    "eb" 'flymake-diagnostic-buffer
+    "eb" 'flymake-show-buffer-diagnostics
     "h" '(:ignore t :which-key "code hilight")
     "hh" 'symbol-overlay-put
     "hc" 'symbol-overlay-remove-all
