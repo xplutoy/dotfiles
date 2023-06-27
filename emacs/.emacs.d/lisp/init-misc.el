@@ -192,36 +192,6 @@
   (set-face-attribute 'diredfl-dir-name nil :bold t)
   )
 
-(use-package dirvish
-  :hook (after-init . dirvish-override-dired-mode)
-  :custom
-  (dirvish-quick-access-entries
-   '(("h" "~" "Home")
-     ("d" "~/Downloads/" "Downloads")
-     ("w" "~/workspace/" "Workspace")))
-  :config
-  (setq dirvish-attributes '(file-size collapse vc-state subtree-state)
-        dirvish-use-header-line nil
-        dirvish-default-layout '(0 0.3 0.7)
-        dirvish-preview-dispatchers nil)
-  :bind
-  (("C-c f" . dirvish-fd)
-   :map dirvish-mode-map
-   ("a"   . dirvish-quick-access)
-   ("f"   . dirvish-file-info-menu)
-   ("y"   . dirvish-yank-menu)
-   ("N"   . dirvish-narrow)
-   ("h"   . dirvish-history-jump) ; remapped `describe-mode'
-   ("s"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
-   ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
-   ("TAB" . dirvish-subtree-toggle)
-   ("M-m" . dirvish-mark-menu)
-   ("M-t" . dirvish-layout-toggle)
-   ("M-e" . dirvish-emerge-menu)
-   ("M-j" . dirvish-fd-jump)
-   )
-  )
-
 (use-package no-littering
   :demand
   :init

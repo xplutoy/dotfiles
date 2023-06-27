@@ -2,6 +2,7 @@
 (setq-default
  tab-width 2
  abbrev-mode t
+ fill-column 120
  truncate-lines t
  indent-tabs-mode nil
  require-final-newline t
@@ -81,11 +82,15 @@
  ispell-hunspell-dictionary-alist ispell-local-dictionary-alist
  )
 
-;; perference
+;; font-lock
 (setq
- jit-lock-defer-time 0.1
+ jit-lock-defer-time 0.05
  jit-lock-stealth-time 1.0
  jit-lock-stealth-nice 0.2)
+(setq-default
+ jit-lock-contextually t
+ font-lock-multiline 'undecided
+ )
 
 ;; dired
 (setq

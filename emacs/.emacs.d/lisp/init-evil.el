@@ -12,6 +12,7 @@
    [remap kill-buffer]            'kill-current-buffer
    [remap toggle-input-method]    'sis-switch
    [remap comment-dwim]           'evil-commentary-line
+   [remap tab-to-tab-stop]        'consult-imenu-multi
    "s-<return>" 'toggle-frame-maximized
    "C-'"     'vterm-toggle-cd
    "C-;"   'yx/toggole-eshell
@@ -22,6 +23,7 @@
    "C-c c" 'org-capture
    "C-c b" 'org-switchb
    "C-c l" 'org-store-link
+   "C-c t" 'org-show-todo-tree
    "C-c j" 'org-journal-new-entry
    "C-c g" 'consult-ripgrep
    )
@@ -102,6 +104,7 @@
     "t" '(:ignore t :which-key "toggole")
     "tgr" 'golden-ratio-mode
     "tsl" 'so-long-minor-mode
+    "thi" 'hi-lock-mode
     "thl" 'hl-line-mode
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project

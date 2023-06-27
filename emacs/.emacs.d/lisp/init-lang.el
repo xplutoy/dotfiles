@@ -1,4 +1,4 @@
-;;; init-lang.el --- plugin about ide. -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (add-hook
  #'before-save-hook
  #'(lambda ()
@@ -131,6 +131,18 @@
 ;; yaml
 (use-package yaml-mode)
 
+;; sh-script
+(add-hook
+ 'sh-mode-hook
+ (lambda()
+   (setq sh-indentation 2
+         sh-basic-offset 2)
+   (electric-indent-mode -1)
+   (ansi-color-for-comint-mode-on)
+   (compilation-shell-minor-mode 1)
+   )
+ )
+
 ;; vim-script
 (use-package vimrc-mode
   :init
@@ -146,4 +158,3 @@
 (add-to-list 'auto-mode-alist '("\\.ma[cx]\\'" . maxima-mode))
 
 (provide 'init-lang)
-;;; init-lang.el ends here
