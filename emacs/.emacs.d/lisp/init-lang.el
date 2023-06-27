@@ -7,27 +7,29 @@
 
 (use-package eglot
   :ensure nil
-  :config
-  (add-to-list 'eglot-server-programs '((c++-mode c++-ts-mode c-mode c-ts-mode) "clangd"))
-  (add-to-list 'eglot-server-programs '(python-mode "pyls"))
-  :hook ((c-mode c-ts-mode c++-mode c++-ts-mode python-mode julia-mode) . eglot-ensure)
+  :hook ((c-mode
+          c-ts-mode
+          R-mode
+          python-mode
+          python-ts-mode
+          julia-mode
+          julia-ts-mode) . eglot-ensure)
   )
 
 (use-package treesit
   :ensure nil
   :init
-  (setq treesit-language-source-alist
-        '((bash   . ("https://github.com/tree-sitter/tree-sitter-bash"))
-          (c      . ("https://github.com/tree-sitter/tree-sitter-c"))
-          (cpp    . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-          (lua    . ("https://github.com/Azganoth/tree-sitter-lua"))
-          (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-          (rust   . ("https://github.com/tree-sitter/tree-sitter-rust"))))
+  (setq
+   treesit-extra-load-path (list (no-littering-expand-var-file-name "tree-sitter"))
+   treesit-language-source-alist
+   '( (c      . ("https://github.com/tree-sitter/tree-sitter-c"))
+      (julia  . ("https://github.com/tree-sitter/tree-sitter-julia"))
+      (python . ("https://github.com/tree-sitter/tree-sitter-python")))
+   )
   (setq major-mode-remap-alist
-        '((c-mode      . c-ts-mode)
-          (c++-mode    . c++-ts-mode)
-          (sh-mode     . bash-ts-mode)
-          (python-mode . python-ts-mode))))
+        '((c-mode . c-ts-mode)
+          (python-mode . python-ts-mode)))
+  )
 
 (use-package yasnippet-snippets)
 (use-package yasnippet
@@ -89,9 +91,7 @@
   :hook ((python-ts-mode c++-ts-mode c-ts-mode bash-ts-mode) . combobulate-mode)
   )
 
-(use-package devdocs
-  :init
-  (setq devdocs-data-dir "~/.emacs.d/.cache/devdocs"))
+(use-package devdocs)
 
 ;; lisp
 (add-hook
@@ -116,7 +116,7 @@
 
 ;; python
 (add-hook
- #'python-mode-hook
+ #'python-ts-mode-hook
  #'(lambda()
      (setq-local tab-width 4)
      (setq imenu-create-index-function #'python-imenu-create-flat-index)
@@ -126,7 +126,7 @@
   :hook (before-save . py-isort-before-save))
 (use-package pyvenv)
 (use-package pyvenv-auto
-  :hook (python-mode . pyvenv-auto-mode))
+  :hook (python-ts-mode . pyvenv-auto-mode))
 
 ;; yaml
 (use-package yaml-mode)

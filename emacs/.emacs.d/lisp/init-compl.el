@@ -2,6 +2,7 @@
 (use-package vertico
   :demand t
   :config
+  (setq vertico-resize nil)
   (vertico-mode 1)
   (vertico-mouse-mode 1)
   (vertico-indexed-mode 1)
