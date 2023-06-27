@@ -40,13 +40,15 @@
 (use-package org-journal
   :after org
   :init
-  (setq org-journal-dir "~/privacy/journal/"
-        org-journal-file-type 'daily
-        org-journal-encrypt-journal t
-        org-journal-time-format ""
-        org-journal-file-format "%Y_%m_%d.org"
-        org-journal-date-format "#+TITLE: Journal Entry- %e %b %Y (%A)"
-        org-journal-find-file 'find-file)
+  (setq
+   org-journal-time-format ""
+   org-journal-file-format "%Y_%m_%d.org"
+   org-journal-date-format "#+TITLE: Journal Entry- %e %b %Y (%A)"
+   org-journal-encrypt-journal t
+   org-journal-find-file 'find-file
+   org-journal-dir "~/privacy/journal/"
+   org-journal-enable-agenda-integration t
+   )
   )
 
 (use-package valign

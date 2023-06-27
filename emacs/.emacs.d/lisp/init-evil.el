@@ -22,6 +22,7 @@
    "C-c b" 'org-switchb
    "C-c l" 'org-store-link
    "C-c j" 'org-journal-new-entry
+   "C-c g" 'consult-ripgrep
    )
   (general-create-definer yx-space-leader-def
     :prefix "SPC"
@@ -38,7 +39,10 @@
     "gd" 'xref-find-definitions
     "gr" 'xref-find-references
     "go" 'xref-find-definitions-other-window
-    "e" '(:ignore t :which-key "code lint")
+    "e" '(:ignore t :which-key "code lint and refactor")
+    "ef" 'eglot-format
+    "er" 'eglot-rename
+    "eh" 'eglot-help-at-point
     "en" 'flymake-goto-next-error
     "ep" 'flymake-goto-prev-error
     "eb" 'flymake-diagnostic-buffer
@@ -60,6 +64,7 @@
     "9" 'winum-select-window-9
     ;; The `j' prefix is for jumping(in buffer), joining and splitting.
     "j" '(:ignore t :which-key "jump in buffer")
+    "j;"  'evil-goto-last-change
     "jj"  'evil-avy-goto-char-timer
     "jw"  'evil-avy-goto-word-or-subword-1
     "jl"  'consult-line
@@ -68,10 +73,17 @@
     "jo"  'consult-outline
     "jm"  'consult-mark
     "jM"  'consult-global-mark
-    ;; the `g' pregix is for goto
-    "gg"  'consult-ripgrep
-    "g;"  'evil-goto-last-change
-
+    "v" '(:ignore t :which-key "magit")
+    "vs"  'magit-status
+    "vb"  'magit-blame
+    "vd"  'magit-diff-buffer-file
+    "vv"  'magit-dispatch
+    "vf" '(:ignore t :which-key "file")
+    "vfc" 'magit-file-checkout
+    "vfd" 'magit-file-delete
+    "vfr" 'magit-file-rename
+    "vfs" 'magit-stage-file
+    "vfu" 'magit-unstage-file
     "w" '(:ignore t :which-key "windows")
     "wu"  'winner-undo
     "wr"  'winner-redo
@@ -87,9 +99,9 @@
     "s,"  'color-rg-search-symbol-in-current-file
     "s."  'color-rg-search-input-in-current-file
     "t" '(:ignore t :which-key "toggole")
-    "tg"  'golden-ratio-mode
-    "tl"  'so-long-minor-mode
-    "tt"  'hl-line-mode
+    "tgr" 'golden-ratio-mode
+    "tsl" 'so-long-minor-mode
+    "thl" 'hl-line-mode
     "p" '(:ignore t :which-key "project")
     "pp"  'project-switch-project
     "pb"  'project-switch-to-buffer
@@ -145,6 +157,7 @@
     [S-tab] 'org-shifttab)
   :general
   (:states 'normal
+           "C-." nil  ;; unbind evil-repeat-pop
            ;; more emacs style
            "C-p" 'previous-line
            "C-n" 'next-line
@@ -168,9 +181,9 @@
 
 (use-package vimish-fold)
 (use-package evil-vimish-fold
-  :defer 1
-  :config
-  (global-evil-vimish-fold-mode 1)
+  :hook (prog-mode . evil-vimish-fold-mode)
+  :init
+  (setq evil-vimish-fold-mode-lighter " ₱")
   )
 
 (use-package evil-owl
@@ -180,4 +193,3 @@
   )
 
 (provide 'init-evil)
-;;; init-evil.el ends here

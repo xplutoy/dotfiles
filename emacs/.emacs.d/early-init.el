@@ -12,6 +12,7 @@
  package-enable-at-startup nil
  frame-inhibit-implied-resize t
  inhibit-compacting-font-caches t
+ native-comp-async-report-warnings-errors nil
  )
 
 (setq

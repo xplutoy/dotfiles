@@ -45,4 +45,15 @@
   (setq eshell-prompt-function 'eshell-git-prompt-multiline)
   )
 
+(use-package eat
+  :defer 1
+  :load-path "site-lisp/emacs-eat"
+  :hook ((eshell-load . eat-eshell-mode)
+         (eshell-load . eat-eshell-visual-command-mode))
+  :init
+  (setq
+   eat-kill-buffer-on-exit t
+   eat-enable-yank-to-terminal t)
+  )
+
 (provide 'init-eshell)

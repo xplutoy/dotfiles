@@ -25,3 +25,6 @@
 [submodule "emacs/.emacs.d/site-lisp/eshell-git-prompt-yx"]
 	path = emacs/.emacs.d/site-lisp/eshell-git-prompt-yx
 	url = https://github.com/xplutoy/eshell-git-prompt-yx.git
+[submodule "emacs/.emacs.d/site-lisp/emacs-eat"]
+	path = emacs/.emacs.d/site-lisp/emacs-eat
+	url = https://codeberg.org/akib/emacs-eat.git

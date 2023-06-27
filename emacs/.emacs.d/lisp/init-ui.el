@@ -37,7 +37,7 @@
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (set-face-attribute 'default nil
-                      :family "Inconsolata Nerd Font Mono" :height 160)
+                      :family "Inconsolata Nerd Font Mono" :height 150)
   (set-face-attribute 'fixed-pitch nil
                       :family "Incosolata Nerd Font Mono" :height 1.0)
   (set-face-attribute 'variable-pitch nil
