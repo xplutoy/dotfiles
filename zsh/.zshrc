@@ -79,3 +79,10 @@ export NVM_DIR="$HOME/.nvm"
 # emacs-eat
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
+# emacs-vterm
+if [[ "$INSIDE_EMACS" = 'vterm' ]] \
+    && [[ -n ${EMACS_VTERM_PATH} ]] \
+    && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh ]]; then
+  source ${EMACS_VTERM_PATH}/etc/emacs-vterm-bash.sh
+fi

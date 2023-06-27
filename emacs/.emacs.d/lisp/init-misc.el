@@ -63,6 +63,7 @@
                 "^\\*Org"
                 "^\\*Agenda"
                 "^\\*eshell"
+                "^\\*vterm"
                 "^nnrs"))
     (add-to-list 'golden-ratio-exclude-buffer-regexp re))
   )
@@ -73,11 +74,17 @@
          ("M-`" . popper-cycle)
          ("C-M-`" . popper-toggle-type))
   :config
-  (setq popper-group-function #'popper-group-by-directory)
+  (setq
+   popper-display-control 'user
+   popper-group-function #'popper-group-by-directory)
   (setq popper-reference-buffers
         '("\\*Ibuffer\\*"
           "\\*evil-registers\\*"
           "\\*evil-owl\\*"
+          "\\*shell.*\\*$" shell-mode
+          "\\*eshell.*\\*$" eshell-mode
+          "\\*term.*\\*$" term-mode
+          "\\*vterm.*\\*$" vterm-mode
           help-mode
           occur-mode
           dired-mode
@@ -99,11 +106,13 @@
    '((("\\*Ibuffer\\*"
        "\\*Help\\*"
        "\\*es?hell.*"
+       "\\*vterm.*"
        "\\*info\\*"
        "\\*[Wo]*Man.*\\*"
        "\\*Dictionary\\*"
        "\\*Flymake .*"
        "^CAPTURE-"
+       vterm-mode
        dired-mode
        occur-mode
        color-rg-mode)

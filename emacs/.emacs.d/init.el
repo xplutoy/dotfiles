@@ -3,7 +3,9 @@
 (defvar yx/gpg-sign-key     "67B86CB8A5630C51!")
 (defvar yx/gpg-encrypt-key  "8B1F9B207AF00BCF!")
 
+(prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (add-to-list 'load-path "~/.emacs.d/lisp/")

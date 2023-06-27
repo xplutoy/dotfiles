@@ -13,6 +13,7 @@
    [remap toggle-input-method]    'sis-switch
    [remap comment-dwim]           'evil-commentary-line
    "s-<return>" 'toggle-frame-maximized
+   "C-'"     'vterm-toggle-cd
    "C-;"   'yx/toggole-eshell
    "C-."   'embark-act
    "C-,"   'embark-dwim

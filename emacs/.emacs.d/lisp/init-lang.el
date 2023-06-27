@@ -10,7 +10,7 @@
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c++-ts-mode c-mode c-ts-mode) "clangd"))
   (add-to-list 'eglot-server-programs '(python-mode "pyls"))
-  :hook ((c-mode c-ts-mode c++-mode c++-ts-mode python-mode sh-mode) . eglot-ensure)
+  :hook ((c-mode c-ts-mode c++-mode c++-ts-mode python-mode julia-mode) . eglot-ensure)
   )
 
 (use-package treesit
@@ -52,10 +52,10 @@
 
 ;; aggressive-indent
 (use-package aggressive-indent
-  :hook (((emacs-lisp-mode c-mode python-mode) . aggressive-indent-mode)
-         (find-file . (lambda ()
-                        (if (> (buffer-size) (* 3000 80))
-                            (aggressive-indent-mode -1))))))
+  :hook
+  (((emacs-lisp-mode python-mode julia-mode) . aggressive-indent-mode)
+   (find-file . (lambda ()
+                  (if (> (buffer-size) (* 3000 80)) (aggressive-indent-mode -1))))))
 
 ;; indent-guide
 (use-package indent-guide
@@ -101,7 +101,17 @@
    (eldoc-mode)))
 
 ;; Julia
+(setq eglot-connect-timeout 100000000)
 (use-package julia-mode)
+(use-package eglot-jl
+  :init
+  (with-eval-after-load 'eglot
+    (eglot-jl-init))
+  )
+(use-package julia-snail
+  :custom (julia-snail-terminal-type :eat)
+  :hook (julia-mode . julia-snail-mode)
+  )
 
 ;; python
 (add-hook

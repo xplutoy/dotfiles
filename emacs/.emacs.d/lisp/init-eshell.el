@@ -45,6 +45,23 @@
   (setq eshell-prompt-function 'eshell-git-prompt-multiline)
   )
 
+(use-package vterm
+  :bind (:map vterm-mode-map
+              ("C-y" . vterm-yank)
+              ("M-y" . vterm-yank-pop)
+              ("C-k" . vterm-send-C-k-and-kill))
+  :config
+  (setq vterm-always-compile-module t)
+  (defun vterm-send-C-k-and-kill ()
+    (kill-ring-save (point) (vterm-end-of-line))
+    (vterm-send-key "k" nil nil t)
+    )
+  )
+(use-package vterm-toggle
+  :init
+  (setq vterm-toggle-hide-method nil
+        vterm-toggle-cd-auto-create-buffer nil))
+
 (use-package eat
   :defer 1
   :load-path "site-lisp/emacs-eat"
