@@ -24,8 +24,13 @@
   (setq completion-styles '(orderless basic)))
 
 (use-package embark
-  :init
-  (setq embark-selection-indicator nil))
+  :custom
+  (embark-selection-indicator nil)
+  (embark-prompter 'embark-completing-read-prompter)
+  (embark-indicators '(embark-minimal-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
+  )
 (use-package embark-consult
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
@@ -51,7 +56,6 @@
          ([remap apropos]                       . consult-apropos)
          ([remap bookmark-jump]                 . consult-bookmark)
          ([remap imenu]                         . consult-imenu)
-         ("s-r" . consult-recent-file)
          ("C-x p b" . consult-project-buffer)
          ("M-#"     . consult-register-load)
          ("M-'"     . consult-register-store)
@@ -99,6 +103,8 @@
   :after corfu
   :defer 1
   :config
+  (setq
+   prescient-sort-length-enable nil)
   (corfu-prescient-mode 1))
 
 (use-package corfu-terminal
@@ -110,10 +116,15 @@
 (use-package cape
   :after corfu
   :defer 1
+  :bind (("C-c p p" . completion-at-point-functions)
+         ("C-c p d" . cape-dict)
+         ("C-c p f" . cape-file)
+         ("C-c p s" . cape-symbol)
+         )
   :init
   (setq cape-dabbrev-min-length 2
         completion-at-point-functions
-        '(cape-ispell cape-dabbrev cape-file cape-symbol cape-abbrev))
+        '(cape-file cape-symbol cape-dabbrev cape-dict cape-abbrev))
   )
 
 (provide 'init-compl)

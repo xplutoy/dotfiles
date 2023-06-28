@@ -30,6 +30,7 @@
 (require 'init-compl)
 (require 'init-evil)
 (require 'init-misc)
+(require 'init-window)
 (require 'init-note)
 (require 'init-mail)
 (require 'init-lang)

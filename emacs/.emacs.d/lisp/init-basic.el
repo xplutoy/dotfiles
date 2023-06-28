@@ -10,8 +10,6 @@
 
 (setq
  use-short-answers  t
- help-window-select t
- create-lockfiles nil
  system-time-locale "C"
  auto-revert-verbose nil
  confirm-kill-processes nil
@@ -19,12 +17,8 @@
  ring-bell-function 'ignore
  initial-scratch-message ""
  delete-by-moving-to-trash t
- help-window-keep-selected t
- hippie-expand-max-buffers 10
  fast-but-imprecise-scrolling t
  compilation-scroll-output 'first-error
- winner-boring-buffers-regexp "^\\*"
- switch-to-buffer-obey-display-actions t
  backward-delete-char-untabify-method 'hungry
  sentence-end-double-space nil
  sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
@@ -62,8 +56,8 @@
 (setq
  recentf-auto-cleanup 'never
  recentf-max-saved-items 200
- recentf-exclude '("\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$")
- )
+ recentf-exclude '("\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$"))
+(add-hook 'after-init-hook 'recentf-mode)
 
 ;; whitespace
 (setq
@@ -96,17 +90,16 @@
  completion-auto-select 'second-tab
  )
 
-;; ibuffer
 (setq
- ibuffer-expert t
- ibuffer-display-summary nil
- ibuffer-show-empty-filter-groups nil
- ibuffer-never-show-predicates '("^\\*"))
-(add-hook
- 'ibuffer-mode-hook
- (lambda ()
-   (ibuffer-do-sort-by-recency)
-   (ibuffer-auto-mode 1)))
+ hippie-expand-max-buffers 10
+ hippie-expand-try-functions-list
+ '(try-complete-file-name
+   try-complete-file-name-partially
+   try-expand-dabbrev
+   try-expand-dabbrev-from-kill
+   try-expand-dabbrev-all-buffers
+   )
+ )
 
 ;; isearch
 (setq
@@ -115,7 +108,6 @@
  apropos-sort-by-scores t
  lazy-highlight-no-delay-length 3
  )
-
 
 ;; epa
 (setq
@@ -152,10 +144,7 @@
  jit-lock-defer-time 0.05
  jit-lock-stealth-time 1.0
  jit-lock-stealth-nice 0.2)
-(setq-default
- jit-lock-contextually t
- font-lock-multiline 'undecided
- )
+(setq-default jit-lock-contextually t)
 
 ;; savehist
 (setq
@@ -166,8 +155,8 @@
    search-ring
    regexp-search-ring
    extended-command-history
-   )
- )
+   ))
+(add-hook 'after-init-hook 'savehist-mode)
 
 ;; emacs session
 (setq
@@ -176,28 +165,13 @@
  desktop-auto-save-timeout   60
  desktop-load-locked-desktop nil)
 
-;; tabbar
-(setq
- tab-bar-tab-hints t
- tab-bar-select-tab-modifiers '(super))
 
-;; calendar chendu (30.67 104.07)
 (setq
  calendar-latitude 30.67
  calendar-longitude 104.07
  calendar-mode-line-format nil
  calendar-mark-diary-entries-flag t
  )
-
-;; dired
-(setq
- dired-dwim-target t
- dired-mouse-drag-files t
- dired-omit-files "^\\..*$"
- dired-recursive-copies 'always
- dired-kill-when-opening-new-dired-buffer t
- dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group")
-(add-hook 'dired-mode-hook 'dired-omit-mode)
 
 ;; os specific settings stay here
 (when (eq system-type 'darwin)
@@ -236,11 +210,7 @@
 (add-hook
  #'after-init-hook
  (lambda ()
-   (server-mode 1)
-   (winner-mode 1)
    (repeat-mode 1)
-   (recentf-mode 1)
-   (savehist-mode 1)
    (save-place-mode 1)
    (blink-cursor-mode -1)
    (electric-pair-mode 1)

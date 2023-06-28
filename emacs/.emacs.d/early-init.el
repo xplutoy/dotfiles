@@ -34,7 +34,7 @@
   (add-hook #'emacs-startup-hook
             #'yx/restore-file-name-handler-alist))
 
-(setq gc-cons-threshold (* 512 1024 1024)
+(setq gc-cons-threshold (* 64 1024 1024)
       gc-cons-percentage 0.6)
 
 

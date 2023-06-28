@@ -23,6 +23,13 @@
  )
 
 (setq
+ org-modules '(org-habit org-tempo)
+ org-habit-graph-column 60)
+
+
+
+
+(setq
  org-capture-templates
  '(("t" "task" entry (file+headline org-default-notes-file "Tasks") "* TODO [#B] %^{Title}\n%?")
    ("h" "habit" entry (file+headline org-default-notes-file "Habits") "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?"))
@@ -35,6 +42,12 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((emacs-lisp . t) (python . t) (R . t) (julia . t)))
   (org-crypt-use-before-save-magic)
+  (dolist (ele '(("sh" . "src shell")
+                 ("el" . "src emacs-lisp")
+                 ("py" . "src python")
+                 ("r"  . "src R")
+                 ("jl" . "src julia")))
+  (add-to-list 'org-structure-template-alist ele))
   )
 
 (use-package org-journal

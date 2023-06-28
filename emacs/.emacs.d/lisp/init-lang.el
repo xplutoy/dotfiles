@@ -32,6 +32,8 @@
           (python-mode . python-ts-mode)))
   )
 
+(use-package reformatter)
+
 (use-package yasnippet-snippets)
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
@@ -44,6 +46,7 @@
 (use-package diff-hl
   :defer 2
   :config
+  (setq diff-hl-disable-on-remote t)
   (global-diff-hl-mode 1)
   :hook (dired-mode . diff-hl-dired-mode)
   )
@@ -74,8 +77,6 @@
 
 ;; magit
 (use-package magit)
-(use-package magit-delta
-  :hook (magit-mode . magit-delta-mode))
 
 (use-package color-rg
   :defer 2

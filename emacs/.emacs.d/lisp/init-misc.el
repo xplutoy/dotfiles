@@ -14,32 +14,16 @@
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-(use-package ibuffer-vc
-  :init
-  :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
-
 (use-package which-key
   :defer 1
   :init
   (setq which-key-idle-delay 10000
         which-key-show-early-on-C-h t
-        which-key-idle-secondary-delay 0.05)
+        which-key-show-remaining-keys t
+        which-key-idle-secondary-delay 0.1)
   :config
   (which-key-setup-minibuffer)
   (which-key-mode 1)
-  )
-
-(use-package winum
-  :defer 1
-  :init
-  (setq winum-scope 'frame-local
-        winum-format " [%s] "
-        winum-auto-assign-0-to-minibuffer t
-        winum-ignored-buffers-regexp '("^\\*Help.*")
-        )
-  :config
-  (winum-set-keymap-prefix nil)
-  (winum-mode 1)
   )
 
 (use-package avy
@@ -53,97 +37,6 @@
 (use-package easy-kill
   :bind (([remap kill-ring-save] . easy-kill)
          ([remap mark-sexp] . easy-mark))
-  )
-
-(use-package golden-ratio
-  :init
-  (setq golden-ratio-auto-scale t
-        golden-ratio-max-width nil)
-  (setq golden-ratio-exclude-modes
-        '(gnus-mode
-          gnus-summary-mode
-          gnus-article-mode
-          which-key-mode
-          vundo-mode
-          calendar-mode
-          imenu-list-major-mode))
-  :config
-  (dolist (re '("^\\*Ilist"
-                "^\\*Org"
-                "^\\*Agenda"
-                "^\\*eshell"
-                "^\\*vterm"
-                "^nnrs"))
-    (add-to-list 'golden-ratio-exclude-buffer-regexp re))
-  )
-
-(use-package popper
-  :defer 1
-  :bind (("C-`" . popper-toggle-latest)
-         ("M-`" . popper-cycle)
-         ("C-M-`" . popper-toggle-type))
-  :config
-  (setq
-   popper-display-control 'user
-   popper-group-function #'popper-group-by-directory)
-  (setq popper-reference-buffers
-        '("\\*Ibuffer\\*"
-          "\\*evil-registers\\*"
-          "\\*evil-owl\\*"
-          "\\*shell.*\\*$" shell-mode
-          "\\*eshell.*\\*$" eshell-mode
-          "\\*term.*\\*$" term-mode
-          "\\*vterm.*\\*$" vterm-mode
-          "\\*julia\\*$"
-          "\\*color-rg\\*$"
-          help-mode
-          occur-mode
-          dired-mode
-          compilation-mode
-          ))
-  (popper-mode 1)
-  (popper-echo-mode 1)
-  )
-
-(use-package shackle
-  :defer 1
-  :init
-  (setq shackle-default-size 0.33
-        shackle-select-reused-windows t
-        shackle-inhibit-window-quit-on-same-windows t)
-  :config
-  (setq
-   shackle-rules
-   '((("\\*Ibuffer\\*"
-       "\\*Help\\*"
-       "\\*es?hell.*"
-       "\\*vterm.*"
-       "\\*info\\*"
-       "\\*[Wo]*Man.*\\*"
-       "\\*Dictionary\\*"
-       "\\*Flymake .*"
-       "^CAPTURE-"
-       "^\\*julia.*"
-       vterm-mode
-       dired-mode
-       occur-mode
-       color-rg-mode)
-      :regexp t :select t :popup t :align below)
-     (("\\*Warnings\\*"
-       "\\*Messages\\*"
-       "\\*evil-registers\\*"
-       "\\*evil-owl\\*"
-       "^\\*Compile"
-       "\\*Agenda Commands\\*"
-       "^\\*Org Note"
-       "^\\*Org Select"
-       "\\*Capture\\*"
-       "\\*Shell Command Output\\*")
-      :regexp t :select nil :popup t :align below)
-     (("^magit")
-      :regexp t :select t :same t)
-     ))
-  (shackle-mode 1)
   )
 
 (use-package move-text
@@ -197,18 +90,6 @@
   (sis-global-cursor-color-mode 1)
   )
 
-(use-package diredfl
-  :hook (dired-mode . diredfl-mode)
-  :config
-  (set-face-attribute 'diredfl-dir-name nil :bold t)
-  )
-
-(use-package dired-narrow
-  :bind (:map dired-mode-map
-              ([remap dired-do-man] . dired-narrow-fuzzy)))
-(use-package dired-collapse
-  :hook (dired-mode . dired-collapse-mode))
-
 (use-package no-littering
   :demand
   :init
@@ -222,6 +103,13 @@
     )
   :config
   (no-littering-theme-backups)
+  )
+
+(use-package flyspell-correct
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("s-;" . flyspell-correct-wrapper)
+              ("s-'" . flyspell-correct-next))
   )
 
 (provide 'init-misc)
