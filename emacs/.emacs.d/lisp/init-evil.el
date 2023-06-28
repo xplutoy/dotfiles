@@ -65,8 +65,17 @@
     "7" 'winum-select-window-7
     "8" 'winum-select-window-8
     "9" 'winum-select-window-9
-    ;; The `j' prefix is for jumping(in buffer), joining and splitting.
-    "j" '(:ignore t :which-key "jump in buffer")
+    "f" '(:ignore t :which-key "file/buffer")
+    "ff"  'find-file
+    "ft"  'find-file-other-tab
+    "fo"  'find-file-other-window
+    "fr"  'rename-visited-file
+    "fk"  'evil-delete-buffer
+    "fF"  'crux-sudo-edit
+    "fE"  'crux-reopen-as-root
+    "fK"  'crux-kill-other-buffers
+    "fD"  'crux-delete-file-and-buffer
+    "j" '(:ignore t :which-key "jump(in buffer)")
     "j;"  'evil-goto-last-change
     "jj"  'evil-avy-goto-char-timer
     "jw"  'evil-avy-goto-word-or-subword-1

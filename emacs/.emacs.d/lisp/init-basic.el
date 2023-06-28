@@ -21,6 +21,7 @@
  delete-by-moving-to-trash t
  help-window-keep-selected t
  hippie-expand-max-buffers 10
+ fast-but-imprecise-scrolling t
  compilation-scroll-output 'first-error
  winner-boring-buffers-regexp "^\\*"
  switch-to-buffer-obey-display-actions t
@@ -83,9 +84,9 @@
 
 ;; completion
 (setq
- completion-ignore-case t
- completions-format 'one-column
  completions-detailed t
+ completion-ignore-case t
+ completions-format 'horizontal
  completions-header-format nil
  completions-max-height 30
  completion-auto-help 'visible
@@ -227,7 +228,6 @@
     '(face trailing lines-char space-before-tab space-after-tab))
    (hs-minor-mode 1)
    (whitespace-mode 1)
-   (elide-head-mode 1)
    (flyspell-prog-mode)
    (display-line-numbers-mode 1)
    (electric-indent-local-mode 1)

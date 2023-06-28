@@ -22,6 +22,9 @@
    ("nongnu"        . "https://elpa.nongnu.org/nongnu/")))
 (package-activate-all)
 
+(benchmark-init/activate)
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
+
 (require 'init-ui)
 (require 'init-basic)
 (require 'init-compl)

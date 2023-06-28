@@ -82,7 +82,8 @@
   :load-path "site-lisp/color-rg"
   :init
   (setq color-rg-search-no-ignore-file nil
-        color-rg-mac-load-path-from-shell nil)
+        color-rg-mac-load-path-from-shell nil
+        )
   )
 
 (use-package combobulate

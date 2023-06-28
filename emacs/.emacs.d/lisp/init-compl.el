@@ -13,6 +13,12 @@
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   )
 
+(use-package vertico-prescient
+  :after vertico
+  :defer 1
+  :config
+  (vertico-prescient-mode 1))
+
 (use-package orderless
   :init
   (setq completion-styles '(orderless basic)))
@@ -72,28 +78,28 @@
 
 ;; corfu ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package corfu
-  :demand t
   :init
-  (setq corfu-auto t  ;; set befor global-corfu-mode
+  (setq corfu-auto t
         corfu-preselect 'valid
         corfu-echo-documentation nil)
   :config
-  (global-corfu-mode 1)
   (corfu-echo-mode 1)
   (corfu-history-mode 1)
   (corfu-indexed-mode 1)
   (corfu-popupinfo-mode 1)
-  (add-hook
-   'eshell-mode-hook
-   (lambda ()
-     (setq-local corfu-auto nil)
-     (corfu-mode -1)))
+  :hook ((text-mode prog-mode) . corfu-mode)
   :bind (:map corfu-map
               ("TAB"   . corfu-next)
               ("S-TAB" . corfu-previous)
               ("C-q"   . corfu-quick-insert)
               ("SPC"   . corfu-insert-separator))
   )
+
+(use-package corfu-prescient
+  :after corfu
+  :defer 1
+  :config
+  (corfu-prescient-mode 1))
 
 (use-package corfu-terminal
   :unless (display-graphic-p)
@@ -102,6 +108,7 @@
 
 ;; cape
 (use-package cape
+  :after corfu
   :defer 1
   :init
   (setq cape-dabbrev-min-length 2

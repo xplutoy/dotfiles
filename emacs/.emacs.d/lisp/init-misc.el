@@ -1,9 +1,18 @@
-;;; init-misc.el --- misc plugin configure. -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (use-package gcmh
   :defer 1
   :config
   (setq gcmh-high-cons-threshold (* 128 1024 1024))
   (gcmh-mode 1))
+
+(use-package crux-yx
+  :defer 1
+  :load-path "site-lisp/crux-yx")
+
+(use-package benchmark-init
+  :disabled
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (use-package ibuffer-vc
   :init
@@ -86,6 +95,7 @@
           "\\*term.*\\*$" term-mode
           "\\*vterm.*\\*$" vterm-mode
           "\\*julia\\*$"
+          "\\*color-rg\\*$"
           help-mode
           occur-mode
           dired-mode
