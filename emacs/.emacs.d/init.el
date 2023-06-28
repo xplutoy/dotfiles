@@ -29,6 +29,7 @@
 (require 'init-basic)
 (require 'init-compl)
 (require 'init-evil)
+(require 'init-hydra)
 (require 'init-misc)
 (require 'init-window)
 (require 'init-note)

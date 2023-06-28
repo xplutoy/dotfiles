@@ -103,8 +103,6 @@
   :after corfu
   :defer 1
   :config
-  (setq
-   prescient-sort-length-enable nil)
   (corfu-prescient-mode 1))
 
 (use-package corfu-terminal

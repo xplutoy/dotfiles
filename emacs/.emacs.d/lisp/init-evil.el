@@ -1,4 +1,4 @@
-;;; init-evli.el --- evil configure -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 (use-package general
   :config
   (general-evil-setup t)
