@@ -15,11 +15,14 @@
   (org-image-actual-width '(600))
   (org-special-ctrl-k t)
   (org-special-ctrl-a/e t)
-  (org-src-fontify-natively t)
-  (org-src-tab-acts-natively t)
   (org-fontify-quote-and-verse-blocks t)
   (org-agenda-window-setup 'current-window)
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
+  (org-src-tab-acts-natively t)
+  (org-src-fontify-natively t)
+  (org-src-window-setup 'split-window-right)
+  (org-src-ask-before-returning-to-edit-buffer nil)
 
   (org-modules '(org-habit org-tempo))
   (org-habit-graph-column 60)
@@ -32,6 +35,10 @@
      ("h" "habit" entry (file+headline org-default-notes-file "Habits")
       "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?"))
    )
+
+  ;; org-cite
+  (org-cite-global-bibliography
+   (expand-file-name "references.bib" yx/doc-dir))
 
   :config
   (org-babel-do-load-languages
@@ -59,25 +66,24 @@
                ("s-Y" . org-download-screenshot)))
   )
 
-  (use-package emacsql-sqlite-builtin)
-  (use-package org-roam
-    :bind (("C-c n a" . org-id-get-create)
-           ("C-c n l" . org-roam-buffer-toggle)
-           ("C-c n f" . org-roam-node-find)
-           ("C-c n g" . org-roam-graph)
-           ("C-c n i" . org-roam-node-insert)
-           ("C-c n c" . org-roam-capture)
-           ("C-c n j" . org-roam-dailies-capture-today)
-           ("C-c n r" . org-roam-ref-find)
-           ("C-c n R" . org-roam-ref-add)
-           ("C-c n A" . org-roam-alias-add)
-           ("C-c n s" . org-roam-db-sync))
-    :custom
-    (org-roam-directory
-     (expand-file-name "yx-slip-notes" yx/doc-dir))
-    (org-roam-database-connector 'sqlite-builtin)
-    :config
-    (org-roam-db-autosync-enable)
-    )
+(use-package emacsql-sqlite-builtin)
+(use-package org-roam
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :custom
+  (org-roam-directory
+   (expand-file-name "yx-slip-notes" yx/doc-dir))
+  (org-roam-database-connector 'sqlite-builtin)
+  :config
+  (org-roam-db-autosync-enable)
+  (add-hook 'org-roam-capture-new-node-hook
+            (lambda () (org-roam-tag-add '("draft"))))
+  )
 
-  (provide 'init-note)
+(use-package org-roam-ui
+  :after org-roam)
+
+(provide 'init-note)

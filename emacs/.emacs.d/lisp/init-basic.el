@@ -38,6 +38,10 @@
  auto-save-visited-interval 30
  )
 
+;; eldoc
+(setq
+ eldoc-echo-area-use-multiline-p nil)
+
 ;; uniquify
 (setq
  uniquify-strip-common-suffix t

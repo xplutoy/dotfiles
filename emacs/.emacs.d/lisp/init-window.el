@@ -36,12 +36,13 @@
  ibuffer-expert t
  ibuffer-display-summary nil
  ibuffer-show-empty-filter-groups nil
- ibuffer-never-show-predicates '("^\\*"))
-(add-hook
- 'ibuffer-mode-hook
- (lambda ()
-   (ibuffer-do-sort-by-recency)
-   (ibuffer-auto-mode 1)))
+ ;; ibuffer-never-show-predicates '("^\\*")
+ )
+ (add-hook
+  'ibuffer-mode-hook
+  (lambda ()
+    (ibuffer-do-sort-by-recency)
+    (ibuffer-auto-mode 1)))
 
 (use-package ibuffer-vc
   :init
@@ -150,9 +151,12 @@
        "^\\*org-roam\\*"
        "\\*Shell Command Output\\*")
       :regexp t :nonselect t :popup t :align t)
-     ((dired-mode color-rg-mode)
-      :select t :popup t)
-     (("^magit" magit-mode vterm-mode)
+     ((dired-mode
+       color-rg-mode
+       "^\\*.* eww\\*$")
+      :regexp t :select t :popup t)
+     (("^magit" magit-mode
+       vterm-mode)
       :regexp t :select t :same t :inhibit-window-quit t)
      )
    )

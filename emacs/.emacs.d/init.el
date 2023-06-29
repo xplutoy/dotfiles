@@ -35,6 +35,7 @@
 (require 'init-note)
 (require 'init-mail)
 (require 'init-lang)
+(require 'init-python)
 (require 'init-eshell)
 (require 'init-elfeed)
 ;;; init.el ends here
