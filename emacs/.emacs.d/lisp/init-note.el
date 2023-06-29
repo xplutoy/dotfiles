@@ -3,14 +3,13 @@
   :ensure nil
   :defer 1
   :custom
-  (org-directory yx/org-root)
-  (org-crypt-key yx/gpg-encrypt-key)
-  (org-default-notes-file (expand-file-name "inbox.org" org-directory))
+  (org-directory yx/doc-dir)
   (org-ellipsis "...")
   (org-tags-column 0)
   (org-num-max-level 2)
   (org-log-into-drawer t)
   (org-return-follows-link t)
+  (org-crypt-key yx/gpg-encrypt-key)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts '{})
   (org-image-actual-width '(600))
@@ -21,9 +20,12 @@
   (org-fontify-quote-and-verse-blocks t)
   (org-agenda-window-setup 'current-window)
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
   (org-modules '(org-habit org-tempo))
   (org-habit-graph-column 60)
 
+  (org-default-notes-file
+   (expand-file-name "inbox.org" org-directory))
   (org-capture-templates
    '(("t" "task" entry (file+headline org-default-notes-file "Tasks")
       "* TODO [#B] %^{Title}\n%?")
@@ -43,22 +45,39 @@
     (add-to-list 'org-structure-template-alist ele))
   )
 
-(use-package org-journal
-  :after org
-  :init
-  (setq
-   org-journal-time-format ""
-   org-journal-file-format "%Y_%m_%d.org"
-   org-journal-date-format "#+TITLE: Journal Entry- %e %b %Y (%A)"
-   org-journal-encrypt-journal t
-   org-journal-find-file 'find-file
-   org-journal-dir "~/privacy/journal/"
-   org-journal-enable-agenda-integration t
-   )
-  )
-
 (use-package valign
   :hook (org-mode . valign-mode)
   )
 
-(provide 'init-note)
+(use-package org-download
+  :after org
+  :custom
+  (org-download-screenshot-method "screencapture -i %s")
+  :bind (:map org-mode-map
+              (("s-y" . org-download-yank)
+               ("s-t" . org-download-clipboard)
+               ("s-Y" . org-download-screenshot)))
+  )
+
+  (use-package emacsql-sqlite-builtin)
+  (use-package org-roam
+    :bind (("C-c n a" . org-id-get-create)
+           ("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n g" . org-roam-graph)
+           ("C-c n i" . org-roam-node-insert)
+           ("C-c n c" . org-roam-capture)
+           ("C-c n j" . org-roam-dailies-capture-today)
+           ("C-c n r" . org-roam-ref-find)
+           ("C-c n R" . org-roam-ref-add)
+           ("C-c n A" . org-roam-alias-add)
+           ("C-c n s" . org-roam-db-sync))
+    :custom
+    (org-roam-directory
+     (expand-file-name "yx-slip-notes" yx/doc-dir))
+    (org-roam-database-connector 'sqlite-builtin)
+    :config
+    (org-roam-db-autosync-enable)
+    )
+
+  (provide 'init-note)

@@ -121,11 +121,11 @@
 
 (use-package shackle
   :defer 1
-  :init
-  (setq shackle-default-size 0.40
-        shackle-default-alignment 'below
-        shackle-select-reused-windows t
-        shackle-inhibit-window-quit-on-same-windows nil)
+  :custom
+  (shackle-default-size 0.4)
+  (shackle-select-reused-windows t)
+  (shackle-default-alignment 'below)
+  (shackle-inhibit-window-quit-on-same-windows nil)
   :config
   (setq
    shackle-rules
@@ -147,6 +147,7 @@
        "^\\*Org Note"
        "^\\*Org Select"
        "\\*Capture\\*"
+       "^\\*org-roam\\*"
        "\\*Shell Command Output\\*")
       :regexp t :nonselect t :popup t :align t)
      ((dired-mode color-rg-mode)

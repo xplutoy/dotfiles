@@ -1,5 +1,5 @@
 ;;; init.el --- emacs init.el. -*- coding: utf-8; lexical-binding: t; -*-
-(defvar yx/org-root         "~/privacy")
+(defvar yx/doc-dir          "~/yxdocs/")
 (defvar yx/etc-dir          "~/.emacs.d/etc/")
 (defvar yx/var-dir          "~/.emacs.d/.cache/")
 (defvar yx/gpg-sign-key     "67B86CB8A5630C51!")

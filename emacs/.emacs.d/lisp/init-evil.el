@@ -177,6 +177,7 @@
     '((conf-mode . normal)
       (text-mode . normal)
       (prog-mode . normal)
+      (org-mode  . insert)
       (color-rg-mode . emacs))
     "Default evil state per major mode.")
   (dolist (p yx-initial-evil-state-setup)
