@@ -10,6 +10,8 @@
     (define-key dired-mode-map (kbd "?") 'hydra-dired/body))
   )
 
+(use-package major-mode-hydra)
+
 ;; dired
 (defhydra hydra-dired (:hint nil :color pink)
   "

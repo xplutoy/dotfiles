@@ -60,9 +60,9 @@
     )
   )
 (use-package vterm-toggle
-  :init
-  (setq vterm-toggle-hide-method nil
-        vterm-toggle-cd-auto-create-buffer nil))
+  :custom
+  (vterm-toggle-hide-method 'reset-window-configration)
+  (vterm-toggle-cd-auto-create-buffer nil))
 
 (use-package eat
   :defer 1

@@ -15,6 +15,7 @@
  display-buffer-base-action
  '((display-buffer-same-window
     display-buffer-reuse-window
+    display-buffer-in-previous-window
     display-buffer-reuse-mode-window
     display-buffer-below-selected
     display-buffer-pop-up-window)
@@ -46,16 +47,23 @@
   :init
   :hook (ibuffer . ibuffer-vc-set-filter-groups-by-vc-root))
 
-;; dired
-(setq
- dired-dwim-target t
- dired-mouse-drag-files t
- dired-omit-files "^\\..*$"
- dired-recursive-copies 'always
- dired-kill-when-opening-new-dired-buffer t
- dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group")
-
-(add-hook 'dired-mode-hook 'dired-omit-mode)
+(use-package dired
+  :ensure nil
+  :custom
+  (dired-dwim-target t)
+  (dired-mouse-drag-files t)
+  (dired-omit-files "^\\..*$")
+  (dired-recursive-copies 'always)
+  (dired-kill-when-opening-new-dired-buffer t)
+  (dired-listing-switches
+   "-l --almost-all --human-readable --group-directories-first --no-group")
+  :config
+  (put 'dired-find-alternate-file 'disabled nil)
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (dired-omit-mode)
+              (dired-hide-details-mode)))
+  )
 
 (use-package diredfl
   :hook (dired-mode . diredfl-mode)
@@ -83,28 +91,6 @@
   (winum-mode 1)
   )
 
-(use-package golden-ratio
-  :init
-  (setq golden-ratio-auto-scale t
-        golden-ratio-max-width nil)
-  (setq golden-ratio-exclude-modes
-        '(gnus-mode
-          gnus-summary-mode
-          gnus-article-mode
-          which-key-mode
-          vundo-mode
-          calendar-mode
-          imenu-list-major-mode))
-  :config
-  (dolist (re '("^\\*Ilist"
-                "^\\*Org"
-                "^\\*Agenda"
-                "^\\*eshell"
-                "^\\*vterm"
-                "^nnrs"))
-    (add-to-list 'golden-ratio-exclude-buffer-regexp re))
-  )
-
 (use-package popper
   :defer 1
   :bind (("C-`" . popper-toggle-latest)
@@ -121,12 +107,10 @@
           "\\*shell.*\\*$" shell-mode
           "\\*eshell.*\\*$" eshell-mode
           "\\*term.*\\*$" term-mode
-          "\\*vterm.*\\*$" vterm-mode
           "\\*julia\\*$"
           "\\*color-rg\\*$"
           help-mode
           occur-mode
-          dired-mode
           compilation-mode
           ))
   (popper-mode 1)
@@ -145,18 +129,12 @@
    shackle-rules
    '((("\\*Ibuffer\\*"
        "\\*Help\\*"
-       "\\*es?hell.*"
-       "\\*vterm.*"
        "\\*info\\*"
        "\\*[Wo]*Man.*\\*"
        "\\*Dictionary\\*"
        "\\*Flymake .*"
        "^CAPTURE-"
-       "^\\*julia.*"
-       vterm-mode
-       dired-mode
-       occur-mode
-       color-rg-mode)
+       "^\\*julia.*")
       :regexp t :select t :popup t :align t)
      (("\\*Warnings\\*"
        "\\*Messages\\*"
@@ -169,7 +147,9 @@
        "\\*Capture\\*"
        "\\*Shell Command Output\\*")
       :regexp t :nonselect t :popup t :align t)
-     (("^magit" magit-mode)
+     ((dired-mode color-rg-mode)
+      :select t :popup t)
+     (("^magit" magit-mode vterm-mode)
       :regexp t :select t :same t :inhibit-window-quit t)
      )
    )

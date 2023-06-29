@@ -7,7 +7,11 @@
 
 (use-package crux-yx
   :defer 1
-  :load-path "site-lisp/crux-yx")
+  :load-path "site-lisp/crux-yx"
+  :config
+  (add-hook 'eww-mode-hook
+            (lambda ()
+              (setq-local imenu-create-index-function 'unpackaged/imenu-eww-headings))))
 
 (use-package benchmark-init
   :disabled

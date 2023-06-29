@@ -100,7 +100,6 @@
   "s,"  'color-rg-search-symbol-in-current-file
   "s."  'color-rg-search-input-in-current-file
   "T" '(:ignore t :which-key "Taggol")
-  "Tgr" 'golden-ratio-mode
   "Tsl" 'so-long-minor-mode
   "Thi" 'hi-lock-mode
   "Thl" 'hl-line-mode
