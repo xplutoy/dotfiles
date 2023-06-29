@@ -12,6 +12,7 @@
    ("https://spaces.ac.cn/feed" AI)
    ("https://ruder.io/rss/index.rss" AI)
    ("https://www.inference.vc/rss" AI)
+   ("https://safjan.com/feeds/all.rss.xml" AI)
    ("https://lilianweng.github.io/index.xml" AI)
    )
  )

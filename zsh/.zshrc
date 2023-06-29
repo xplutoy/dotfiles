@@ -51,17 +51,28 @@ alias gstd='git stash drop'
 alias gstp='git stash pop'
 alias gstc='git stash clear'
 
+# alias navi='navi --tldr'
 alias r='radian'
 
 # plugins
-source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath); compinit
-fpath+=($HOME/.zsh/pure); prompt pure
+source $HOME/.zsh/plugins/zsh_unplugged_yx/zsh_unplugged.zsh
+plugins=(
+  sindresorhus/pure
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  zdharma-continuum/fast-syntax-highlighting
+  )
+plugin-load $plugins
+
+compinit
+prompt pure
 zstyle :prompt:pure:git:stash show yes
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# navi
+eval "$(navi widget zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

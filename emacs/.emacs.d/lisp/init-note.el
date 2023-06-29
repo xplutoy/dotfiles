@@ -56,6 +56,13 @@
   :hook (org-mode . valign-mode)
   )
 
+(use-package org-appear
+  :hook (org-mode . org-appear-mode)
+  :custom
+  (org-appear-delay 1)
+  (org-appear-autolinks t)
+  )
+
 (use-package org-download
   :after org
   :custom
