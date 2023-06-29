@@ -127,8 +127,7 @@
      (setq imenu-create-index-function #'python-imenu-create-flat-index)
      (semantic-mode 1)
      ))
-(use-package py-isort
-  :hook (before-save . py-isort-before-save))
+
 (use-package pyvenv)
 (use-package pyvenv-auto
   :hook (python-ts-mode . pyvenv-auto-mode))

@@ -27,6 +27,7 @@
  "s-;"        'flyspell-correct-wrapper
  "s-'"        'flyspell-correct-next
  "s-r"        'consult-recent-file
+ "s-o"        'crux-open-with
  "C-'"        'vterm-toggle-cd
  "C-;"        'yx/toggole-eshell
  "C-."        'embark-act
@@ -140,10 +141,11 @@
   "gd" 'xref-find-definitions
   "gr" 'xref-find-references
   "go" 'xref-find-definitions-other-window
-  "e" '(:ignore t :which-key "code lint and refactor")
+  "e" '(:ignore t :which-key "code action")
   "ef" 'eglot-format
   "er" 'eglot-rename
   "eh" 'eglot-help-at-point
+  "ea" 'eglot-code-actions
   "en" 'flymake-goto-next-error
   "ep" 'flymake-goto-prev-error
   "eb" 'flymake-show-buffer-diagnostics
@@ -156,20 +158,19 @@
   :hook (after-init . evil-mode)
   :custom
   (evil-undo-system 'undo-redo)
-  :init
-  (setq evil-default-state 'emacs
-        evil-want-fine-undo t
-        evil-want-C-u-scroll t
-        evil-want-C-w-delete t
-        evil-want-integration t
-        evil-want-keybinding nil
-        evil-want-Y-yank-to-eol t
-        evil-motion-state-modes nil
-        evil-magic 'very-magic
-        evil-search-module 'evil-search
-        evil-respect-visual-line-mode t
-        evil-ex-search-vim-style-regexp t
-        evil-disable-insert-state-bindings t)
+  (evil-default-state 'emacs)
+  (evil-want-fine-undo t)
+  (evil-want-C-u-scroll t)
+  (evil-want-C-w-delete t)
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
+  (evil-want-Y-yank-to-eol t)
+  (evil-motion-state-modes nil)
+  (evil-magic 'very-magic)
+  (evil-search-module 'evil-search)
+  (evil-respect-visual-line-mode t)
+  (evil-ex-search-vim-style-regexp t)
+  (evil-disable-insert-state-bindings t)
 
   :config
   (defvar yx-initial-evil-state-setup
@@ -211,8 +212,8 @@
 (use-package vimish-fold)
 (use-package evil-vimish-fold
   :hook (prog-mode . evil-vimish-fold-mode)
-  :init
-  (setq evil-vimish-fold-mode-lighter " ♇")
+  :custom
+  (evil-vimish-fold-mode-lighter " ♇")
   )
 
 (use-package evil-owl

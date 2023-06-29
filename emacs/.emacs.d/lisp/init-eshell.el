@@ -61,7 +61,7 @@
   )
 (use-package vterm-toggle
   :custom
-  (vterm-toggle-hide-method 'reset-window-configration)
+  (vterm-toggle-hide-method 'delete-window)
   (vterm-toggle-cd-auto-create-buffer nil))
 
 (use-package eat
