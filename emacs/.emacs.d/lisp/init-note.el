@@ -58,7 +58,12 @@
   :hook (org-mode . valign-mode)
   )
 
-(use-package olivetti)
+(use-package olivetti
+  :init
+  (setq
+   olivetti-style 'fancy
+   olivetti-body-width 78)
+  )
 
 (use-package org-appear
   :hook (org-mode . org-appear-mode)

@@ -2,7 +2,7 @@
 (setq-default
  tab-width 2
  abbrev-mode t
- fill-column 120
+ fill-column 88
  truncate-lines t
  indent-tabs-mode nil
  require-final-newline t
