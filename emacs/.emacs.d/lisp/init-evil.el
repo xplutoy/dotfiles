@@ -49,6 +49,12 @@
  "C-c t"      'org-show-todo-tree
  "C-c g"      'consult-ripgrep
  "C-c f"      'consult-find
+
+ "C-h C-f"    'find-function
+ "C-h C-k"    'find-function-on-key
+ "C-h C-v"    'find-variable
+ "C-h C-l"    'find-library
+ "C-h C-i"    'info-display-manual
  )
 
 (yx-space-leader-def
@@ -144,7 +150,6 @@
   "dd" 'devdocs-lookup
   "g" '(:ignore t :which-key "code navigate")
   "gf" 'consult-flymake
-  "gv" 'find-variable
   "gs" 'consult-eglot-symbols
   "gd" 'xref-find-definitions
   "gr" 'xref-find-references

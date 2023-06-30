@@ -58,6 +58,8 @@
   :hook (org-mode . valign-mode)
   )
 
+(use-package olivetti)
+
 (use-package org-appear
   :hook (org-mode . org-appear-mode)
   :custom
@@ -126,4 +128,5 @@
   )
 
 
+;; ========== end ==========
 (provide 'init-note)
