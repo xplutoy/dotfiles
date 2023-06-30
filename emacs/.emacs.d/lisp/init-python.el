@@ -10,6 +10,10 @@
    (semantic-mode 1)
    ))
 
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
+
 (use-package pyvenv)
 (use-package pyvenv-auto
   :hook (python-ts-mode . pyvenv-auto-run))

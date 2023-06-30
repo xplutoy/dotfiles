@@ -1,11 +1,13 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
+(defvar yx/default-font-family "Hack Nerd Font Mono")
+
 (defun font-installed-p (font-name)
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (set-face-attribute 'default nil
-                      :family "Inconsolata Nerd Font Mono" :height 160)
+                      :family yx/default-font-family :height 150)
   (set-face-attribute 'fixed-pitch nil
-                      :family "Incosolata Nerd Font Mono" :height 1.0)
+                      :family yx/default-font-family :height 1.0)
   (set-face-attribute 'variable-pitch nil
                       :family "Source Sans Pro" :height 1.0)
   (set-face-attribute 'fixed-pitch-serif nil
@@ -38,7 +40,11 @@
    doom-modeline-project-detection 'project)
   )
 
-(use-package nerd-icons)
+(use-package nerd-icons
+  :config
+  (setq
+   nerd-icons-scale-factor 1.0
+   nerd-icons-font-famil "Hack nerd font"))
 (use-package nerd-icons-dired
   :hook (dired-mode . nerd-icons-dired-mode))
 (use-package nerd-icons-ibuffer

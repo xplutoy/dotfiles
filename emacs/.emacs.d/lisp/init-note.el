@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t no-byte-compile: t -*-
+(use-package emacsql-sqlite-builtin)
+
 (use-package org
   :ensure nil
   :defer 1
@@ -38,7 +40,7 @@
 
   ;; org-cite
   (org-cite-global-bibliography
-   (expand-file-name "references.bib" yx/doc-dir))
+   (list (expand-file-name "references.bib" yx/doc-dir)))
 
   :config
   (org-babel-do-load-languages
@@ -73,17 +75,18 @@
                ("s-Y" . org-download-screenshot)))
   )
 
-(use-package emacsql-sqlite-builtin)
 (use-package org-roam
+  :after org
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
          ("C-c n j" . org-roam-dailies-capture-today))
-  :custom
-  (org-roam-directory
-   (expand-file-name "yx-slip-notes" yx/doc-dir))
-  (org-roam-database-connector 'sqlite-builtin)
+  :init
+  (setq org-roam-directory
+        (expand-file-name "yx-slip-notes" yx/doc-dir)
+        org-roam-database-connector 'sqlite-builtin
+        )
   :config
   (org-roam-db-autosync-enable)
   (add-hook 'org-roam-capture-new-node-hook
@@ -92,5 +95,35 @@
 
 (use-package org-roam-ui
   :after org-roam)
+
+(use-package citar
+  :after org
+  :demand t
+  :bind (:map org-mode-map
+              ("C-c B" . 'org-cite-insert))
+  :config
+  (setq
+   org-cite-insert-processor 'citar
+   org-cite-follow-processor 'citar
+   org-cite-activate-processor 'citar
+   citar-bibliography org-cite-global-bibliography
+   citar-notes-paths
+   (expand-file-name "research" org-roam-directory))
+  :hook
+  (org-mode . citar-capf-setup)
+  )
+(use-package citar-embark
+  :after citar embark
+  :demand t
+  :custom
+  citar-at-point-function 'embark-act
+  :config (citar-embark-mode)
+  )
+(use-package citar-org-roam
+  :after (citar org-roam)
+  :demand t
+  :config (citar-org-roam-mode)
+  )
+
 
 (provide 'init-note)

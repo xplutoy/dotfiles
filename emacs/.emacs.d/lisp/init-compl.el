@@ -13,12 +13,6 @@
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   )
 
-(use-package vertico-prescient
-  :after vertico
-  :defer 1
-  :config
-  (vertico-prescient-mode 1))
-
 (use-package orderless
   :init
   (setq completion-styles '(orderless basic)))
@@ -98,12 +92,6 @@
               ("C-q"   . corfu-quick-insert)
               ("SPC"   . corfu-insert-separator))
   )
-
-(use-package corfu-prescient
-  :after corfu
-  :defer 1
-  :config
-  (corfu-prescient-mode 1))
 
 (use-package corfu-terminal
   :unless (display-graphic-p)
