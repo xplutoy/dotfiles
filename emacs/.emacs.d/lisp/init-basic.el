@@ -9,6 +9,8 @@
  tab-always-indent 'complete)
 
 (setq
+ track-eol t
+ line-move-visual nil
  use-short-answers  t
  system-time-locale "C"
  auto-revert-verbose nil

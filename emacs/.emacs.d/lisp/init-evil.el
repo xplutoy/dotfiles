@@ -157,21 +157,20 @@
 (use-package evil
   :hook (after-init . evil-mode)
   :custom
-  (evil-undo-system 'undo-redo)
-  (evil-default-state 'emacs)
-  (evil-want-fine-undo t)
-  (evil-want-C-u-scroll t)
-  (evil-want-C-w-delete t)
-  (evil-want-integration t)
-  (evil-want-keybinding nil)
-  (evil-want-Y-yank-to-eol t)
-  (evil-motion-state-modes nil)
-  (evil-magic 'very-magic)
-  (evil-search-module 'evil-search)
-  (evil-respect-visual-line-mode t)
-  (evil-ex-search-vim-style-regexp t)
-  (evil-disable-insert-state-bindings t)
-
+  evil-default-state 'emacs
+  evil-want-fine-undo t
+  evil-want-C-u-scroll t
+  evil-want-C-w-delete nil
+  evil-want-integration t
+  evil-want-keybinding nil
+  evil-want-Y-yank-to-eol t
+  evil-undo-system 'undo-redo
+  evil-motion-state-modes nil
+  evil-magic 'very-magic
+  evil-search-module 'evil-search
+  evil-respect-visual-line-mode t
+  evil-ex-search-vim-style-regexp t
+  evil-disable-insert-state-bindings t
   :config
   (defvar yx-initial-evil-state-setup
     '((conf-mode . normal)
@@ -187,7 +186,7 @@
     [tab]   'org-cycle
     [S-tab] 'org-shifttab)
   :general
-  (:states 'normal
+  (:states '(normal visual)
            "C-." nil  ;; unbind evil-repeat-pop
            ;; more emacs style
            "C-p" 'previous-line
@@ -195,11 +194,15 @@
            "C-a" 'move-beginning-of-line
            "C-e" 'end-of-line
            "C-y" 'yank
+           "C-w" 'kill-region
            "M-." 'xref-find-definitions
            "gD"  'devdocs-lookup
            )
   (:states 'insert
-           "C-a" 'move-beginning-of-line)
+           "C-a" 'move-beginning-of-line
+           "C-y" 'yank
+           "C-k" 'kill-line
+           "C-w" 'kill-region)
   (evil-ex-completion-map "C-a" 'move-beginning-of-line
                           "C-b" 'backward-char
                           "M-n" 'next-complete-history-element

@@ -22,9 +22,9 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias :q=exit
 alias ..='cd ..'
-alias ls='ls --color=auto'
-alias ll='ls -lahF'
-alias la='ls -A'
+alias ls='exa --icons -a'
+alias ll='exa -l --icons -x -F --git-ignore --group-directories-first'
+alias lt2='exa -T -L 2 --git-ignore'
 alias grep='grep --color=auto'
 alias vim='nvim'
 # emacs alias
@@ -61,6 +61,8 @@ plugins=(
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
   zdharma-continuum/fast-syntax-highlighting
+
+  xplutoy/zsh-auto-venv-yx
   )
 plugin-load $plugins
 

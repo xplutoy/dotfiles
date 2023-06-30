@@ -82,10 +82,10 @@
 
 ;; corfu ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package corfu
-  :init
-  (setq corfu-auto t
-        corfu-preselect 'valid
-        corfu-echo-documentation nil)
+  :custom
+  corfu-auto t
+  corfu-preselect 'valid
+  corfu-echo-documentation nil
   :config
   (corfu-echo-mode 1)
   (corfu-history-mode 1)

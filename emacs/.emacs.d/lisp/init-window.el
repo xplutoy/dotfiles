@@ -105,6 +105,7 @@
    popper-group-function #'popper-group-by-directory)
   (setq popper-reference-buffers
         '("\\*Ibuffer\\*"
+          "\\*Backtrace\\*"
           "\\*evil-registers\\*"
           "\\*evil-owl\\*"
           "\\*shell.*\\*$" shell-mode
@@ -112,6 +113,7 @@
           "\\*term.*\\*$" term-mode
           "\\*julia\\*$"
           "\\*color-rg\\*$"
+          "\\*Python\\*$"
           help-mode
           occur-mode
           compilation-mode
@@ -149,6 +151,7 @@
        "^\\*Org Select"
        "\\*Capture\\*"
        "^\\*org-roam\\*"
+       "^\\*Python\\*"
        "\\*Shell Command Output\\*")
       :regexp t :nonselect t :popup t :align t)
      ((dired-mode
