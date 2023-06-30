@@ -54,12 +54,20 @@
   \item[C-h f] \humanreadable{describe function}
   \end{keylist}
 
-  \section{Global}
+  \section{全局}
   \begin{keylist}
+  \item[jk] evil-emacs-state
   \item[C-;] eshell
   \item[C-'] vterm
+  \item[s-o] crux-open-with
+  \item[s-;] flyspell-correct-wrapper
+  \item[s-'] flyspell-correct-next
+  \item[C-.] embark-act
+  \item[C-,] embark-dwim
   \item[j k] evil-emacs-state
   \item[C-x C-0] text-scale-adjust
+  \item[C-h b] embark-bindings
+  \item[C-h B] embark-bindings-at-point
   \item[C-h C-f] find-function
   \item[C-h C-k] find-function-on-key
   \item[C-h C-v] find-variable
@@ -77,7 +85,11 @@
   \item[s-,] winner-undo
   \item[s-.] winner-redo
   \item[SPC-1] windows-select-1
-
+  \item[SPC w0] delete-window
+  \item[SPC w0] delete-window
+  \item[SPC w1] delete-other-windows
+  \item[SPC w2] split-window-vertically
+  \item[SPC w3] split-window-horizontally
   \end{keylist}
 
   \subsection{文件管理}
@@ -103,36 +115,107 @@
   \end{keylist}
 
   \subsection{文本编辑}
-  \humanreadable{Kill \& Mark Things Easily in Emacs.}
   \begin{keylist}
+  \item[C-/] undo
+  \item[C-?] redo
+  \item[C-x k] kill-buffer-and-window
+  \item[M-;] evil-commentary-line
+  \item[M-i] consult-imenu-multi
   \item[M-w] easy-kill
   \item[C-M-SPC] easy-mark
   \item[C-M-@] easy-mark
   \end{keylist}
 
-  \section{移动跳转}
+  \subsection{移动跳转}
   \subsection{zop-to-char}
   \humanreadable{A more powerful alternative to zap-to-char.}
   \begin{keylist}
   \item[jj] avy-goto-word-1
+  \item[SPC j;] evil-goto-last-change
+  \item[SPC jj] evil-avy-goto-char-timer
+  \item[SPC jw] evil-avy-goto-word-or-subword-1
+  \item[SPC jl] consult-line
+  \item[SPC jL] consult-line-multi
+  \item[SPC ji] consult-imenu
+  \item[SPC jo] consult-outline
+  \item[SPC jm] consult-mark
+  \item[SPC jM] consult-global-mark
   \item[M-z] zop-up-to-char
   \item[M-Z] zop-to-char
   \end{keylist}
 
-
-  \section{搜索查找}
-  \subsection{key-chord}
+  \subsection{搜索查找}
   \begin{keylist}
+  \item[C-c g] consult-ripgrep
+  \item[C-c f] consult-find
+  \item[gh] consult-ripgrep
+  \item[hh] color-rg-search-symbol
+  \item[SPC sg] color-rg-search-symbol
+  \item[SPC sh] color-rg-search-input
+  \item[SPC sj] color-rg-search-symbol-in-project
+  \item[SPC sk] color-rg-search-input-in-project
+  \item[SPC s,] color-rg-search-symbol-in-current-file
+  \item[SPC s.] color-rg-search-input-in-current-file
   \end{keylist}
 
-
-  \section{Programing}
-  \subsection{key-chord}
+  \subsection{寄存器/书签}
   \begin{keylist}
+  \item[SPC rj] jump-to-register
+  \item[SPC ri] insert-register
+  \item[SPC rS] copy-to-register
+  \item[SPC rs] consult-register-store
+  \item[SPC rl] consult-register-load
+  \item[SPC rr] consult-register
+  \item[SPC rr] consult-bookmark
   \end{keylist}
 
-  \subsection{evil}
+  \section{编程}
   \begin{keylist}
+  \end{keylist}
+  \item[SPC de] eldoc
+  \item[SPC dd] devdocs-lookup
+  \item[SPC gf] consult-flymake
+  \item[SPC gv] eldoc
+  \item[SPC gs] consult-eglot-symbols
+  \item[SPC gd] xref-find-definitions
+  \item[SPC gr] xref-find-references
+  \item[SPC go] xref-find-definitions-other-window
+  \item[SPC ef] eglot-format
+  \item[SPC er] eglot-rename
+
+  \item[SPC eh] eglot-help-at-point
+  \item[SPC ea] eglot-code-actions
+  \item[SPC en] flymake-goto-next-error
+  \item[SPC ep] flymake-goto-prev-error
+  \item[SPC eb] flymake-show-buffer-diagnostics
+  \item[SPC hh] symbol-overlay-put
+  \item[SPC hc] symbol-overlay-remove-all
+  
+  \subsection{magit}
+  \begin{keylist}
+  \item[SPC vs] magit-status
+  \item[SPC vb] magit-blame
+  \item[SPC vd] magit-diff-buffer-file
+  \item[SPC vv] magit-dispatch
+  \item[SPC vfc] magit-file-checkout
+  \item[SPC vfd] magit-file-delete
+  \item[SPC vfr] magit-file-rename
+  \item[SPC vfs] magit-stage-file
+  \item[SPC vfu] magit-unstage-file
+  \end{keylist}
+
+  \subsection{project}
+  \begin{keylist}
+  \item[SPC pp] project-switch-project
+  \item[SPC pb] project-switch-to-buffer
+  \item[SPC pd] project-find-dir
+  \item[SPC pf] project-find-file
+  \item[SPC p!] project-shell-command
+  \item[SPC p&] project-async-shell-command
+  \item[SPC pe] project-eshell
+  \item[SPC pr] project-query-replace-regexp
+  \item[SPC pg] project-find-regexp
+  \item[SPC px] project-execute-extended-command
   \end{keylist}
 
   \subsection{emacs-lisp}
@@ -140,7 +223,6 @@
   \item[C-c C-c] eval-defun
   \item[C-c C-b] eval-buffer
   \end{keylist}
-
 
   \subsection{python}
   \begin{keylist}
@@ -152,6 +234,7 @@
   \item[C-c a] org-agenda
   \item[C-c b] org-iswitchb
   \item[C-c c] org-capture
+  \item[C-c t] org-show-todo-tree
   \end{keylist}
 
 \end{multicols}
