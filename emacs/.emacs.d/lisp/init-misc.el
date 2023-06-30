@@ -49,6 +49,14 @@
   (move-text-default-bindings)
   )
 
+(use-package smart-hungry-delete
+  :bind (:map prog-mode-map
+              ([remap backward-delete-char-untabify] . smart-hungry-delete-backward-char)
+              ([remap delete-backward-char] . smart-hungry-delete-backward-char)
+              ([remap delete-char] . smart-hungry-delete-backward-char))
+  :init (smart-hungry-delete-add-default-hooks)
+  )
+
 (use-package holymotion
   :ensure nil
   :load-path "site-lisp/holymotion"

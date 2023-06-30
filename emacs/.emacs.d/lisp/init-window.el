@@ -25,6 +25,11 @@
    )
  )
 
+(setq
+ window-divider-default-bottom-width 1
+ window-divider-default-places 'bottom-only)
+(window-divider-mode 1)
+
 ;; tabbar
 (setq
  tab-bar-tab-hints t

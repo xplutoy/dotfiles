@@ -1,4 +1,14 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
+(use-package key-chord
+  :init
+  (key-chord-mode 1)
+  (key-chord-define-global "jj"     'avy-goto-word-1)
+  (key-chord-define-global "jk"     'evil-emacs-state)
+  (key-chord-define-global "gh"     'consult-ripgrep)
+  (key-chord-define-global "hh"     'color-rg-search-symbol)
+  (key-chord-define-global "ff"     'find-file)
+  )
+
 (use-package general
   :config
   (general-evil-setup t)
@@ -13,7 +23,6 @@
 (general-define-key
  ;; beter defaults
  [remap describe-bindings]      'embark-bindings
- [remap zap-to-char]            'zap-up-to-char
  [remap list-buffers]           'ibuffer
  [remap dabbrev-expand]         'hippie-expand
  [remap undo]                   'undo-only
@@ -38,7 +47,6 @@
  "C-c b"      'org-switchb
  "C-c l"      'org-store-link
  "C-c t"      'org-show-todo-tree
- "C-c j"      'org-journal-new-entry
  "C-c g"      'consult-ripgrep
  "C-c f"      'consult-find
  )

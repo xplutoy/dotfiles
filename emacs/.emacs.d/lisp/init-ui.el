@@ -8,14 +8,8 @@
                       :family yx/default-font-family :height 150)
   (set-face-attribute 'fixed-pitch nil
                       :family yx/default-font-family :height 1.0)
-  (set-face-attribute 'variable-pitch nil
-                      :family "Source Sans Pro" :height 1.0)
-  (set-face-attribute 'fixed-pitch-serif nil
-                      :family "Latin Modern Mono" :height 1.0)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
-  (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
-  (set-fontset-font t 'symbol "Symbols Nerd Font Mono" nil 'append)
-  (set-fontset-font t 'emoji "Noto Color Emoji" nil 'append)
+  (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai")
   )
 
 (if (daemonp)
