@@ -32,7 +32,19 @@
           (python-mode . python-ts-mode)))
   )
 
-(use-package reformatter)
+(use-package reformatter
+  :defer 1
+  :config
+  ;; python
+  (reformatter-define python-isort
+    :program "isort"
+    :args '("--stdout" "--atomic" "-"))
+  (add-hook 'python-ts-mode-hook 'python-isort-on-save-mode)
+  (reformatter-define python-black
+    :program "black"
+    :args '("-"))
+  (add-hook 'python-ts-mode-hook 'python-black-on-save-mode)
+  )
 
 (use-package yasnippet-snippets)
 (use-package yasnippet
