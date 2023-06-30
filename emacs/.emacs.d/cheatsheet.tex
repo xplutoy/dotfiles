@@ -6,6 +6,7 @@
 \usepackage{multicol}
 \usepackage{menukeys}
 \usepackage{enumitem}
+\usepackage{CJKutf8}
 \usepackage{xcolor}
 \usepackage{xpatch}
 \usepackage{xparse}
@@ -38,23 +39,30 @@
 \renewcommand\baselinestretch{1.2}
 
 \begin{document}
-\begin{multicols}{4}
+\begin{CJK}{UTF8}{gbsn}
+\begin{multicols}{3}
 
   \setlength{\columnsep}{1cm}
   \begin{center}
     \LARGE\color{heading}\textbf{Emacs Cheat Sheet}
   \end{center}
 
-  \section{Getting Help in Emacs}
+  \section{获取帮助}
   \begin{keylist}
   \item[C-h k \meta{key}] \humanreadable{describe function bound to \meta{key}}
   \item[C-h b] \humanreadable{list key-bindings for focused buffer}
   \item[C-h m] \humanreadable{describe mode}
   \item[C-h l] \humanreadable{show the keys you have pressed}
   \item[C-h f] \humanreadable{describe function}
+  \item[C-h b] embark-bindings
+  \item[C-h B] embark-bindings-at-point
+  \item[C-h C-f] find-function
+  \item[C-h C-k] find-function-on-key
+  \item[C-h C-l] find-library
+  \item[C-h C-i] info-display-manual
   \end{keylist}
 
-  \section{全局}
+  \section{全局按键}
   \begin{keylist}
   \item[jk] evil-emacs-state
   \item[C-;] eshell
@@ -66,13 +74,6 @@
   \item[C-,] embark-dwim
   \item[j k] evil-emacs-state
   \item[C-x C-0] text-scale-adjust
-  \item[C-h b] embark-bindings
-  \item[C-h B] embark-bindings-at-point
-  \item[C-h C-f] find-function
-  \item[C-h C-k] find-function-on-key
-  \item[C-h C-v] find-variable
-  \item[C-h C-l] find-library
-  \item[C-h C-i] info-display-manual
   \item[C-<backspace>] \humanreadable{kill backeard a word}
   \item[M-/] hippie-expand
   \item[C-x g] magit-status
@@ -106,6 +107,7 @@
   \item[SPC f K] crux-kill-other-buffers
   \item[SPC f D] crux-delete-file-and-buffer
   \item[s-r] consult-recentf-file
+  \end{keylist}
 
   \subsection{目录管理}
   \begin{keylist}
@@ -127,8 +129,6 @@
   \end{keylist}
 
   \subsection{移动跳转}
-  \subsection{zop-to-char}
-  \humanreadable{A more powerful alternative to zap-to-char.}
   \begin{keylist}
   \item[jj] avy-goto-word-1
   \item[SPC j;] evil-goto-last-change
@@ -171,7 +171,6 @@
 
   \section{编程}
   \begin{keylist}
-  \end{keylist}
   \item[SPC de] eldoc
   \item[SPC dd] devdocs-lookup
   \item[SPC gf] consult-flymake
@@ -190,7 +189,8 @@
   \item[SPC eb] flymake-show-buffer-diagnostics
   \item[SPC hh] symbol-overlay-put
   \item[SPC hc] symbol-overlay-remove-all
-  
+  \end{keylist}
+
   \subsection{magit}
   \begin{keylist}
   \item[SPC vs] magit-status
@@ -211,7 +211,7 @@
   \item[SPC pd] project-find-dir
   \item[SPC pf] project-find-file
   \item[SPC p!] project-shell-command
-  \item[SPC p&] project-async-shell-command
+  \item[SPC p\&] project-async-shell-command
   \item[SPC pe] project-eshell
   \item[SPC pr] project-query-replace-regexp
   \item[SPC pg] project-find-regexp
@@ -224,10 +224,6 @@
   \item[C-c C-b] eval-buffer
   \end{keylist}
 
-  \subsection{python}
-  \begin{keylist}
-  \end{keylist}
-
   \subsection{org}
   \begin{keylist}
   \item[C-c l] org-store-link
@@ -238,6 +234,7 @@
   \end{keylist}
 
 \end{multicols}
+\end{CJK}
 \end{document}
 
 %%% Local Variables:
