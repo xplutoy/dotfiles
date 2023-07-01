@@ -12,7 +12,7 @@
 
 (setq
  python-shell-interpreter "ipython"
- python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display_page=True")
+ python-shell-interpreter-args "-i --simple-prompt")
 
 (use-package pyvenv)
 (use-package pyvenv-auto

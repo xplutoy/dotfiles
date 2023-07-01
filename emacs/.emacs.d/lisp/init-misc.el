@@ -127,7 +127,7 @@
   :bind (("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages))
   :config
-  (setq jinx-languages '("en_US"))
+  (setq jinx-languages "en_US")
   )
 
 (use-package keyfreq

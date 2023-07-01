@@ -76,6 +76,9 @@ eval "$(zoxide init zsh)"
 # navi
 eval "$(navi widget zsh)"
 
+# thefuck
+eval $(thefuck --alias)
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
