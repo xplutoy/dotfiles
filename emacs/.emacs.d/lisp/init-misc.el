@@ -79,7 +79,7 @@
 (use-package sis
   :defer 1
   :hook
-  ((org-capture-mode . sis-set-other))
+  ((org-mode . sis-set-other))
   :init
   ;; C-s/r 默认优先使用英文
   (setq
@@ -120,17 +120,14 @@
 (use-package flyspell-correct
   :after flyspell
   :bind (:map flyspell-mode-map
-              ("s-;" . flyspell-correct-wrapper)
-              ("s-'" . flyspell-correct-next))
+              ("s-;" . flyspell-correct-wrapper))
   )
 (use-package jinx
-  :defer 2
+  :hook (org-mode . jinx-mode)
   :bind (("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages))
   :config
-  (add-hook 'jinx-mode-hook
-            (lambda ()
-              (jinx-languages "en_US" t)))
+  (setq jinx-languages '("en_US"))
   )
 
 (use-package keyfreq

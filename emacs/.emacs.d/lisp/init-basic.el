@@ -10,8 +10,9 @@
 
 (setq
  track-eol t
+ use-short-answers t
+ backup-by-copying t
  line-move-visual nil
- use-short-answers  t
  system-time-locale "C"
  auto-revert-verbose nil
  confirm-kill-processes nil
@@ -147,7 +148,8 @@
 
 ;; flyspell
 (setq
- ispell-program-name "hunspell"
+ ispell-dictionary "english"
+ ispell-program-name "enchant-2"
  ispell-local-dictionary "en_US"
  ispell-local-dictionary-alist
  '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))
@@ -215,7 +217,8 @@
  (lambda ()
    (setq-local
     whitespace-style
-    '(face trailing lines-char space-before-tab space-after-tab))
+    '(face trailing lines-char space-before-tab space-after-tab)
+    show-trailing-whitespace t)
    (hl-line-mode 1)
    (hs-minor-mode 1)
    (show-paren-mode 1)
