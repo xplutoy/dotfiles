@@ -31,6 +31,7 @@
  [remap toggle-input-method]    'sis-switch
  [remap comment-dwim]           'evil-commentary-line
  [remap tab-to-tab-stop]        'consult-imenu-multi
+ [remap zap-to-char]            'vg-quick-zap-to-char
  [remap customize]              'winner-undo
  "s-."                          'winner-redo
  "s-<return>" 'toggle-frame-maximized
