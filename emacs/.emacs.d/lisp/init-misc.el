@@ -123,6 +123,23 @@
               ("s-;" . flyspell-correct-wrapper)
               ("s-'" . flyspell-correct-next))
   )
+(use-package jinx
+  :defer 2
+  :bind (("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages))
+  :config
+  (add-hook 'jinx-mode-hook
+            (lambda ()
+              (jinx-languages "en_US" t)))
+  )
+
+(use-package keyfreq
+  :defer 1
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
+
+(use-package emacsql-sqlite-builtin)
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

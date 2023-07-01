@@ -7,6 +7,7 @@
   (key-chord-define-global "gh"     'consult-ripgrep)
   (key-chord-define-global "hh"     'color-rg-search-symbol)
   (key-chord-define-global "ff"     'find-file)
+  (key-chord-define-global "jb"     'consult-buffer)
   )
 
 (use-package general
@@ -41,15 +42,23 @@
  "C-;"        'yx/toggole-eshell
  "C-."        'embark-act
  "C-,"        'embark-dwim
- "C-h B"      'embark-bindings-at-point
+
+
+ "C-c g"      'consult-ripgrep
+ "C-c f"      'consult-find
+
  "C-c a"      'org-agenda
  "C-c c"      'org-capture
  "C-c b"      'org-switchb
  "C-c l"      'org-store-link
  "C-c t"      'org-show-todo-tree
- "C-c g"      'consult-ripgrep
- "C-c f"      'consult-find
+ "C-c n l"    'org-roam-buffer-toggle
+ "C-c n f"    'org-roam-node-find
+ "C-c n i"    'org-roam-node-insert
+ "C-c n c"    'org-roam-capture
+ "C-c n j"    'org-roam-dailies-capture-today
 
+ "C-h B"      'embark-bindings-at-point
  "C-h C-f"    'find-function
  "C-h C-k"    'find-function-on-key
  "C-h C-v"    'find-variable
@@ -159,9 +168,10 @@
   "er" 'eglot-rename
   "eh" 'eglot-help-at-point
   "ea" 'eglot-code-actions
-  "en" 'flymake-goto-next-error
+  "en" 'flymake-goto-next-erroer
   "ep" 'flymake-goto-prev-error
   "eb" 'flymake-show-buffer-diagnostics
+  "eB" 'flymake-show-project-diagnostics
   "h" '(:ignore t :which-key "code hilight")
   "hh" 'symbol-overlay-put
   "hc" 'symbol-overlay-remove-all
@@ -169,21 +179,23 @@
 
 (use-package evil
   :hook (after-init . evil-mode)
-  :custom
-  evil-default-state 'emacs
-  evil-want-fine-undo t
-  evil-want-C-u-scroll t
-  evil-want-C-w-delete nil
-  evil-want-integration t
-  evil-want-keybinding nil
-  evil-want-Y-yank-to-eol t
-  evil-undo-system 'undo-redo
-  evil-motion-state-modes nil
-  evil-magic 'very-magic
-  evil-search-module 'evil-search
-  evil-respect-visual-line-mode t
-  evil-ex-search-vim-style-regexp t
-  evil-disable-insert-state-bindings t
+  :init
+  (setq
+   evil-default-state 'emacs
+   evil-want-fine-undo t
+   evil-want-C-u-scroll t
+   evil-want-C-w-delete nil
+   evil-want-integration t
+   evil-want-keybinding nil
+   evil-want-Y-yank-to-eol t
+   evil-undo-system 'undo-redo
+   evil-motion-state-modes nil
+   evil-magic 'very-magic
+   evil-search-module 'evil-search
+   evil-respect-visual-line-mode t
+   evil-ex-search-vim-style-regexp t
+   evil-disable-insert-state-bindings t
+   )
   :config
   (defvar yx-initial-evil-state-setup
     '((conf-mode . normal)

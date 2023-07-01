@@ -171,4 +171,10 @@
   (shackle-mode 1)
   )
 
+(use-package burly
+  :defer 1
+  :config
+  (burly-tabs-mode 1)
+  )
+
 (provide 'init-window)

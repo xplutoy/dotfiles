@@ -1,12 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
-(add-hook
- #'before-save-hook
- #'(lambda ()
-     (delete-trailing-whitespace)
-     (whitespace-cleanup)))
-
 (use-package eglot
   :ensure nil
+  :init
+  (setq
+   eglot-autoshutdown t
+   eglot-extend-to-xref t)
   :hook ((c-mode
           c-ts-mode
           R-mode

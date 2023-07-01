@@ -1,5 +1,14 @@
 ;;; -*- lexical-binding: t no-byte-compile: t -*-
-(use-package emacsql-sqlite-builtin)
+(with-eval-after-load 'org
+  (define-keymap
+    :keymap org-mode-map
+    "C-c <up>"   'org-priority-up
+    "C-c <down>" 'org-priority-down
+    "C-c y"      'org-download-yank
+    "C-c Y"      'org-download-screenshot
+    "C-c B"      'org-cite-insert
+    )
+  )
 
 (use-package org
   :ensure nil
@@ -77,18 +86,11 @@
   :custom
   (org-download-screenshot-method "screencapture -i %s")
   :bind (:map org-mode-map
-              (("s-y" . org-download-yank)
-               ("s-t" . org-download-clipboard)
-               ("s-Y" . org-download-screenshot)))
+              )
   )
 
 (use-package org-roam
   :after org
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ("C-c n j" . org-roam-dailies-capture-today))
   :init
   (setq org-roam-directory
         (expand-file-name "yx-slip-notes" yx/doc-dir)
@@ -105,9 +107,6 @@
 
 (use-package citar
   :after org
-  :demand t
-  :bind (:map org-mode-map
-              ("C-c B" . 'org-cite-insert))
   :config
   (setq
    org-cite-insert-processor 'citar
@@ -115,7 +114,7 @@
    org-cite-activate-processor 'citar
    citar-bibliography org-cite-global-bibliography
    citar-notes-paths
-   (expand-file-name "research" org-roam-directory))
+   (list (expand-file-name "research" org-roam-directory)))
   :hook
   (org-mode . citar-capf-setup)
   )
@@ -123,7 +122,7 @@
   :after citar embark
   :demand t
   :custom
-  citar-at-point-function 'embark-act
+  (citar-at-point-function 'embark-act)
   :config (citar-embark-mode)
   )
 (use-package citar-org-roam

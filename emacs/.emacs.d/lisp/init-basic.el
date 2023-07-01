@@ -19,12 +19,13 @@
  ring-bell-function 'ignore
  initial-scratch-message ""
  delete-by-moving-to-trash t
+ set-mark-command-repeat-pop t
  fast-but-imprecise-scrolling t
+ show-paren-context-when-offscreen t
  compilation-scroll-output 'first-error
  backward-delete-char-untabify-method 'hungry
  sentence-end-double-space nil
  sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
-
  )
 
 ;; use-package
@@ -60,15 +61,20 @@
 
 ;; recentf
 (setq
+ recentf-max-saved-items 50
  recentf-auto-cleanup 'never
- recentf-max-saved-items 200
- recentf-exclude '("\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$"))
+ recentf-exclude
+ '("COMMIT_MSG" "COMMIT_EDITMSG"
+   ".*png$" ".*cache$"))
 (add-hook 'after-init-hook 'recentf-mode)
+
 
 ;; whitespace
 (setq
  whitespace-line-column nil
- show-trailing-whitespace nil)
+ show-trailing-whitespace nil
+ whitespace-action '(auto-clean)
+ )
 
 ;; xref
 (setq
@@ -122,11 +128,13 @@
  (list (expand-file-name "authinfo.gpg" yx/etc-dir))
  epa-file-select-keys yx/gpg-encrypt-key)
 
-;; mouse
+;; mouse & scroll
 (setq
  mouse-yank-at-point t
  mouse-wheel-tilt-scroll t
  mouse-drag-mode-line-buffer t
+ mouse-wheel-progressive-speed nil
+ scroll-preserve-screen-position  'always
  mouse-drag-and-drop-region-cross-program t
  )
 
@@ -141,7 +149,8 @@
 (setq
  ispell-program-name "hunspell"
  ispell-local-dictionary "en_US"
- ispell-local-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))
+ ispell-local-dictionary-alist
+ '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))
  ispell-hunspell-dictionary-alist ispell-local-dictionary-alist
  )
 
@@ -194,6 +203,7 @@
     word-wrap t
     word-wrap-by-category t
     truncate-lines nil)
+   (hl-line-mode 1)
    (auto-fill-mode 1)
    (visual-line-mode 1)
    (goto-address-mode 1)
@@ -206,10 +216,13 @@
    (setq-local
     whitespace-style
     '(face trailing lines-char space-before-tab space-after-tab))
+   (hl-line-mode 1)
    (hs-minor-mode 1)
+   (show-paren-mode 1)
    (whitespace-mode 1)
    (flyspell-prog-mode)
    (electric-pair-mode 1)
+   (which-function-mode 1)
    (display-line-numbers-mode 1)
    (electric-indent-local-mode 1)
    ))
@@ -224,8 +237,13 @@
    (delete-selection-mode 1)
    (auto-save-visited-mode 1)
    (global-auto-revert-mode 1)
+   (windmove-default-keybindings)
    (pixel-scroll-precision-mode 1)
    )
  )
+
+;; never kill scratch
+(with-current-buffer "*scratch*"
+  (emacs-lock-mode 'kill))
 
 (provide 'init-basic)

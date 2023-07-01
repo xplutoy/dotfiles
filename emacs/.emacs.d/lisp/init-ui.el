@@ -44,6 +44,7 @@
   :hook (after-init . minions-mode)
   )
 
+(setq column-number-mode t)
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode)
   :init
