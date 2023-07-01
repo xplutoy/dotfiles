@@ -35,7 +35,7 @@
 
 (use-package theme-changer
   :after ef-themes
-  :defer 2
+  :defer 10
   :config
   (change-theme 'ef-light 'ef-night)
   )

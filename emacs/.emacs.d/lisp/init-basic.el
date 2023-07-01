@@ -66,7 +66,9 @@
  recentf-auto-cleanup 'never
  recentf-exclude
  '("COMMIT_MSG" "COMMIT_EDITMSG"
-   ".*png$" ".*cache$"))
+   ".*png$" ".*\\.cache.*"
+   "^/.*" "/elpa/" "/Downloads/"
+   file-remote-p))
 (add-hook 'after-init-hook 'recentf-mode)
 
 
@@ -148,8 +150,8 @@
 
 ;; flyspell
 (setq
- ispell-dictionary "english"
- ispell-program-name "enchant-2"
+ ;; ispell-program-name "enchant-2" ;; lag
+ ispell-program-name "hunspell"
  ispell-local-dictionary "en_US"
  ispell-local-dictionary-alist
  '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))

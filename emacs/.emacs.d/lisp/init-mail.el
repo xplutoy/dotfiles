@@ -10,7 +10,6 @@
  gnus-inhibit-startup-message t)
 
 (setq
- message-directory "~/.mail"
  mail-envelope-from 'header
  mail-specify-envelope-from t
  mail-user-agent 'gnus-user-agent

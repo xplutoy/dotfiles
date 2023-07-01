@@ -3,5 +3,6 @@
 **/site-lisp
 **/etc
 **/elpa
+**/var
 **/url
 *.log
