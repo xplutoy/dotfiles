@@ -123,7 +123,6 @@
               ("s-;" . flyspell-correct-wrapper))
   )
 (use-package jinx
-  :hook (org-mode . jinx-mode)
   :bind (("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages))
   :config
