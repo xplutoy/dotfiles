@@ -60,6 +60,7 @@
   (dired-mouse-drag-files t)
   (dired-omit-files "^\\..*$")
   (dired-recursive-copies 'always)
+  (dired-auto-revert-buffer 'dired-buffer-stale-p)
   (dired-kill-when-opening-new-dired-buffer t)
   (dired-listing-switches
    "-l --almost-all --human-readable --group-directories-first --no-group")
@@ -84,6 +85,11 @@
               ([remap dired-do-man] . dired-narrow-fuzzy)))
 (use-package dired-collapse
   :hook (dired-mode . dired-collapse-mode))
+(use-package dired-filter
+  :after dired
+  :bind (:map dired-mode-map
+              ("/" . dired-filter-mode))
+  )
 
 
 (use-package winum

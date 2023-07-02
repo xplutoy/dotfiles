@@ -44,9 +44,13 @@
  "C-."        'embark-act
  "C-,"        'embark-dwim
 
+ "C-c d"      'osx-dictionary-search-pointer
+ "C-c D"      'osx-dictionary-search-input
 
  "C-c g"      'consult-ripgrep
  "C-c f"      'consult-find
+
+ "C-c u u"    'browse-url-at-point  ;g x in evil
 
  "C-c a"      'org-agenda
  "C-c c"      'org-capture
@@ -59,6 +63,7 @@
  "C-c n c"    'org-roam-capture
  "C-c n j"    'org-roam-dailies-capture-today
 
+ "C-h M"      'which-key-show-major-mode
  "C-h B"      'embark-bindings-at-point
  "C-h C-f"    'find-function
  "C-h C-k"    'find-function-on-key

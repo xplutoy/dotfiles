@@ -24,7 +24,7 @@
   (setq which-key-idle-delay 10000
         which-key-show-early-on-C-h t
         which-key-show-remaining-keys t
-        which-key-idle-secondary-delay 0.1)
+        which-key-idle-secondary-delay 0.02)
   :config
   (which-key-setup-minibuffer)
   (which-key-mode 1)
@@ -136,6 +136,10 @@
   (keyfreq-autosave-mode 1))
 
 (use-package emacsql-sqlite-builtin)
+
+;; dict
+(use-package osx-dictionary
+  :defer 1)
 
 (provide 'init-misc)
 ;;; init-misc.el ends here

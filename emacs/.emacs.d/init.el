@@ -5,6 +5,10 @@
 (defvar yx/gpg-sign-key     "67B86CB8A5630C51!")
 (defvar yx/gpg-encrypt-key  "8B1F9B207AF00BCF!")
 
+(defconst -is-mac (eq system-type 'darwin))
+(defconst -is-win (eq system-type 'windows-nt))
+(defconst -is-linux (eq system-type 'gnu/linux))
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)

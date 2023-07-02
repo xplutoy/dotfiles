@@ -19,7 +19,7 @@
   (org-tags-column 0)
   (org-num-max-level 2)
   (org-log-into-drawer t)
-  (org-return-follows-link t)
+  ;; (org-return-follows-link t)
   (org-crypt-key yx/gpg-encrypt-key)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts '{})
