@@ -13,7 +13,6 @@
  use-short-answers t
  backup-by-copying t
  line-move-visual nil
- system-time-locale "C"
  auto-revert-verbose nil
  confirm-kill-processes nil
  find-file-visit-truename t
@@ -27,6 +26,9 @@
  sentence-end-double-space nil
  sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
  )
+
+(setq system-time-locale "C")
+(format-time-string "%Y-%m-%d %a")
 
 ;; use-package
 (setq
@@ -221,7 +223,6 @@
    (hl-line-mode 1)
    (hs-minor-mode 1)
    (show-paren-mode 1)
-   (whitespace-mode 1)
    (flyspell-prog-mode)
    (electric-pair-mode 1)
    (which-function-mode 1)
@@ -231,6 +232,7 @@
     whitespace-style
     '(face trailing lines-char space-before-tab space-after-tab)
     show-trailing-whitespace t)
+   (whitespace-mode 1)
    (add-hook 'before-save-hook
              (delete-trailing-whitespace))
    ))

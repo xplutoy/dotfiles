@@ -68,9 +68,9 @@
   )
 
 (use-package olivetti
+  :hook (org-mode . oblivetti-mode)
   :init
   (setq
-   olivetti-style 'fancy
    olivetti-body-width 78)
   )
 

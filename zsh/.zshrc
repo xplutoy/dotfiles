@@ -22,7 +22,8 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias :q=exit
 alias ..='cd ..'
-alias ls='exa --icons -a'
+alias ls='exa --icons'
+alias la='exa --icons -a'
 alias ll='exa -l --icons -x -F --git-ignore --group-directories-first'
 alias lt2='exa -T -L 2 --git-ignore'
 alias grep='grep --color=auto'
@@ -55,6 +56,7 @@ alias gstc='git stash clear'
 alias r='radian'
 
 # plugins
+ZPLUGINDIR=${ZDOTDIR:-~/.config/zsh}/plugins
 source $HOME/.zsh/plugins/zsh_unplugged_yx/zsh_unplugged.zsh
 plugins=(
   sindresorhus/pure
