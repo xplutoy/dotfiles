@@ -11,11 +11,11 @@
    ("https://www.juliabloggers.com/feed/" julia)
    ("https://feeds.feedburner.com/RBloggers" r-lang)
    ;; 科研、数学、物理
-   ("https://spaces.ac.cn/feed" AI)
+   ("https://spaces.ac.cn/feed" AI webkit)
    ("https://ruder.io/rss/index.rss" AI)
    ("https://www.inference.vc/rss" AI)
    ("https://safjan.com/feeds/all.rss.xml" AI)
-   ("https://lilianweng.github.io/index.xml" AI)
+   ("https://lilianweng.github.io/index.xml" AI webkit)
    )
  )
 
@@ -33,6 +33,10 @@
 
 (use-package elfeed-webkit
   :after elfeed
+  :demand t
+  :config
+  (setq elfeed-webkit-auto-enable-tags '(webkit))
+  (elfeed-webkit-auto-toggle-by-tag)
   :bind (:map elfeed-show-mode-map
               ("W" . elfeed-webkit-toggle))
   )

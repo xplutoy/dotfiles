@@ -8,6 +8,7 @@
   (key-chord-define-global "hh"     'color-rg-search-symbol)
   (key-chord-define-global "ff"     'find-file)
   (key-chord-define-global "jb"     'consult-buffer)
+  (key-chord-define-global "df"     'osx-dictionary-search-word-at-point)
   )
 
 (use-package general

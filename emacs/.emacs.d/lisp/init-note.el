@@ -68,7 +68,7 @@
   )
 
 (use-package olivetti
-  :hook (org-mode . oblivetti-mode)
+  :hook (org-mode . olivetti-mode)
   :init
   (setq
    olivetti-body-width 78)
@@ -89,6 +89,18 @@
               )
   )
 
+(use-package xeft
+  :defer 2
+  :init
+  (setq
+   xeft-recursive 'follow-symlinks
+   xeft-ignore-extension '("gpg" "asc" "bib")
+   xeft-title-function 'file-name-nondirectory
+   xeft-database (no-littering-expand-var-file-name "xeft")
+   xeft-directory (expand-file-name "yx-slip-notes" yx/doc-dir))
+  )
+
+;; org-roam
 (use-package org-roam
   :after org
   :init
@@ -101,10 +113,10 @@
   (add-hook 'org-roam-capture-new-node-hook
             (lambda () (org-roam-tag-add '("draft"))))
   )
-
 (use-package org-roam-ui
   :after org-roam)
 
+;; citar
 (use-package citar
   :after org
   :config

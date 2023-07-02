@@ -100,6 +100,8 @@
   (sis-global-context-mode 1)
   (sis-global-respect-mode 1)
   (sis-global-cursor-color-mode 1)
+  (add-hook 'org-mode-hook
+            (lambda () (sis-context-mode -1))) ; bug
   )
 
 (use-package no-littering
