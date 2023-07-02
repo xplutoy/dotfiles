@@ -21,7 +21,6 @@
  initial-scratch-message ""
  delete-by-moving-to-trash t
  set-mark-command-repeat-pop t
- fast-but-imprecise-scrolling t
  show-paren-context-when-offscreen t
  compilation-scroll-output 'first-error
  backward-delete-char-untabify-method 'hungry
@@ -136,6 +135,8 @@
  mouse-yank-at-point t
  mouse-wheel-tilt-scroll t
  mouse-drag-mode-line-buffer t
+ fast-but-imprecise-scrolling t
+ mouse-wheel-scroll-amount '(0.01)
  mouse-wheel-progressive-speed nil
  scroll-preserve-screen-position  'always
  mouse-drag-and-drop-region-cross-program t

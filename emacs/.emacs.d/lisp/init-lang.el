@@ -44,9 +44,18 @@
   (add-hook 'python-ts-mode-hook 'python-black-on-save-mode)
   )
 
-(use-package yasnippet-snippets)
-(use-package yasnippet
-  :hook (prog-mode . yas-minor-mode))
+(use-package tempel
+  :bind  (("M-=" . tempel-complete)
+          ("M-*" . tempel-insert))
+  :init
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons 'tempel-expand
+                      completion-at-point-functions)))
+  (add-hook 'prog-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf)
+  )
+(use-package tempel-collection)
 
 ;; project
 (with-eval-after-load "project"
