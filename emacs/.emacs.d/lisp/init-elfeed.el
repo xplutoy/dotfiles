@@ -4,6 +4,8 @@
  '(;; 工具、技术
    ("https://sachachua.com/blog/category/emacs/feed/" emacs)
    ("https://planet.emacslife.com/atom.xml" emacs)
+   ("https://blog.aaronbieber.com/posts/index.xml" emacs)
+   (" https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
    ("http://www.ruanyifeng.com/blog/atom.xml" tech)
    ;; 数据、R、Python、Julia等
    ("https://www.juliabloggers.com/feed/" julia)
