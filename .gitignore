@@ -2,6 +2,7 @@
 **/.cache
 **/site-lisp
 **/etc
+**/doc
 **/elpa
 **/var
 **/url

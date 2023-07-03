@@ -5,7 +5,7 @@
   :config
   (setq-default
    Tex-master nil
-   TeX-engine 'luatex)
+   TeX-engine 'xetex)
 
   (setq
    TeX-auto-save t
@@ -20,7 +20,7 @@
          'flyspell-mode
          'TeX-PDF-mode
          'turn-on-reftex
-         'LateX-math-mode
+         'LaTeX-math-mode
          'TeX-source-correlate-mode))
 
   (add-hook 'TeX-after-comilation-finished-functions
