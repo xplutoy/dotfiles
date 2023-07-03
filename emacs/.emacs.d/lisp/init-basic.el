@@ -132,16 +132,23 @@
  (list (expand-file-name "authinfo.gpg" yx/etc-dir))
  epa-file-select-keys yx/gpg-encrypt-key)
 
-;; mouse & scroll
+;; mouse
 (setq
  mouse-yank-at-point t
  mouse-wheel-tilt-scroll t
  mouse-drag-mode-line-buffer t
- fast-but-imprecise-scrolling t
  mouse-wheel-scroll-amount '(0.01)
  mouse-wheel-progressive-speed nil
- scroll-preserve-screen-position  'always
  mouse-drag-and-drop-region-cross-program t
+ )
+
+;; scroll
+(setq
+ scroll-step 1
+ scroll-margin 1
+ scroll-conservatively 10000
+ fast-but-imprecise-scrolling t
+ scroll-preserve-screen-position  'always
  )
 
 ;; eww
@@ -251,6 +258,9 @@
    (pixel-scroll-precision-mode 1)
    )
  )
+
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;; never kill scratch
 (with-current-buffer "*scratch*"

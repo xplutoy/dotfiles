@@ -151,6 +151,7 @@
    ))
 
 (setq
+ python-shell-dedicated t
  python-shell-interpreter "ipython"
  python-shell-interpreter-args "-i --simple-prompt")
 

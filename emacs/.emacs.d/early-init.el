@@ -25,6 +25,8 @@
    (undecorated-round . t)
    (vertical-scroll-bars . nil)))
 
+(setq initial-frame-alist '((alpha . 0.97)))
+
 (let ((old-file-name-handler-alist file-name-handler-alist))
   (setq-default file-name-handler-alist nil)
   (defun yx/restore-file-name-handler-alist ()

@@ -64,8 +64,10 @@
   (dired-kill-when-opening-new-dired-buffer t)
   (dired-listing-switches
    "-l --almost-all --human-readable --group-directories-first --no-group")
-  (dired-guess-shell-alist-user `(("\\.jpe?g\\'" "open")
-                                  ("\\.mp4\\'"   "iina")))
+  (dired-guess-shell-alist-user
+   '(("\\.pdf\\'" -os-default-opener)
+     ("\\.png\\'" -os-default-opener)
+     ("\\.jpg\\'" -os-default-opener)))
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   (add-hook 'dired-mode-hook

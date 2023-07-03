@@ -9,6 +9,12 @@
 (defconst -is-win (eq system-type 'windows-nt))
 (defconst -is-linux (eq system-type 'gnu/linux))
 
+(defconst -os-default-opener
+  (cond (-is-mac "open")
+        (-is-win "start")
+        (t       "xdg-open"))
+  )
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
@@ -41,4 +47,6 @@
 (require 'init-lang)
 (require 'init-eshell)
 (require 'init-elfeed)
+
+
 ;;; init.el ends here
