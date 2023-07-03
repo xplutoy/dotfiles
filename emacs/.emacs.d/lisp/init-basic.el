@@ -129,7 +129,7 @@
 (setq
  epa-pinentry-mode 'loopback
  auth-sources
- (list (expand-file-name "authinfo.gpg" yx/etc-dir))
+ (list (expand-file-name "authinfo.gpg" user-emacs-directory))
  epa-file-select-keys yx/gpg-encrypt-key)
 
 ;; mouse
