@@ -22,10 +22,6 @@
 
 (general-unbind flyspell-mode-map "C-," "C-." "C-;")
 
-(when (featurep 'xwidget-internal)
-  (define-key xwidget-webkit-mode-map (kbd "W") 'xwidget-webkit-fit-width)
-  )
-
 (general-define-key
  ;; beter defaults
  [remap describe-bindings]      'embark-bindings

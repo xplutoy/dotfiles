@@ -5,6 +5,14 @@
   (setq gcmh-high-cons-threshold (* 128 1024 1024))
   (gcmh-mode 1))
 
+(when (featurep 'xwidget-internal)
+  (use-package xwidget
+    :ensure nil
+    :bind (:map xwidget-webkit-mode-map
+                ("W" . xwidget-webkit-fit-width))
+    )
+  )
+
 (use-package crux-yx
   :defer 1
   :load-path "site-lisp/crux-yx"

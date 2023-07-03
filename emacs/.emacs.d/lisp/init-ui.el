@@ -24,7 +24,8 @@
   (setq
    ef-themes-to-toggle '(ef-light ef-night)
    ef-themes-headings
-   '((1 . (variable-pitch 1.3))
+   '((0 . (variable-pitch 1.3))
+     (1 . (variable-pitch 1.3))
      (2 . (regular 1.2))
      (3 . (1.1))
      (agenda-date . (1.3))
