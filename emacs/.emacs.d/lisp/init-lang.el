@@ -11,7 +11,8 @@
           python-mode
           python-ts-mode
           julia-mode
-          julia-ts-mode) . eglot-ensure)
+          julia-ts-mode
+          LaTeX-mode) . eglot-ensure)
   )
 
 (use-package treesit

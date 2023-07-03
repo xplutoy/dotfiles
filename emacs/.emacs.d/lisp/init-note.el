@@ -85,8 +85,6 @@
   :after org
   :custom
   (org-download-screenshot-method "screencapture -i %s")
-  :bind (:map org-mode-map
-              )
   )
 
 (use-package xeft
@@ -114,7 +112,12 @@
             (lambda () (org-roam-tag-add '("draft"))))
   )
 (use-package org-roam-ui
-  :after org-roam)
+  :after org-roam
+  :init
+  (when (featurep 'xwidget-internal)
+    (setq org-roam-ui-browser-function 'xwidget-webkit-browse-url)
+    )
+  )
 
 ;; citar
 (use-package citar
