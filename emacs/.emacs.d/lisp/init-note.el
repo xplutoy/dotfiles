@@ -118,6 +118,7 @@
     (setq org-roam-ui-browser-function 'xwidget-webkit-browse-url)
     )
   )
+(use-package org-transclusion)
 
 ;; citar
 (use-package citar
