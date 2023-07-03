@@ -43,6 +43,7 @@
 (require 'init-misc)
 (require 'init-window)
 (require 'init-note)
+(require 'init-tex)
 (require 'init-mail)
 (require 'init-lang)
 (require 'init-eshell)

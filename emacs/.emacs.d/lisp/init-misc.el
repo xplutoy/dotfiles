@@ -137,6 +137,7 @@
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
+(use-package pdf-tools)
 (use-package emacsql-sqlite-builtin)
 
 ;; dict
