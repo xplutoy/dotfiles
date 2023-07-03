@@ -30,13 +30,15 @@
    gnus-select-method '(nnnil "")
    gnus-secondary-select-methods
    '((nnml "qqmail")
-     (nnimap "outlook"
-             (nnimap-address "outlook.office365.com")
-             (nnimap-stream ssl)
-             (nnimap-server-port 993)
-             (nnimap-expunge 'nerver)
-             (nnimap-search-engine imap)
-             (nnimap-split-methods default))
+     (nnimap
+      "outlook"
+      (nnimap-address "outlook.office365.com")
+      (nnimap-stream ssl)
+      (nnimap-server-port 993)
+      (nnimap-expunge 'nerver)
+      (nnimap-search-engine imap)
+      (nnimap-inbox "INBOX")
+      (nnimap-split-methods default))
      )
    )
   (setq
@@ -61,6 +63,8 @@
    gnus-save-newsrc-file nil
    gnus-read-newsrc-file nil
    gnus-save-killed-list nil
+   gnus-read-active-file nil
+   gnus-always-read-dribble-file t
    gnus-search-use-parsed-queries t
    gnus-article-browse-delete-temp t
    gnus-check-new-newsgroups 'ask-server
@@ -127,7 +131,10 @@
   ;;  *   marked articles --. | | | | |
   ;;                        | | | | | |  Ticked    New     Unread  open-status Group
   (setq gnus-group-line-format "%M%m%S%L%p%P %1(%7i%) %3(%7U%) %3(%7y%) %4(%B%-45G%) %d\n")
-  (setq gnus-group-sort-function '(gnus-group-sort-by-level gnus-group-sort-by-alphabet)))
+  (setq gnus-group-sort-function
+        '(gnus-group-sort-by-server
+          gnus-group-sort-by-level
+          gnus-group-sort-by-alphabet)))
 
 ;; ==== end =========
 (provide 'init-mail)
