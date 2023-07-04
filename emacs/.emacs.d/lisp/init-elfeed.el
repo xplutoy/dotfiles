@@ -10,6 +10,7 @@
    ;; 数据、R、Python、Julia等
    ("https://www.juliabloggers.com/feed/" julia)
    ("https://feeds.feedburner.com/RBloggers" r-lang)
+   ("https://rustcc.cn/rss" rust)
    ;; 科研、数学、物理
    ("https://spaces.ac.cn/feed" AI webkit)
    ("https://ruder.io/rss/index.rss" AI)
