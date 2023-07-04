@@ -8,8 +8,8 @@
                       :family yx/default-font-family :height 146)
   (set-face-attribute 'fixed-pitch nil
                       :family yx/default-font-family :height 1.0)
-  (setq face-font-rescale-alist '(("LXGW WenKai" . 1.05))) ;; 1.05 magic number
-  (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai")
+  (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
+  (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
   )
 
 (if (daemonp)
