@@ -135,7 +135,7 @@
    gnus-view-pseudos-separately t
    gnus-view-pseudo-asynchronously t)
   (setq
-   gnus-auto-select-first nil
+   gnus-auto-select-first t
    gnus-auto-select-next nil
    gnus-paging-select-next nil)
 
@@ -144,6 +144,9 @@
    gnus-group-line-format "%M%S%p%P %0{%5y%} %P%1{%G%}\n")
 
   (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+  (with-eval-after-load 'gnus-topic
+    (keymap-unset gnus-topic-mode-map (kbd "<tab>"))
+    )
   )
 
 

@@ -59,11 +59,12 @@ set shiftwidth=2
 set softtabstop=2
 set smarttab
 set expandtab
-set nowrap
+set textwidth=0                                               " no hard wrap
+set columns=88
+set wrap wrapmargin=0
 set linebreak showbreak=↪
 set iskeyword+=_,$,@,%,#,-                                    " 带有如下符号的单词不要被换行切割
 set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set textwidth=78
 set synmaxcol=200
 set nrformats+=alpha
 set splitbelow splitright

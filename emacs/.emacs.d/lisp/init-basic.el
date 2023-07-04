@@ -6,6 +6,7 @@
  truncate-lines t
  indent-tabs-mode nil
  require-final-newline t
+ bidi-display-reordering nil
  tab-always-indent 'complete)
 
 (setq
