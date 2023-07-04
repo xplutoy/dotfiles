@@ -159,6 +159,7 @@
 (use-package pyvenv)
 (use-package pyvenv-auto
   :hook (python-ts-mode . pyvenv-auto-run))
+(use-package poetry)
 
 ;; Julia
 (use-package julia-mode)
