@@ -56,12 +56,13 @@
      )
    )
   (setq
+   nnmail-split-fancy-match-partial-words t
    nnmail-split-methods 'nnmail-split-fancy
    nnmail-split-fancy
    '(|
      (: nnmail-split-fancy-with-parent)
-     (any "help-gnu-emacs@gnu\\.org" INBOX.help-gnu-emacs)
-     (any "emacs-orgmode@gnu\\.org"  INBOX.emacs-orgmode)
+     (any "help-gnu-emacs@gnu\\.org" "INBOX.help-gnu-emacs")
+     (any "emacs-orgmode@gnu\\.org"  "INBOX.emacs-orgmode")
      "INBOX.misc")
    )
 
@@ -80,9 +81,10 @@
    gnus-read-newsrc-file nil
    gnus-save-killed-list nil
    gnus-read-active-file nil
-   gnus-use-dribble-file nil
+   gnus-use-dribble-file t
    gnus-message-archive-group nil
-   gnus-always-read-dribble-file nil
+   gnus-inhibit-user-auto-expire t
+   gnus-always-read-dribble-file t
    gnus-search-use-parsed-queries t
    gnus-article-browse-delete-temp t
    gnus-check-new-newsgroups 'ask-server
@@ -94,6 +96,8 @@
    gnus-cache-enter-articles '(ticked dormant unread))
   (setq
    nnrss-ignore-article-fields '(description guid pubData dc:creator link))
+
+  (gnus-demon-add-handler 'gnus-demon-scan-mail nil 30)
   )
 
 (use-package gnus-group
@@ -113,7 +117,7 @@
    gnus-summary-make-false-root 'adopt
    gnus-summary-ignore-duplicates t
    gnus-summary-gather-subject-limit 'fuzzy
-   gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject
+   gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
    gnus-simplify-subject-functions '(gnus-simplify-subject-re gnus-simplify-whitespace))
   (setq
    gnus-use-trees t
@@ -146,9 +150,6 @@
    gnus-group-line-format "%M%S%p%P %0{%5y%} %P%1{%G%}\n")
 
   (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-  (with-eval-after-load 'gnus-topic
-    (keymap-unset gnus-topic-mode-map (kbd "<tab>"))
-    )
   )
 
 
