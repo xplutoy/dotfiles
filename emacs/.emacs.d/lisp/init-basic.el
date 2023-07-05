@@ -137,6 +137,7 @@
 (setq
  mouse-yank-at-point t
  mouse-wheel-tilt-scroll t
+ mouse-wheel-follow-mouse t
  mouse-drag-mode-line-buffer t
  mouse-wheel-scroll-amount '(0.01)
  mouse-wheel-progressive-speed nil
@@ -218,11 +219,8 @@
     word-wrap t
     word-wrap-by-category t
     truncate-lines nil)
-   (hl-line-mode 1)
-   (auto-fill-mode 1)
    (visual-line-mode 1)
-   (goto-address-mode 1)
-   (variable-pitch-mode 1))
+   (goto-address-mode 1))
  )
 
 (add-hook

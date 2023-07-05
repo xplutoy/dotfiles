@@ -53,6 +53,7 @@
      )
    )
   (setq
+   nnmail-expiry-wait '30
    nnmail-split-fancy-match-partial-words t
    nnmail-split-methods 'nnmail-split-fancy
    nnmail-split-fancy
@@ -120,7 +121,7 @@
    gnus-use-trees t
    gnus-show-threads t
    gnus-fetch-old-headers 2
-   gnus-tree-minimize-window nil
+   gnus-tree-minimize-window t
    gnus-generate-tree-function
    'gnus-generate-horizontal-tree
    gnus-build-sparse-threads 'some

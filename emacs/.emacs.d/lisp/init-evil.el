@@ -113,7 +113,15 @@
   "vs"  'magit-status
   "vb"  'magit-blame
   "vd"  'magit-diff-buffer-file
+  "vf"  'magit-fetch
+  "vF"  'magit-fetch-all
+  "vp"  'magit-pull-branch
+  "vP"  'magit-push-current
+  "vr"  'magit-rebase
   "vv"  'magit-dispatch
+  "vl" '(:ignore t :which-key "log")
+  "vlc" 'magit-log-current
+  "vlf" 'magit-log-buffer-file
   "vf" '(:ignore t :which-key "file")
   "vfc" 'magit-file-checkout
   "vfd" 'magit-file-delete
@@ -193,6 +201,7 @@
   :init
   (setq
    evil-default-state 'emacs
+   evil-shift-width tab-width
    evil-want-fine-undo t
    evil-want-C-u-scroll t
    evil-want-C-w-delete nil
@@ -238,7 +247,8 @@
            "C-a" 'move-beginning-of-line
            "C-y" 'yank
            "C-k" 'kill-line
-           "C-w" 'kill-region)
+           "C-w" 'kill-region
+           "C-g" 'evil-normal-state)
   (evil-ex-completion-map "C-a" 'move-beginning-of-line
                           "C-b" 'backward-char
                           "M-n" 'next-complete-history-element

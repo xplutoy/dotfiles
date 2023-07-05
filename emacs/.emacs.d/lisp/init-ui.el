@@ -5,9 +5,11 @@
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (set-face-attribute 'default nil
-                      :family yx/default-font-family :height 146)
+                      :family yx/default-font-family :weight 'light :height 146)
   (set-face-attribute 'fixed-pitch nil
-                      :family yx/default-font-family :height 1.0)
+                      :family yx/default-font-family :weight 'light :height 1.0)
+  (set-face-attribute 'variable-pitch nil
+                      :family "Iosevka Aile" :weight 'light :height 1.0)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
   (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
   (when -is-mac
@@ -29,9 +31,9 @@
    ef-themes-to-toggle '(ef-light ef-night)
    ef-themes-headings
    '((0 . (variable-pitch 1.3))
-     (1 . (variable-pitch 1.3))
-     (2 . (regular 1.2))
-     (3 . (1.1))
+     (1 . (regular 1.2))
+     (2 . (variable-pitch 1.1))
+     (3 . (1.05))
      (agenda-date . (1.3))
      (agenda-structure . (variable-pitch 1.3))
      (t . (t))))

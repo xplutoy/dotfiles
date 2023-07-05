@@ -19,7 +19,7 @@
   (add-to-list 'erc-modules 'services)
   (erc-update-modules)
   :bind (:map erc-mode-map
-              ("<return>" . nil)
+              ("RET" . nil)
               ("C-c C-r" . erc-server-reconnect)
               ("C-<return>" . erc-send-current-line))
   )

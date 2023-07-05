@@ -30,8 +30,8 @@
   (org-agenda-window-setup 'current-window)
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
-  (org-src-tab-acts-natively t)
   (org-src-fontify-natively t)
+  (org-src-tab-acts-natively t)
   (org-src-window-setup 'split-window-right)
   (org-src-ask-before-returning-to-edit-buffer nil)
 
@@ -52,13 +52,20 @@
    (list (expand-file-name "references.bib" yx/doc-dir)))
 
   :config
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     (setq-local
+      evil-auto-indent nil)
+     (auto-fill-mode 0)
+     (variable-pitch-mode 1)))
   (org-babel-do-load-languages
    'org-babel-load-languages '((emacs-lisp . t) (python . t) (R . t) (julia . t)))
   (org-crypt-use-before-save-magic)
   (dolist (ele '(("sh" . "src shell")
                  ("el" . "src emacs-lisp")
                  ("py" . "src python")
-                 ("r"  . "src R")
+                 ("R"  . "src R")
                  ("jl" . "src julia")))
     (add-to-list 'org-structure-template-alist ele))
   )
@@ -102,14 +109,23 @@
 (use-package org-roam
   :after org
   :init
-  (setq org-roam-directory
-        (expand-file-name "yx-slip-notes" yx/doc-dir)
-        org-roam-database-connector 'sqlite-builtin
-        )
+  (setq
+   org-roam-directory
+   (expand-file-name "yx-slip-notes" yx/doc-dir)
+   org-roam-database-connector 'sqlite-builtin
+   org-roam-completion-everywhere t
+   )
   :config
   (org-roam-db-autosync-enable)
-  (add-hook 'org-roam-capture-new-node-hook
-            (lambda () (org-roam-tag-add '("draft"))))
+  (add-to-list
+   org-roam-capture-templates
+   '("p" "post" plain "%?"
+     :target (file+head "blog/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+     :unnarrowed t
+     :immediate-finish))
+  (add-hook
+   'org-roam-capture-new-node-hook
+   (lambda () (org-roam-tag-add '("draft"))))
   )
 (use-package org-roam-ui
   :after org-roam
