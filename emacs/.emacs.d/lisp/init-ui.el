@@ -9,9 +9,9 @@
   (set-face-attribute 'default nil
                       :family yx/default-font-family :weight 'light :height 150)
   (set-face-attribute 'fixed-pitch nil
-                      :family yx/default-fixed-font-family :weight 'light :height 1.0)
+                      :family yx/fixed-patch-font-family :weight 'light :height 1.0)
   (set-face-attribute 'variable-pitch nil
-                      :family yx/default-variable-font-family :weight 'light :height 1.0)
+                      :family yx/variable-patch-font-family :weight 'light :height 1.0)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
   (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
   (when -is-mac
