@@ -10,6 +10,10 @@
                       :family yx/default-font-family :height 1.0)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
   (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
+  (when -is-mac
+    (set-fontset-font
+     t 'symbol
+     (font-spec :family "Apple Color Emoji") nil 'prepend))
   )
 
 (if (daemonp)

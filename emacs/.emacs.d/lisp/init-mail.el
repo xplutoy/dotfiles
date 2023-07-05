@@ -1,7 +1,4 @@
 ;;; -*- lexical-binding: t no-byte-compile: t -*-
-(setq user-full-name     "yangxue")
-(setq user-mail-address  "yangxue.cs@foxmail.com")
-
 (setq
  message-confirm-send t
  message-from-style 'angles
@@ -97,7 +94,7 @@
   (setq
    nnrss-ignore-article-fields '(description guid pubData dc:creator link))
 
-  (gnus-demon-add-handler 'gnus-demon-scan-mail nil 30)
+  (gnus-demon-add-handler 'gnus-demon-scan-mail nil 10)
   )
 
 (use-package gnus-group

@@ -241,6 +241,7 @@
     '(face trailing lines-char space-before-tab space-after-tab)
     show-trailing-whitespace t)
    (whitespace-mode 1)
+   (local-set-key (kbd "RET") 'newline-and-indent)
    (add-hook 'before-save-hook
              (delete-trailing-whitespace))
    ))

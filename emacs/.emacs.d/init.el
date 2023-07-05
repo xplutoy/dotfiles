@@ -1,4 +1,7 @@
 ;;; init.el --- emacs init.el. -*- coding: utf-8; lexical-binding: t; -*-
+(setq user-full-name     "yangxue")
+(setq user-mail-address  "yangxue.cs@foxmail.com")
+
 (defvar yx/doc-dir          "~/yxdocs/")
 (defvar yx/var-dir          "~/.emacs.d/.cache/")
 (defvar yx/etc-dir          "~/.emacs.d/.cache/etc/")
@@ -48,6 +51,7 @@
 (require 'init-mail)
 (require 'init-lang)
 (require 'init-eshell)
+(require 'init-erc)
 (require 'init-elfeed)
 
 
