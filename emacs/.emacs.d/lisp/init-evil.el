@@ -113,8 +113,6 @@
   "vs"  'magit-status
   "vb"  'magit-blame
   "vd"  'magit-diff-buffer-file
-  "vf"  'magit-fetch
-  "vF"  'magit-fetch-all
   "vp"  'magit-pull-branch
   "vP"  'magit-push-current
   "vr"  'magit-rebase

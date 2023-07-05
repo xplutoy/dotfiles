@@ -114,15 +114,18 @@
    (expand-file-name "yx-slip-notes" yx/doc-dir)
    org-roam-database-connector 'sqlite-builtin
    org-roam-completion-everywhere t
+   org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+      :unnarrowed t)
+     ("p" "post" plain "%?"
+      :target (file+head "blog/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+      :unnarrowed t
+      :immediate-finish)
+     )
    )
   :config
   (org-roam-db-autosync-enable)
-  (add-to-list
-   org-roam-capture-templates
-   '("p" "post" plain "%?"
-     :target (file+head "blog/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
-     :unnarrowed t
-     :immediate-finish))
   (add-hook
    'org-roam-capture-new-node-hook
    (lambda () (org-roam-tag-add '("draft"))))

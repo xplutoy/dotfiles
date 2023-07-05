@@ -120,7 +120,7 @@
   (setq
    gnus-use-trees t
    gnus-show-threads t
-   gnus-fetch-old-headers 2
+   gnus-fetch-old-headers 'some
    gnus-tree-minimize-window t
    gnus-generate-tree-function
    'gnus-generate-horizontal-tree
