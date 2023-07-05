@@ -1,17 +1,17 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
-(defvar yx/default-font-family "Hack Nerd Font Mono")
-(defvar yx/fixed-patch-font-family "Hack Nerd Font Mono")
-(defvar yx/variable-patch-font-family "Hack Nerd Font Mono")
+(defvar yx/default-font-family "Cascadia Code")
+(defvar yx/fixed-patch-font-family "Cascadia Code")
+(defvar yx/variable-patch-font-family "Cascadia Code")
 
 (defun font-installed-p (font-name)
   (find-font (font-spec :name font-name)))
 (defun yx/setup-fonts ()
   (set-face-attribute 'default nil
-                      :family yx/default-font-family :weight 'light :height 150)
+                      :family yx/default-font-family :height 160)
   (set-face-attribute 'fixed-pitch nil
-                      :family yx/fixed-patch-font-family :weight 'light :height 1.0)
+                      :family yx/fixed-patch-font-family :height 1.0)
   (set-face-attribute 'variable-pitch nil
-                      :family yx/variable-patch-font-family :weight 'light :height 1.0)
+                      :family yx/variable-patch-font-family :height 1.0)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
   (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")
   (when -is-mac
