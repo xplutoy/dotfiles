@@ -59,8 +59,9 @@
    nnmail-split-fancy
    '(|
      (: nnmail-split-fancy-with-parent)
-     (any "help-gnu-emacs@gnu\\.org" "INBOX.help-gnu-emacs")
+     (any "emacs-devel@gnu\\.org"    "INBOX.emacs-devel")
      (any "emacs-orgmode@gnu\\.org"  "INBOX.emacs-orgmode")
+     (any "help-gnu-emacs@gnu\\.org" "INBOX.help-gnu-emacs")
      "INBOX.misc")
    )
 
