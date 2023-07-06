@@ -9,6 +9,7 @@
  help-window-keep-selected t)
 
 (setq
+ switch-to-prev-buffer-skip-regexp "^\\*"
  switch-to-buffer-obey-display-actions t
  switch-to-buffer-in-dedicated-window nil
  switch-to-buffer-preserve-window-point t
@@ -28,12 +29,13 @@
 (setq
  window-divider-default-bottom-width 1
  window-divider-default-places 'bottom-only)
-(window-divider-mode 1)
+(add-hook 'after-init-hook 'window-divider-mode)
 
 ;; tabbar
 (setq
  tab-bar-tab-hints t
  tab-bar-select-tab-modifiers '(super))
+(add-hook 'after-init-hook 'tab-bar-history-mode)
 
 
 ;; ibuffer

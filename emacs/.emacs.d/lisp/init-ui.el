@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 (defvar yx/default-font "Cascadia Code PL")
-(defvar yx/fixed-pitch-font "Source Code Pro")
+(defvar yx/fixed-pitch-font "JetBrains Mono NL")
 (defvar yx/variable-pitch-font "Latin Modern Roman")
 
 (defun yx/setup-fonts ()
