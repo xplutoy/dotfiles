@@ -67,9 +67,9 @@
  recentf-max-saved-items 50
  recentf-auto-cleanup 'never
  recentf-exclude
- '("COMMIT_MSG" "COMMIT_EDITMSG"
-   ".*png$" ".*\\.cache.*"
-   "^/.*" "/elpa/" "/Downloads/"
+ '("COMMIT_MSG" "COMMIT_EDITMSG" "/Downloads/"
+   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\|bmp\\|xpm\\)$"
+   ".*\\.cache.*" "^/.*" "^/ssh:" "/elpa/"
    file-remote-p))
 (add-hook 'after-init-hook 'recentf-mode)
 
@@ -139,16 +139,17 @@
  mouse-wheel-tilt-scroll t
  mouse-wheel-follow-mouse t
  mouse-drag-mode-line-buffer t
- mouse-wheel-scroll-amount '(0.01)
  mouse-wheel-progressive-speed nil
  mouse-drag-and-drop-region-cross-program t
+ mouse-wheel-scroll-amount-horizontal 2
+ mouse-wheel-scroll-amount '(2 ((shift) . hscroll))
  )
 
 ;; scroll
 (setq
  scroll-step 1
  scroll-margin 1
- scroll-conservatively 10000
+ scroll-conservatively 101
  fast-but-imprecise-scrolling t
  scroll-preserve-screen-position  'always
  )

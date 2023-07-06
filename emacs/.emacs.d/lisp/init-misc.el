@@ -150,6 +150,7 @@
 
 ;; dict
 (use-package osx-dictionary
+  :if -is-mac
   :defer 1)
 
 (provide 'init-misc)

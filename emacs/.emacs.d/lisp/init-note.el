@@ -78,7 +78,8 @@
   :hook (org-mode . olivetti-mode)
   :init
   (setq
-   olivetti-body-width 78)
+   olivetti-body-width 0.65
+   olivetti-minimum-body-width 72)
   )
 
 (use-package org-appear

@@ -72,6 +72,7 @@
   (put 'dired-find-alternate-file 'disabled nil)
   (add-hook 'dired-mode-hook
             (lambda ()
+              (hl-line-mode)
               (dired-omit-mode)
               (dired-hide-details-mode)))
   )
