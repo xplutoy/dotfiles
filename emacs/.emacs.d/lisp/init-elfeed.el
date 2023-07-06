@@ -17,8 +17,9 @@
    ("https://www.inference.vc/rss" AI)
    ("https://safjan.com/feeds/all.rss.xml" AI)
    ("https://lilianweng.github.io/index.xml" AI webkit)
-   ;; 别人的生活
+   ;; 别人的生活、社区
    ("https://www.xianmin.org/index.xml" misc)
+   ("https://www.v2ex.com/index.xml" misc)
    )
  )
 
