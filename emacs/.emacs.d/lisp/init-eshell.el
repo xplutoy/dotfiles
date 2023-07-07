@@ -78,6 +78,13 @@
   (vterm-toggle-hide-method 'delete-window)
   (vterm-toggle-cd-auto-create-buffer nil))
 
+(use-package eshell-vterm
+  :after eshell
+  :demand t
+  :config
+  (eshell-vterm-mode)
+  (defalias 'eshell/v 'eshell-exec-visual))
+
 (use-package eat
   :defer 1
   :load-path "site-lisp/emacs-eat"

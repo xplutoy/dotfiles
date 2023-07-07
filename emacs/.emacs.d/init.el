@@ -34,7 +34,8 @@
    ("nongnu"        . "https://elpa.nongnu.org/nongnu/"))
  package-quickstart t
  package-user-dir (expand-file-name "elpa" yx/var-dir)
- package-gnupghome-dir package-user-dir)
+ package-gnupghome-dir (expand-file-name "gnupg" package-user-dir)
+ )
 (package-activate-all)
 
 (benchmark-init/activate)

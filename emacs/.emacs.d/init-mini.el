@@ -219,6 +219,8 @@
    '("b" . switch-to-buffer)
    '("f" . find-file)
    '("i" . imenu)
+   '("F" . toggle-frame-maximized)
+   '("r" . recentf-open)
    )
   (meow-normal-define-key
    '("0" . meow-expand-0)
@@ -306,7 +308,7 @@
  meow-cursor-type-insert '(bar . 4)
  meow-keypad-describe-delay 0.5
  meow-keypad-leader-dispatch "C-c"
- meow-expand-hint-remove-delay 1.5)
+ meow-expand-hint-remove-delay 2.0)
 (meow-setup)
 (meow-setup-indicator)
 (meow-setup-line-number)

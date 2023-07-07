@@ -19,7 +19,9 @@
   (org-tags-column 0)
   (org-num-max-level 2)
   (org-log-into-drawer t)
-  ;; (org-return-follows-link t)
+  (org-reverse-note-order t)
+  (org-hide-block-startup t)
+  (org-return-follows-link t)
   (org-crypt-key yx/gpg-encrypt-key)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts '{})
@@ -42,10 +44,13 @@
   (org-default-notes-file
    (expand-file-name "inbox.org" org-directory))
   (org-capture-templates
-   '(("t" "task" entry (file+headline org-default-notes-file "Tasks")
+   '(("t" "task"  entry (file+headline org-default-notes-file "Tasks")
       "* TODO [#B] %^{Title}\n%?")
+     ("i" "idea"  entry (file+headline org-default-notes-file "Someday/Maybe")
+      "* IDEA [#C] %?\nAdded: %U\n" :prepend t :kill-buffer t)
      ("h" "habit" entry (file+headline org-default-notes-file "Habits")
-      "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?"))
+      "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?")
+     )
    )
 
   ;; org-cite
