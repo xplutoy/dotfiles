@@ -14,6 +14,7 @@
  use-short-answers t
  backup-by-copying t
  line-move-visual nil
+ hl-line-sticky-flag nil
  auto-revert-verbose nil
  confirm-kill-processes nil
  find-file-visit-truename t

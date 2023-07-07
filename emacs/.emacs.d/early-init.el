@@ -5,12 +5,16 @@
  use-dialog-box nil
  scroll-bar-mode nil
  use-file-dialog nil
- inhibit-default-init t
  inhibit-splash-screen t
  frame-resize-pixelwise t
  inhibit-startup-message t
+ )
+
+(setq
+ inhibit-default-init t
  package-enable-at-startup nil
  frame-inhibit-implied-resize t
+ read-process-output-max (* 1024 1024)
  inhibit-compacting-font-caches t
  native-comp-async-report-warnings-errors nil
  )
@@ -38,8 +42,11 @@
   (add-hook #'emacs-startup-hook
             #'yx/restore-file-name-handler-alist))
 
-(setq gc-cons-threshold (* 64 1024 1024)
+(setq gc-cons-threshold (* 128 1024 1024)
       gc-cons-percentage 0.6)
+(add-hook 'after-init-hook
+          (lambda()
+            (setq gc-cons-threshold (* 16 1024 1024))))
 
 
 (defun display-startup-echo-area-message ()

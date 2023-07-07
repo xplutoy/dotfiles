@@ -1,11 +1,13 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 (defvar yx/default-font "Cascadia Code PL")
 (defvar yx/fixed-pitch-font "JetBrains Mono NL")
+(defvar yx/fixed-pitch-serif-font "Latin Modern Mono")
 (defvar yx/variable-pitch-font "Latin Modern Roman")
 
 (defun yx/setup-fonts ()
   (set-face-attribute 'default nil :family yx/default-font :height 160)
   (set-face-attribute 'fixed-pitch nil :family yx/fixed-pitch-font)
+  (set-face-attribute 'fixed-pitch-serif nil :family yx/fixed-pitch-serif-font)
   (set-face-attribute 'variable-pitch nil :family yx/variable-pitch-font)
   (setq face-font-rescale-alist '(("LXGW WenKai Mono" . 1.05))) ;; 1.05 magic number
   (set-fontset-font t '(#x4e00 . #x9fff) "LXGW WenKai Mono")

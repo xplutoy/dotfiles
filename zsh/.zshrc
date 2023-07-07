@@ -28,11 +28,9 @@ alias ll='exa -l --icons -x -F --git-ignore --group-directories-first'
 alias lt2='exa -T -L 2 --git-ignore'
 alias grep='grep --color=auto'
 alias vim='nvim'
-# emacs alias
+alias em='emacs -q -l ~/.emacs.d/init-mini.el "$@"'
 alias ec='TERM=xterm-256color emacsclient -s server -t "$@"'
 alias ecx='emacsclient -s server -n -c "$@"'
-# alias esx='emacs --init-directory=~/.spacemacs.d/emacs.d "$@"'
-# alias for git
 alias ga='git add'
 alias gaa='git add -A'
 alias gb='git branch'

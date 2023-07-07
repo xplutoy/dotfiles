@@ -26,6 +26,7 @@
   (org-image-actual-width '(600))
   (org-special-ctrl-k t)
   (org-special-ctrl-a/e t)
+  (org-use-speed-commands t)
   (org-fontify-quote-and-verse-blocks t)
   (org-agenda-window-setup 'current-window)
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
@@ -59,6 +60,12 @@
       evil-auto-indent nil)
      (auto-fill-mode 0)
      (variable-pitch-mode 1)))
+  (custom-set-faces
+   '(org-code  ((t :inherit 'fixed-pitch-serif)))
+   '(org-table ((t :inherit 'fixed-pitch-serif)))
+   '(org-block ((t :inherit 'fixed-pitch-serif)))
+   '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
+   '(org-latex-and-related ((t (:inherit 'fixed-pitch-serif)))))
   (org-babel-do-load-languages
    'org-babel-load-languages '((emacs-lisp . t) (python . t) (R . t) (julia . t)))
   (org-crypt-use-before-save-magic)

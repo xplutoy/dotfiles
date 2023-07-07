@@ -10,8 +10,10 @@
   (setq
    TeX-auto-save t
    TeX-parse-self t
-   TeX-view-program-selection '((output-pdf "pdf-tools"))
-   TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view")))
+   TeX-view-program-selection
+   '((output-pdf "pdf-tools"))
+   TeX-view-program-list
+   '(("pdf-tools" "TeX-pdf-tools-sync-view")))
   (setq reftex-plug-into-AUCTeX t)
 
   (mapc (lambda (mode)
