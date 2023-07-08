@@ -28,10 +28,9 @@
 (require 'package)
 (setq
  package-archives
- '(("melpa"         . "https://melpa.org/packages/")
-   ("melpa-stable"  . "https://stable.melpa.org/packages/")
-   ("gnu"           . "https://elpa.gnu.org/packages/")
-   ("nongnu"        . "https://elpa.nongnu.org/nongnu/"))
+ '(("gnu"     . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+   ("melpa"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+   ("nongnu"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/"))
  package-quickstart t
  package-user-dir (expand-file-name "elpa" yx/var-dir)
  package-gnupghome-dir (expand-file-name "gnupg" package-user-dir)
