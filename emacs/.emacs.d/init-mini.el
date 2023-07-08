@@ -175,9 +175,9 @@
     show-trailing-whitespace t)
    (whitespace-mode 1)
    (local-set-key (kbd "RET") 'newline-and-indent)
-   (add-hook 'before-save-hook
-             (delete-trailing-whitespace))
-   ))
+   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   )
+ )
 
 (unless (package-installed-p 'meow)
     (package-install 'meow))

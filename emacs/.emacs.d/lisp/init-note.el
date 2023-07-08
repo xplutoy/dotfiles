@@ -21,7 +21,7 @@
   (org-log-into-drawer t)
   (org-reverse-note-order t)
   (org-hide-block-startup t)
-  (org-return-follows-link t)
+  (org-return-follows-link nil)
   (org-crypt-key yx/gpg-encrypt-key)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts '{})
@@ -31,6 +31,7 @@
   (org-use-speed-commands t)
   (org-fontify-quote-and-verse-blocks t)
   (org-agenda-window-setup 'current-window)
+  (org-tags-exclude-from-inheritance '(project crypt))
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
   (org-src-fontify-natively t)

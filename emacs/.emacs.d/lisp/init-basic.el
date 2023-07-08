@@ -11,6 +11,7 @@
 
 (setq
  track-eol t
+ view-read-only t
  use-short-answers t
  backup-by-copying t
  line-move-visual nil
@@ -242,9 +243,9 @@
     show-trailing-whitespace t)
    (whitespace-mode 1)
    (local-set-key (kbd "RET") 'newline-and-indent)
-   (add-hook 'before-save-hook
-             (delete-trailing-whitespace))
-   ))
+   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   )
+ )
 
 (add-hook
  #'after-init-hook

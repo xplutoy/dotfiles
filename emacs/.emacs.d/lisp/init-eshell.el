@@ -47,7 +47,6 @@
      (eshell/alias "gs"   "git status")
      (eshell/alias "gd"   "magit-diff-unstaged")
      (eshell/alias "gds"  "magit-diff-staged")
-
      (eshell/alias "ll"   "ls -AlohG --color=always")
      )
    )

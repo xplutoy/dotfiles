@@ -20,6 +20,7 @@
    ("https://safjan.com/feeds/all.rss.xml" AI)
    ("https://lilianweng.github.io/index.xml" AI webkit)
    ;; 别人的生活、社区
+   ("https://sspai.com/feed" misc)
    ("https://www.xianmin.org/index.xml" misc)
    ("https://www.v2ex.com/index.xml" misc)
    )

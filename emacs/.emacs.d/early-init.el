@@ -42,11 +42,14 @@
   (add-hook #'emacs-startup-hook
             #'yx/restore-file-name-handler-alist))
 
-(setq gc-cons-threshold (* 128 1024 1024)
-      gc-cons-percentage 0.6)
+(setq
+ gc-cons-percentage 0.6
+ gc-cons-threshold (* 128 1024 1024))
 (add-hook 'after-init-hook
           (lambda()
-            (setq gc-cons-threshold (* 16 1024 1024))))
+            (setq
+             gc-cons-percentage 0.1
+             gc-cons-threshold (* 16 1024 1024))))
 
 
 (defun display-startup-echo-area-message ()

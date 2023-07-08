@@ -2,6 +2,7 @@
 (use-package key-chord
   :init
   (key-chord-mode 1)
+  (key-chord-define-global "ss"     'scratch-buffer)
   (key-chord-define-global "jj"     'avy-goto-word-1)
   (key-chord-define-global "jk"     'evil-emacs-state)
   (key-chord-define-global "gh"     'consult-ripgrep)
@@ -192,6 +193,7 @@
   "h" '(:ignore t :which-key "code hilight")
   "hh" 'symbol-overlay-put
   "hc" 'symbol-overlay-remove-all
+  "ht" 'hl-todo-occur
   )
 
 (use-package evil

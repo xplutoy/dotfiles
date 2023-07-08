@@ -71,6 +71,9 @@
   :hook (dired-mode . diff-hl-dired-mode)
   )
 
+(use-package hl-todo
+  :hook (prog-mode . hl-todo-mode))
+
 ;; rainbow-delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode)
