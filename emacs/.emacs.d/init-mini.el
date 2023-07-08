@@ -123,6 +123,7 @@
  completion-show-help nil
  completion-show-inline-help nil
  completion-auto-select 'second-tab
+ competion-styles '(basic partial-completion flex)
  )
 
 (setq
