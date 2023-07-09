@@ -19,8 +19,8 @@
   )
 
 (prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
 (setq custom-file (expand-file-name "custom.el" yx/etc-dir))
 (load custom-file 'noerror)
 (add-to-list 'load-path "~/.emacs.d/lisp/")

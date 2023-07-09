@@ -3,7 +3,7 @@
   :init
   (key-chord-mode 1)
   (key-chord-define-global "ss"     'scratch-buffer)
-  (key-chord-define-global "jj"     'avy-goto-word-1)
+  (key-chord-define-global "jj"     'avy-goto-char-timer)
   (key-chord-define-global "jk"     'evil-emacs-state)
   (key-chord-define-global "gh"     'consult-ripgrep)
   (key-chord-define-global "hh"     'color-rg-search-symbol)
@@ -40,6 +40,7 @@
  "s-;"        'flyspell-correct-wrapper
  "s-'"        'flyspell-correct-next
  "s-r"        'consult-recent-file
+ "s-b"        'ibuffer
  "s-o"        'crux-open-with
  "C-'"        'vterm-toggle-cd
  "C-;"        'yx/toggole-eshell

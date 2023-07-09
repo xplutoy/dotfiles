@@ -149,6 +149,12 @@
    gnus-group-line-format "%M%S%p%P %0{%5y%} %P%1{%G%}\n")
 
   (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
+  (with-eval-after-load 'gnus-topic
+    (setq gnus-topic-topology
+          '(("Gnus" visible)
+            (("资讯" visible nil nil))))
+    )
   )
 
 
