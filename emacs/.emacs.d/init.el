@@ -3,6 +3,7 @@
 (setq user-mail-address  "yangxue.cs@foxmail.com")
 
 (defvar yx/doc-dir          "~/yxdocs/")
+(defvar yx/org-dir          "~/yxdocs/yx-slip-notes")
 (defvar yx/var-dir          "~/.emacs.d/.cache/")
 (defvar yx/etc-dir          "~/.emacs.d/.cache/etc/")
 (defvar yx/gpg-sign-key     "67B86CB8A5630C51!")

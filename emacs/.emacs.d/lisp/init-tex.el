@@ -33,7 +33,7 @@
 
 (use-package cdlatex
   :config
-  (add-hook 'org-mode-hook 'turn-on-rog-cdlatex)
+  (add-hook 'org-mode-hook 'turn-on-cdlatex)
   (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
   )
 

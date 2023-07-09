@@ -25,6 +25,8 @@
 
 (general-define-key
  ;; beter defaults
+ "C->" 'scroll-right
+ "C-<" 'scroll-left
  [remap describe-bindings]      'embark-bindings
  [remap list-buffers]           'ibuffer
  [remap dabbrev-expand]         'hippie-expand

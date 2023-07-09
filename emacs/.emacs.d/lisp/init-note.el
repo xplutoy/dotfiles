@@ -4,7 +4,7 @@
     :keymap org-mode-map
     "C-c <up>"   'org-priority-up
     "C-c <down>" 'org-priority-down
-    "C-c y"      'org-download-yank
+    "C-c y"      'org-download-clipboard
     "C-c Y"      'org-download-screenshot
     "C-c B"      'org-cite-insert
     )
@@ -14,7 +14,7 @@
   :ensure nil
   :defer 1
   :custom
-  (org-directory yx/doc-dir)
+  (org-directory yx/org-dir)
   (org-ellipsis "...")
   (org-tags-column 0)
   (org-num-max-level 2)
@@ -93,6 +93,8 @@
   (setq
    olivetti-body-width 0.65
    olivetti-minimum-body-width 72)
+  :config
+  (keymap-unset olivetti-mode-map "C-c |")
   )
 
 (use-package org-appear
@@ -104,19 +106,21 @@
 
 (use-package org-download
   :after org
+  :demand t
   :custom
   (org-download-screenshot-method "screencapture -i %s")
+  (org-download-image-dir (expand-file-name "attachs" yx/org-dir))
   )
 
 (use-package xeft
   :defer 2
   :init
   (setq
+   xeft-directory yx/org-dir
    xeft-recursive 'follow-symlinks
    xeft-ignore-extension '("gpg" "asc" "bib")
    xeft-title-function 'file-name-nondirectory
-   xeft-database (no-littering-expand-var-file-name "xeft")
-   xeft-directory (expand-file-name "yx-slip-notes" yx/doc-dir))
+   xeft-database (no-littering-expand-var-file-name "xeft"))
   )
 
 ;; org-roam
@@ -124,8 +128,7 @@
   :after org
   :init
   (setq
-   org-roam-directory
-   (expand-file-name "yx-slip-notes" yx/doc-dir)
+   org-roam-directory yx/org-dir
    org-roam-database-connector 'sqlite-builtin
    org-roam-completion-everywhere t
    org-roam-capture-templates

@@ -58,8 +58,9 @@
 
 (setq
  create-lockfiles nil
- auto-save-default nil
  make-backup-files nil
+ auto-save-default nil
+ auto-save-list-file-prefix nil
  )
 
 (setq
