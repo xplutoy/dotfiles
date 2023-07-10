@@ -43,11 +43,15 @@
  "s-'"        'flyspell-correct-next
  "s-r"        'consult-recent-file
  "s-b"        'ibuffer
- "s-o"        'crux-open-with
+ "s-o"        'ace-window
  "C-'"        'vterm-toggle-cd
  "C-;"        'yx/toggole-eshell
  "C-."        'embark-act
  "C-,"        'embark-dwim
+
+ "M-g ;"      'goto-last-change
+
+ "C-c v"      'magit-file-dispatch
 
  "C-c d"      'osx-dictionary-search-pointer
  "C-c D"      'osx-dictionary-search-input
@@ -97,6 +101,7 @@
   "ff"  'find-file
   "ft"  'find-file-other-tab
   "fo"  'find-file-other-window
+  "fO"  'crux-open-with
   "fr"  'rename-visited-file
   "fF"  'crux-sudo-edit
   "fE"  'crux-reopen-as-root
@@ -125,6 +130,7 @@
   "vlc" 'magit-log-current
   "vlf" 'magit-log-buffer-file
   "vf" '(:ignore t :which-key "file")
+  "vff" 'magit-file-dispatch
   "vfc" 'magit-file-checkout
   "vfd" 'magit-file-delete
   "vfr" 'magit-file-rename
@@ -179,6 +185,7 @@
   "de" 'eldoc
   "dd" 'devdocs-lookup
   "g" '(:ignore t :which-key "code navigate")
+  "gg" 'consult-xref
   "gf" 'consult-flymake
   "gs" 'consult-eglot-symbols
   "gd" 'xref-find-definitions

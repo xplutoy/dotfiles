@@ -96,6 +96,15 @@
               ("/" . dired-filter-mode))
   )
 
+(use-package ace-window
+  :defer 1
+  :init
+  (setq
+   aw-scope 'frame
+   aw-background nil
+   aw-dispatch-always t
+   aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  )
 
 (use-package winum
   :defer 1

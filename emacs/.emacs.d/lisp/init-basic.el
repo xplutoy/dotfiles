@@ -17,6 +17,7 @@
  line-move-visual nil
  hl-line-sticky-flag nil
  auto-revert-verbose nil
+ require-final-newline t
  confirm-kill-processes nil
  find-file-visit-truename t
  ring-bell-function 'ignore
@@ -176,7 +177,7 @@
 ;; font-lock
 (setq
  jit-lock-defer-time 0.05
- jit-lock-stealth-time 1.0
+ jit-lock-stealth-time 0.5
  jit-lock-stealth-nice 0.2)
 (setq-default jit-lock-contextually t)
 
@@ -199,6 +200,17 @@
  desktop-auto-save-timeout   60
  desktop-load-locked-desktop nil)
 
+;; midnight-mode
+(setq
+ midnight-period 36000
+ clean-buffer-list-delay-general 1
+ clean-buffer-list-kill-regexps '(".*")
+ clean-buffer-list-kill-never-buffer-names
+ '("*eshell*" "*scratch*" "*server*" "*vterm*" "*Group*"))
+(add-hook 'after-init-hook 'midnight-mode)
+(with-eval-after-load 'midnight
+  (midnight-delay-set 'midnight-delay 60)
+  )
 
 (setq
  calendar-latitude 30.67

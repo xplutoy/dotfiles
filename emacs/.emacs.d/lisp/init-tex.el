@@ -32,9 +32,9 @@
     (add-to-list 'eglot-server-programs '(latex-mode "texlab"))))
 
 (use-package cdlatex
-  :config
-  (add-hook 'org-mode-hook 'turn-on-cdlatex)
-  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+  :hook
+  ((LaTeX-mode . turn-on-cdlatex)
+   (org-mode . turn-on-org-cdlatex))
   )
 
 ;; ==== end ====

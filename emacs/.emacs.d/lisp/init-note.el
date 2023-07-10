@@ -31,6 +31,7 @@
   (org-use-speed-commands t)
   (org-fontify-quote-and-verse-blocks t)
   (org-agenda-window-setup 'current-window)
+  (org-preview-latex-default-process 'imagemagick)
   (org-tags-exclude-from-inheritance '(project crypt))
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
@@ -95,6 +96,8 @@
    olivetti-minimum-body-width 72)
   :config
   (keymap-unset olivetti-mode-map "C-c |")
+  (keymap-unset olivetti-mode-map "C-c {")
+  (keymap-unset olivetti-mode-map "C-c }")
   )
 
 (use-package org-appear

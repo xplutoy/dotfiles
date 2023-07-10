@@ -54,6 +54,8 @@
          ("M-#"     . consult-register-load)
          ("M-'"     . consult-register-store)
          ("C-M-#"   . consult-register)
+         ("M-g m"   . consult-mark)
+         ("M-g M"   . consult-global-mark)
          :map minibuffer-local-map
          ("M-s" . consult-history)
          ("M-r" . consult-history))
