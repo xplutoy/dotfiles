@@ -102,6 +102,7 @@
   (setq
    aw-scope 'frame
    aw-background nil
+   aw-minibuffer-flag t
    aw-dispatch-always t
    aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   )

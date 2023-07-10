@@ -30,10 +30,15 @@
   (org-special-ctrl-a/e t)
   (org-use-speed-commands t)
   (org-fontify-quote-and-verse-blocks t)
-  (org-agenda-window-setup 'current-window)
   (org-preview-latex-default-process 'imagemagick)
   (org-tags-exclude-from-inheritance '(project crypt))
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
+  (org-agenda-compact-blocks t)
+  (org-agenda-include-deadlines t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-skip-scheduled-if-done t)
+  (org-agenda-window-setup 'current-window)
 
   (org-src-fontify-natively t)
   (org-src-tab-acts-natively t)
@@ -67,12 +72,22 @@
       evil-auto-indent nil)
      (auto-fill-mode 0)
      (variable-pitch-mode 1)))
-  (custom-set-faces
-   '(org-code  ((t :inherit 'fixed-pitch-serif)))
-   '(org-table ((t :inherit 'fixed-pitch-serif)))
-   '(org-block ((t :inherit 'fixed-pitch-serif)))
-   '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
-   '(org-latex-and-related ((t (:inherit 'fixed-pitch-serif)))))
+  (mapc
+   (lambda (face)
+     (set-face-attribute face nil :inherit 'fixed-pitch-serif))
+   (list
+    'org-date
+    'org-block
+    'org-table
+    'org-verbatim
+    'org-block-begin-line
+    'org-block-end-line
+    'org-meta-line
+    'org-drawer
+    'org-property-value
+    'org-special-keyword
+    'org-latex-and-related
+    'org-document-info-keyword))
   (org-babel-do-load-languages
    'org-babel-load-languages '((emacs-lisp . t) (python . t) (R . t) (julia . t)))
   (org-crypt-use-before-save-magic)

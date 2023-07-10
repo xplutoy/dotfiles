@@ -30,7 +30,7 @@
   :defer 1
   :init
   (setq
-   which-key-idle-delay 1.0
+   which-key-idle-delay 1.5
    which-key-show-early-on-C-h t
    which-key-show-remaining-keys t
    which-key-idle-secondary-delay 0.05)
@@ -119,7 +119,6 @@
   (setq no-littering-var-directory yx/var-dir
         no-littering-etc-directory yx/etc-dir
         )
-
   (with-eval-after-load 'recentf
     (add-to-list 'recentf-exclude
                  (recentf-expand-file-name no-littering-var-directory))

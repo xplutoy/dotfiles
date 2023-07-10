@@ -1,4 +1,28 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
+(add-hook
+ #'prog-mode-hook
+ (lambda ()
+   (hl-line-mode 1)
+   (hs-minor-mode 1)
+   (show-paren-mode 1)
+   (flyspell-prog-mode)
+   (electric-pair-mode 1)
+   (which-function-mode 1)
+   (display-line-numbers-mode 1)
+   (electric-indent-local-mode 1)
+   (setq-local
+    whitespace-style
+    '(face trailing lines-char space-before-tab space-after-tab)
+    show-trailing-whitespace t)
+   (whitespace-mode 1)
+   (local-set-key (kbd "RET") 'newline-and-indent)
+   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   )
+ )
+
+(with-eval-after-load 'hideshow
+  (keymap-set hs-minor-mode-map "C-<return>" 'hs-toggle-hiding))
+
 (use-package eglot
   :ensure nil
   :init

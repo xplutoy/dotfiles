@@ -11,6 +11,7 @@
 
 (setq
  track-eol t
+ visible-bell nil
  view-read-only t
  use-short-answers t
  backup-by-copying t
@@ -20,7 +21,6 @@
  require-final-newline t
  confirm-kill-processes nil
  find-file-visit-truename t
- ring-bell-function 'ignore
  initial-scratch-message ""
  delete-by-moving-to-trash t
  set-mark-command-repeat-pop t
@@ -176,9 +176,10 @@
 
 ;; font-lock
 (setq
- jit-lock-defer-time 0.05
+ jit-lock-defer-time 0.25
+ jit-lock-chunk-size 4096
  jit-lock-stealth-time 0.5
- jit-lock-stealth-nice 0.2)
+ )
 (setq-default jit-lock-contextually t)
 
 ;; savehist
@@ -195,10 +196,11 @@
 
 ;; emacs session
 (setq
- desktop-save 'if-exists
+ desktop-save t
  desktop-restore-eager 5
- desktop-auto-save-timeout   60
- desktop-load-locked-desktop nil)
+ desktop-auto-save-timeout 60
+ desktop-load-locked-desktop 'check-pid)
+(add-hook 'emacs-startup-hook 'desktop-save-mode)
 
 ;; midnight-mode
 (setq
@@ -243,30 +245,10 @@
  )
 
 (add-hook
- #'prog-mode-hook
- (lambda ()
-   (hl-line-mode 1)
-   (hs-minor-mode 1)
-   (show-paren-mode 1)
-   (flyspell-prog-mode)
-   (electric-pair-mode 1)
-   (which-function-mode 1)
-   (display-line-numbers-mode 1)
-   (electric-indent-local-mode 1)
-   (setq-local
-    whitespace-style
-    '(face trailing lines-char space-before-tab space-after-tab)
-    show-trailing-whitespace t)
-   (whitespace-mode 1)
-   (local-set-key (kbd "RET") 'newline-and-indent)
-   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-   )
- )
-
-(add-hook
  #'after-init-hook
  (lambda ()
    (repeat-mode 1)
+   (ffap-bindings)
    (save-place-mode 1)
    (blink-cursor-mode -1)
    (auto-compression-mode 1)

@@ -31,20 +31,21 @@
    (buffer-face-mode))
  )
 
- (use-package ef-themes
-   :init
-   (setq
-    ef-themes-to-toggle '(ef-light ef-night)
-    ef-themes-headings
-    '((0 . (variable-pitch 1.3))
-      (1 . (regular 1.2))
-      (2 . (variable-pitch 1.1))
-      (3 . (1.05))
-      (agenda-date . (1.3))
-      (agenda-structure . (variable-pitch 1.3))
-      (t . (t))))
-   (ef-themes-select 'ef-light)
-   )
+(use-package ef-themes
+  :init
+  (setq
+   ef-themes-to-toggle '(ef-light ef-night)
+   ef-themes-headings
+   '((0 . (variable-pitch 1.3))
+     (1 . (regular 1.25))
+     (2 . (variable-pitch 1.15))
+     (3 . (1.1))
+     (4 . (1.05))
+     (agenda-date . (variable-pitch 1.25))
+     (agenda-structure . (variable-pitch 1.25))
+     (t . (t))))
+  (ef-themes-select 'ef-light)
+  )
 
 (use-package theme-changer
   :after ef-themes
