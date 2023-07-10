@@ -27,16 +27,21 @@
  ;; beter defaults
  "C->" 'scroll-right
  "C-<" 'scroll-left
- [remap describe-bindings]      'embark-bindings
- [remap list-buffers]           'ibuffer
- [remap dabbrev-expand]         'hippie-expand
- [remap undo]                   'undo-only
- [remap kill-buffer]            'kill-buffer-and-window
- [remap toggle-input-method]    'sis-switch
- [remap comment-dwim]           'evil-commentary-line
- [remap tab-to-tab-stop]        'consult-imenu-multi
- [remap zap-to-char]            'vg-quick-zap-to-char
- [remap customize]              'winner-undo
+ "C-{" 'shrink-window-horizontally
+ "C-}" 'enlarge-window-horizontally
+ "C-^" 'enlarge-window
+
+ [remap what-cursor-position]   'zoom                   ;C-x =
+ [remap describe-bindings]      'embark-bindings        ;C-h b
+ [remap list-buffers]           'ibuffer                ;C-x C-b
+ [remap dabbrev-expand]         'hippie-expand          ;M-/
+ [remap undo]                   'undo-only              ;C-/
+ [remap kill-buffer]            'kill-buffer-and-window ;C-x k
+ [remap toggle-input-method]    'sis-switch             ;C-\\
+ [remap comment-dwim]           'evil-commentary-line   ;M-;
+ [remap tab-to-tab-stop]        'consult-imenu-multi    ;M-i
+ [remap zap-to-char]            'vg-quick-zap-to-char   ;M-z
+ [remap customize]              'winner-undo            ;s-,
  "s-."                          'winner-redo
  "s-<return>" 'toggle-frame-maximized
  "s-;"        'flyspell-correct-wrapper

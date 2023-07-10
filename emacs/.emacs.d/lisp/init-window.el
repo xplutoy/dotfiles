@@ -3,6 +3,7 @@
  winner-dont-bind-my-keys t
  winner-boring-buffers-regexp "^\\*")
 (add-hook 'after-init-hook 'winner-mode)
+(add-hook 'after-init-hook 'temp-buffer-resize-mode)
 
 (setq
  help-window-select t
@@ -36,7 +37,6 @@
  tab-bar-tab-hints t
  tab-bar-select-tab-modifiers '(super))
 (add-hook 'after-init-hook 'tab-bar-history-mode)
-
 
 ;; ibuffer
 (setq
@@ -117,6 +117,12 @@
   :config
   (winum-set-keymap-prefix nil)
   (winum-mode 1)
+  )
+
+;; zoom
+(use-package zoom
+  :custom
+  (zoom-size '(0.618 . 0.618))
   )
 
 (use-package popper

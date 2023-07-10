@@ -212,6 +212,10 @@
   (midnight-delay-set 'midnight-delay 60)
   )
 
+;; time-stamp
+(add-hook 'before-save-hook 'time-stamp)
+
+;; calendar
 (setq
  calendar-latitude 30.67
  calendar-longitude 104.07
@@ -274,7 +278,8 @@
    )
  )
 
-(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-page   'disabled nil)
+(put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
 ;; never kill scratch
