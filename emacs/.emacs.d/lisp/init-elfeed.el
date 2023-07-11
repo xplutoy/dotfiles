@@ -34,7 +34,13 @@
 
 (use-package elfeed
   :config
-  (define-key elfeed-show-mode-map (kbd "B") 'elfeed-eww-browse)
+  (bind-keys
+   :map elfeed-show-mode-map
+   ("B" . elfeed-eww-browse)
+   ("q" . (lambda ()
+            "Switch to *elfeed-search* buffer."
+            (interactive)
+            (switch-to-buffer "*elfeed-search*"))))
   )
 
 (use-package elfeed-webkit

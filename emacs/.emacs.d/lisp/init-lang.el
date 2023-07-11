@@ -20,6 +20,11 @@
    )
  )
 
+;; ediff
+(setq
+ ediff-window-setup-function 'ediff-setup-windows-plain
+ ediff-split-window-function 'split-window-horizontally)
+
 (with-eval-after-load 'hideshow
   (keymap-set hs-minor-mode-map "C-<return>" 'hs-toggle-hiding))
 
@@ -43,16 +48,11 @@
   :ensure nil
   :init
   (setq
-   treesit-extra-load-path (list (no-littering-expand-var-file-name "tree-sitter"))
-   treesit-language-source-alist
-   '( (c      . ("https://github.com/tree-sitter/tree-sitter-c"))
-      (julia  . ("https://github.com/tree-sitter/tree-sitter-julia"))
-      (python . ("https://github.com/tree-sitter/tree-sitter-python")))
-   )
-  (setq major-mode-remap-alist
-        '((c-mode . c-ts-mode)
-          (julia-mode . julia-ts-mode)
-          (python-mode . python-ts-mode)))
+   major-mode-remap-alist
+   '((c-mode . c-ts-mode)
+     (julia-mode . julia-ts-mode)
+     (python-mode . python-ts-mode))
+   treesit-extra-load-path (list (no-littering-expand-var-file-name "tree-sitter")))
   )
 
 (use-package reformatter
@@ -149,6 +149,10 @@
  (lambda ()
    (prettify-symbols-mode)
    ))
+
+(use-package elisp-autofmt
+  :commands (elisp-autofmt-mode elisp-autofmt-buffer)
+  :hook (emacs-lisp-mode . elisp-autofmt-mode))
 
 (use-package code-cells
   :hook ((python-ts-mode julia-ts-mode) . code-cells-mode-maybe)
