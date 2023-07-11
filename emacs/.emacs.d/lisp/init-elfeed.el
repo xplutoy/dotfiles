@@ -1,19 +1,18 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 (setq
  elfeed-feeds
- '(;; 工具、技术
-   ("https://sachachua.com/blog/category/emacs/feed/" emacs)
+ '(("https://sachachua.com/blog/category/emacs/feed/" emacs)
    ("https://planet.emacslife.com/atom.xml" emacs)
    ("https://blog.aaronbieber.com/posts/index.xml" emacs)
    (" https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
    ("http://www.ruanyifeng.com/blog/atom.xml" tech)
-   ;; 数据、R、Python、Julia等
+   ;;
    ("https://www.juliabloggers.com/feed/" julia)
    ("https://feeds.feedburner.com/RBloggers" r-lang)
    ("https://rustcc.cn/rss" rust)
    ("https://planetpython.org/rss20.xml" python)
    ("https://python-bloggers.com/feed/" python)
-   ;; 科研、数学、物理
+   ;; 
    ("https://spaces.ac.cn/feed" AI webkit)
    ("https://ruder.io/rss/index.rss" AI)
    ("https://www.inference.vc/rss" AI)
