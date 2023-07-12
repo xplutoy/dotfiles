@@ -3,6 +3,7 @@
   :demand t
   :config
   (setq vertico-resize nil)
+
   (vertico-mode 1)
   (vertico-mouse-mode 1)
   (vertico-indexed-mode 1)
@@ -79,9 +80,9 @@
 ;; corfu ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package corfu
   :custom
-  corfu-auto t
-  corfu-preselect 'valid
-  corfu-echo-documentation nil
+  (corfu-auto t)
+  (corfu-preselect 'valid)
+  (corfu-echo-documentation nil)
   :config
   (corfu-echo-mode 1)
   (corfu-history-mode 1)

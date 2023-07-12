@@ -73,10 +73,13 @@
  "C-c t"      'org-show-todo-tree
 
  "C-c n l"    'org-roam-buffer-toggle
- "C-c n f"    'org-roam-node-find
+ "C-c n n"    'org-roam-node-find
  "C-c n i"    'org-roam-node-insert
  "C-c n c"    'org-roam-capture
  "C-c n j"    'org-roam-dailies-capture-today
+ "C-c n r"    'consult-org-roam-search
+ "C-c n b"    'consult-org-roam-backlinks
+ "C-c n f"    'consult-org-roam-forward-links
  "C-c n t"    'org-transclusion-add
  "C-c n T"    'org-transclusion-add-all
 

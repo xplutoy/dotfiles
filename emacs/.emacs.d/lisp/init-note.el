@@ -34,12 +34,6 @@
   (org-tags-exclude-from-inheritance '(project crypt))
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
-  (org-agenda-compact-blocks t)
-  (org-agenda-include-deadlines t)
-  (org-agenda-skip-deadline-if-done t)
-  (org-agenda-skip-scheduled-if-done t)
-  (org-agenda-window-setup 'current-window)
-
   (org-src-fontify-natively t)
   (org-src-tab-acts-natively t)
   (org-src-window-setup 'split-window-right)
@@ -52,13 +46,24 @@
    (expand-file-name "inbox.org" org-directory))
   (org-capture-templates
    '(("t" "task"  entry (file+headline org-default-notes-file "Tasks")
-      "* TODO [#B] %^{Title}\n%?")
+      "* TODO [#B] %?\nAdded: %U\n" :prepend t :kill-buffer t)
      ("i" "idea"  entry (file+headline org-default-notes-file "Someday/Maybe")
       "* IDEA [#C] %?\nAdded: %U\n" :prepend t :kill-buffer t)
      ("h" "habit" entry (file+headline org-default-notes-file "Habits")
-      "* NEXT [#B] %^{Title}\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%?")
+      "* NEXT [#B] %?\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"
+      :prepend t :kill-buffer t)
      )
    )
+
+  (org-agenda-files
+   (list
+    org-default-notes-file
+    (expand-file-name "life.org" yx/org-dir)))
+  (org-agenda-compact-blocks t)
+  (org-agenda-include-deadlines t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-skip-scheduled-if-done t)
+  (org-agenda-window-setup 'current-window)
 
   ;; org-cite
   (org-cite-global-bibliography
@@ -89,12 +94,14 @@
     'org-latex-and-related
     'org-document-info-keyword))
   (org-babel-do-load-languages
-   'org-babel-load-languages '((emacs-lisp . t) (python . t) (R . t) (julia . t)))
+   'org-babel-load-languages
+   '((emacs-lisp . t) (python . t) (R . t) (julia . t) (org .t)))
   (org-crypt-use-before-save-magic)
   (dolist (ele '(("sh" . "src shell")
                  ("el" . "src emacs-lisp")
                  ("py" . "src python")
                  ("R"  . "src R")
+                 ("o"  . "src org")
                  ("jl" . "src julia")))
     (add-to-list 'org-structure-template-alist ele))
   )
@@ -160,10 +167,17 @@
      )
    )
   :config
-  (org-roam-db-autosync-enable)
+  (org-roam-db-autosync-mode)
   (add-hook
    'org-roam-capture-new-node-hook
    (lambda () (org-roam-tag-add '("draft"))))
+  (add-to-list
+   'display-buffer-alist
+   '("\\*org-roam\\*"
+     (display-buffer-in-direction)
+     (direction . right)
+     (window-width . 0.3)
+     (window-height . fit-window-to-buffer)))
   )
 (use-package org-roam-ui
   :after org-roam
@@ -172,7 +186,18 @@
     (setq org-roam-ui-browser-function 'xwidget-webkit-browse-url)
     )
   )
+
 (use-package org-transclusion)
+
+(use-package consult-org-roam
+  :after org-roam
+  :init
+  (require 'consult-org-roam)
+  (consult-org-roam-mode 1)
+  :custom
+  (consult-org-roam-buffer-after-buffers t)
+  (consult-org-roam-grep-func 'consult-ripgrep)
+  )
 
 ;; citar
 (use-package citar

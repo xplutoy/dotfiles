@@ -182,7 +182,6 @@
        "^\\*Org Note"
        "^\\*Org Select"
        "\\*Capture\\*"
-       "^\\*org-roam\\*"
        "^\\*Python\\*"
        "\\*Shell Command Output\\*")
       :regexp t :nonselect t :popup t :align t)

@@ -6,19 +6,16 @@
    ("https://blog.aaronbieber.com/posts/index.xml" emacs)
    (" https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-and-content.xml" emacs)
    ("http://www.ruanyifeng.com/blog/atom.xml" tech)
-   ;;
    ("https://www.juliabloggers.com/feed/" julia)
    ("https://feeds.feedburner.com/RBloggers" r-lang)
    ("https://rustcc.cn/rss" rust)
    ("https://planetpython.org/rss20.xml" python)
    ("https://python-bloggers.com/feed/" python)
-   ;; 
    ("https://spaces.ac.cn/feed" AI webkit)
    ("https://ruder.io/rss/index.rss" AI)
    ("https://www.inference.vc/rss" AI)
    ("https://safjan.com/feeds/all.rss.xml" AI)
    ("https://lilianweng.github.io/index.xml" AI webkit)
-   ;;
    ("https://www.bmpi.dev/index.xml" misc)
    ("https://www.xianmin.org/index.xml" misc)
    )

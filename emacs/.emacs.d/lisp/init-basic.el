@@ -180,8 +180,8 @@
  desktop-restore-eager 5
  desktop-auto-save-timeout 60
  desktop-load-locked-desktop 'check-pid)
-(add-hook 'emacs-startup-hook 'desktop-read)
-(add-hook 'emacs-startup-hook 'desktop-save-mode)
+;; (add-hook 'emacs-startup-hook 'desktop-read)
+;; (add-hook 'emacs-startup-hook 'desktop-save-mode)
 
 ;; midnight-mode
 (setq
