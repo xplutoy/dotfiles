@@ -145,12 +145,6 @@
 (use-package devdocs)
 
 ;; lisp
-(add-hook
- 'emacs-lisp-mode
- (lambda ()
-   (prettify-symbols-mode)
-   ))
-
 (use-package elisp-autofmt
   :commands (elisp-autofmt-mode elisp-autofmt-buffer)
   :hook (emacs-lisp-mode . elisp-autofmt-mode))

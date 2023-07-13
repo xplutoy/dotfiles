@@ -146,6 +146,7 @@
           "\\*julia\\*$"
           "\\*color-rg\\*$"
           "\\*Python\\*$"
+          "\\*org-roam\\*$"
           help-mode
           occur-mode
           compilation-mode
@@ -192,6 +193,8 @@
      (("^magit" magit-mode
        vterm-mode)
       :regexp t :select t :same t :inhibit-window-quit t)
+     (("^\\*org-roam\\*$")
+      :regexp t :align right :size 0.33)
      )
    )
   (shackle-mode 1)

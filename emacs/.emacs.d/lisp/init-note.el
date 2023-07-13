@@ -1,12 +1,12 @@
 ;;; -*- lexical-binding: t no-byte-compile: t -*-
 (with-eval-after-load 'org
-  (define-keymap
-    :keymap org-mode-map
-    "C-c <up>"   'org-priority-up
-    "C-c <down>" 'org-priority-down
-    "C-c y"      'org-download-clipboard
-    "C-c Y"      'org-download-screenshot
-    "C-c B"      'org-cite-insert
+  (yx-comma-leader-def org-mode-map
+    "," 'org-insert-structure-template
+    "'" 'org-edit-special
+    "/" 'org-sparse-tree
+    "y" 'org-download-clipboard
+    "Y" 'org-download-screenshot
+    "b" 'org-cite-insert
     )
   )
 
@@ -131,7 +131,6 @@
 
 (use-package org-download
   :after org
-  :demand t
   :custom
   (org-download-screenshot-method "screencapture -i %s")
   (org-download-image-dir (expand-file-name "attachs" yx/org-dir))
@@ -151,6 +150,7 @@
 ;; org-roam
 (use-package org-roam
   :after org
+  :demand t
   :init
   (setq
    org-roam-directory yx/org-dir
@@ -171,13 +171,6 @@
   (add-hook
    'org-roam-capture-new-node-hook
    (lambda () (org-roam-tag-add '("draft"))))
-  (add-to-list
-   'display-buffer-alist
-   '("\\*org-roam\\*"
-     (display-buffer-in-direction)
-     (direction . right)
-     (window-width . 0.3)
-     (window-height . fit-window-to-buffer)))
   )
 (use-package org-roam-ui
   :after org-roam

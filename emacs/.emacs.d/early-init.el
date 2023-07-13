@@ -11,6 +11,7 @@
 
 (setq
  inhibit-default-init t
+ ffap-machine-p-known 'reject
  package-enable-at-startup nil
  frame-inhibit-implied-resize t
  read-process-output-max (* 1024 1024)

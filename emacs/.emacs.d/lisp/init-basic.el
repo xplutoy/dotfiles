@@ -147,6 +147,11 @@
  fast-but-imprecise-scrolling t
  scroll-preserve-screen-position 'always)
 
+
+;; doc-view
+(setq
+ doc-view-resolution 720)
+
 ;; eww
 (setq
  eww-auto-rename-buffer 'title

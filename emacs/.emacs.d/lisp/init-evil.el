@@ -1,4 +1,22 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
+(use-package general
+  :config
+  (general-evil-setup)
+  (general-auto-unbind-keys)
+  (general-create-definer yx-space-leader-def
+    :keymaps 'overide
+    :states '(normal visual insert emacs)
+    :prefix "SPC"
+    :non-normal-prefix "M-SPC")
+  (general-create-definer yx-comma-leader-def
+    :keymaps 'overide
+    :states '(normal visual insert emacs)
+    :major-modes t
+    :prefix ","
+    :non-normal-prefix "M-,"
+    )
+  )
+
 (use-package key-chord
   :init
   (key-chord-mode 1)
@@ -10,15 +28,6 @@
   (key-chord-define-global "ff"     'find-file)
   (key-chord-define-global "jb"     'consult-buffer)
   (key-chord-define-global "df"     'osx-dictionary-search-word-at-point)
-  )
-
-(use-package general
-  :config
-  (general-evil-setup t)
-  (general-create-definer yx-space-leader-def
-    :prefix "SPC"
-    :non-normal-prefix "M-SPC"
-    :states '(normal visual insert emacs))
   )
 
 (general-unbind flyspell-mode-map "C-," "C-." "C-;")
@@ -95,6 +104,10 @@
 
 (yx-space-leader-def
   "SPC" 'execute-extended-command-for-buffer
+  "!" 'shell-command
+  "/" 'consult-ripgrep
+  "u" 'universal-argument
+
   "0" 'winum-select-window-0-or-10
   "1" 'winum-select-window-1
   "2" 'winum-select-window-2
@@ -188,7 +201,7 @@
   "rb"  'consult-bookmark
   )
 
-(yx-space-leader-def :keymaps 'prog-mode-map
+(yx-comma-leader-def prog-mode-map
   "d" '(:ignore t :which-key "code docs")
   "de" 'eldoc
   "dd" 'devdocs-lookup
