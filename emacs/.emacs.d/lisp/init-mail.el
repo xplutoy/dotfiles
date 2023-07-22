@@ -111,7 +111,7 @@
    gnus-sum-thread-tree-indent          "  "
    gnus-sum-thread-tree-leaf-with-other "+-> "
    gnus-sum-thread-tree-single-leaf     "`-> "
-   gnus-summary-line-format "%U%R%z%B%[%-20,20f%] %s\n")
+   gnus-summary-line-format "%U%R%z%B%[%-10,10f%] %s\n")
   (setq
    gnus-summary-make-false-root 'adopt
    gnus-summary-ignore-duplicates t

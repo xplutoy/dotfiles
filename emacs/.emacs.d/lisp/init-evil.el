@@ -4,12 +4,10 @@
   (general-evil-setup)
   (general-auto-unbind-keys)
   (general-create-definer yx-space-leader-def
-    :keymaps 'overide
     :states '(normal visual insert emacs)
     :prefix "SPC"
     :non-normal-prefix "M-SPC")
   (general-create-definer yx-comma-leader-def
-    :keymaps 'overide
     :states '(normal visual insert emacs)
     :major-modes t
     :prefix ","

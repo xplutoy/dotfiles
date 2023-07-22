@@ -19,6 +19,7 @@
   (org-tags-column 0)
   (org-num-max-level 2)
   (org-log-into-drawer t)
+  ;; (org-pretty-entities t)
   (org-reverse-note-order t)
   (org-hide-block-startup t)
   (org-return-follows-link nil)
@@ -127,10 +128,17 @@
   :custom
   (org-appear-delay 1)
   (org-appear-autolinks t)
+  (org-appear-inside-latex t)
+  (org-appear-autoentities t)
+  (org-appear-autoemphasis t)
+  (org-appear-autosubmarkers t)
   )
 
 (use-package org-download
   :after org
+  :commands
+  (org-download-clipboard
+   org-download-screenshot)
   :custom
   (org-download-screenshot-method "screencapture -i %s")
   (org-download-image-dir (expand-file-name "attachs" yx/org-dir))
@@ -167,7 +175,7 @@
      )
    )
   :config
-  (org-roam-db-autosync-mode)
+  ;; (org-roam-db-autosync-mode)
   (add-hook
    'org-roam-capture-new-node-hook
    (lambda () (org-roam-tag-add '("draft"))))
@@ -194,17 +202,16 @@
 
 ;; citar
 (use-package citar
-  :after org
   :config
   (setq
    org-cite-insert-processor 'citar
    org-cite-follow-processor 'citar
    org-cite-activate-processor 'citar
    citar-bibliography org-cite-global-bibliography
-   citar-notes-paths
-   (list (expand-file-name "research" org-roam-directory)))
+   citar-notes-paths (list org-roam-directory))
   :hook
   (org-mode . citar-capf-setup)
+  (LaTeX-mode . citar-capf-setup)
   )
 (use-package citar-embark
   :after citar embark

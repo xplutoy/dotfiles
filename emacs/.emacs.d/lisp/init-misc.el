@@ -109,8 +109,6 @@
   (sis-global-context-mode 1)
   (sis-global-respect-mode 1)
   (sis-global-cursor-color-mode 1)
-  (add-hook 'org-mode-hook
-            (lambda () (sis-context-mode -1))) ; bug
   )
 
 (use-package no-littering
@@ -139,11 +137,6 @@
   (setq jinx-languages "en_US")
   )
 
-(use-package keyfreq
-  :defer 1
-  :config
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
 
 (use-package pdf-tools)
 (use-package emacsql-sqlite-builtin)

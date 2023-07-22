@@ -14,7 +14,6 @@
  visible-bell nil
  view-read-only t
  use-short-answers t
- backup-by-copying t
  line-move-visual nil
  hl-line-sticky-flag nil
  auto-revert-verbose nil
@@ -43,6 +42,14 @@
 (setq
  auto-save-no-message t
  auto-save-visited-interval 30)
+
+;; backup
+(setq
+ version-control t
+ backup-by-copying t
+ kept-new-versions 6
+ kept-old-versions 2
+ delete-old-versions t)
 
 ;; eldoc
 (setq eldoc-echo-area-use-multiline-p nil)
