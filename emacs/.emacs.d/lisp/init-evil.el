@@ -18,8 +18,10 @@
 (use-package key-chord
   :init
   (key-chord-mode 1)
+  (key-chord-define-global "zz"     'zoom)
   (key-chord-define-global "ss"     'scratch-buffer)
   (key-chord-define-global "jj"     'avy-goto-char-timer)
+  (key-chord-define-global "jl"     'avy-goto-line)
   (key-chord-define-global "jk"     'evil-emacs-state)
   (key-chord-define-global "gh"     'consult-ripgrep)
   (key-chord-define-global "hh"     'color-rg-search-symbol)
@@ -37,6 +39,8 @@
  "C-{" 'shrink-window-horizontally
  "C-}" 'enlarge-window-horizontally
  "C-^" 'enlarge-window
+
+ "H-z" 'zoom
 
  [remap what-cursor-position]   'zoom                   ;C-x =
  [remap describe-bindings]      'embark-bindings        ;C-h b

@@ -68,7 +68,7 @@
 
 ;; recentf
 (setq
- recentf-max-saved-items 50
+ recentf-max-saved-items 500
  recentf-auto-cleanup 'never
  recentf-exclude
  '("COMMIT_MSG"
@@ -164,6 +164,8 @@
  eww-auto-rename-buffer 'title
  eww-search-prefix "https://www.bing.com/?q="
  browse-url-browser-function 'eww-browse-url)
+(with-eval-after-load 'eww
+  (add-hook 'eww-after-render-hook 'eww-readable))
 
 ;; flyspell
 (setq
@@ -216,10 +218,11 @@
  calendar-mark-diary-entries-flag t)
 
 ;; os specific settings stay here
-(when (eq system-type 'darwin)
+(when -is-mac
   (setq
-   mac-command-modifier 'super
    ns-use-thin-smoothing t
+   mac-command-modifier 'super
+   ns-function-modifier 'hyper
    ns-use-native-fullscreen nil
    insert-directory-program "gls"))
 
