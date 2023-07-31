@@ -47,13 +47,6 @@
   (ef-themes-select 'ef-light)
   )
 
-(use-package theme-changer
-  :after ef-themes
-  :defer 10
-  :config
-  (change-theme 'ef-light 'ef-night)
-  )
-
 (use-package minions
   :hook (after-init . minions-mode)
   )
@@ -69,11 +62,7 @@
    doom-modeline-project-detection 'project)
   )
 
-(use-package nerd-icons
-  :config
-  (setq
-   nerd-icons-scale-factor 1.0
-   nerd-icons-font-famil "Hack nerd font"))
+(use-package nerd-icons)
 (use-package nerd-icons-dired
   :hook (dired-mode . nerd-icons-dired-mode))
 (use-package nerd-icons-ibuffer
