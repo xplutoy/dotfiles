@@ -30,18 +30,22 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (require 'package)
+(require 'use-package)
 (setq
  package-archives
- '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-   ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-   ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/"))
+ '(("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+   ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+   ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
  package-quickstart t
+ use-package-always-defer t
+ use-package-always-ensure t
+ use-package-expand-minimally t
  package-user-dir (expand-file-name "elpa" yx/var-dir)
  package-gnupghome-dir (expand-file-name "gnupg" package-user-dir))
-(package-activate-all)
+(package-initialize)
 
-(benchmark-init/activate)
-(add-hook 'after-init-hook 'benchmark-init/deactivate)
+;; (benchmark-init/activate)
+;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 (require 'init-ui)
 (require 'init-basic)
