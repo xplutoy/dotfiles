@@ -16,12 +16,10 @@
   :custom
   (org-directory yx/org-dir)
   (org-ellipsis "...")
-  (org-tags-column 0)
   (org-num-max-level 2)
   (org-log-into-drawer t)
-  ;; (org-pretty-entities t)
+  (org-pretty-entities t)
   (org-reverse-note-order t)
-  (org-hide-block-startup t)
   (org-return-follows-link nil)
   (org-crypt-key yx/gpg-encrypt-key)
   (org-hide-emphasis-markers t)
@@ -32,11 +30,22 @@
   (org-use-speed-commands t)
   (org-fontify-quote-and-verse-blocks t)
   (org-preview-latex-default-process 'imagemagick)
-  (org-tags-exclude-from-inheritance '(project crypt))
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
+  (org-hide-block-startup t)
+  (org-startup-folded 'content)
+  (org-startup-with-inline-images t)
+
+  (org-footnote-auto-adjust t)
+
+  (org-tags-column 0)
+  (org-auto-align-tags nil)
+  (org-tag-alist '(("crypt" . ?c) ("project" . ?p)))
+  (org-tags-exclude-from-inheritance '(project crypt))
 
   (org-src-fontify-natively t)
   (org-src-tab-acts-natively t)
+  (org-src-preserve-indentation nil)
   (org-src-window-setup 'split-window-right)
   (org-src-ask-before-returning-to-edit-buffer nil)
 
@@ -51,15 +60,14 @@
      ("i" "idea"  entry (file+headline org-default-notes-file "Someday/Maybe")
       "* IDEA [#C] %?\nAdded: %U\n" :prepend t :kill-buffer t)
      ("h" "habit" entry (file+headline org-default-notes-file "Habits")
-      "* NEXT [#B] %?\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"
-      :prepend t :kill-buffer t)
-     )
+      "* NEXT [#B] %?\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n" :prepend t :kill-buffer t))
    )
 
   (org-agenda-files
    (list
     org-default-notes-file
     (expand-file-name "life.org" yx/org-dir)))
+  (org-agenda-span 'day)
   (org-agenda-compact-blocks t)
   (org-agenda-include-deadlines t)
   (org-agenda-skip-deadline-if-done t)
@@ -107,6 +115,30 @@
     (add-to-list 'org-structure-template-alist ele))
   )
 
+(use-package org-super-agenda
+  :init
+  (setq
+   org-super-agenda-groups
+   '((:name "🐝 Today"
+            :time-grid t
+            :deadline today
+            :scheduled today)
+     (:name "🐬 Important!"
+            :priority "A")
+     (:name "🦇 Overdue!"
+            :deadline past
+            :scheduled past)
+     (:auto-category t))
+   )
+  :hook (org-mode . org-super-agenda-mode)
+  )
+
+(use-package org-modern
+  :after org
+  :hook ((org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda))
+  )
+
 (use-package valign
   :hook (org-mode . valign-mode)
   )
@@ -137,9 +169,9 @@
 (use-package org-download
   :after org
   :commands
-  (org-download-clipboard
-   org-download-screenshot)
+  (org-download-clipboard org-download-screenshot)
   :custom
+  (org-download-method 'attach)
   (org-download-screenshot-method "screencapture -i %s")
   (org-download-image-dir (expand-file-name "attachs" yx/org-dir))
   )

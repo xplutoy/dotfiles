@@ -233,6 +233,7 @@
   :hook (after-init . evil-mode)
   :init
   (setq
+   evil-move-beyond-eol t
    evil-default-state 'emacs
    evil-shift-width tab-width
    evil-want-fine-undo t
@@ -242,7 +243,6 @@
    evil-want-keybinding nil
    evil-want-Y-yank-to-eol t
    evil-undo-system 'undo-redo
-   evil-motion-state-modes nil
    evil-magic 'very-magic
    evil-search-module 'evil-search
    evil-respect-visual-line-mode t
