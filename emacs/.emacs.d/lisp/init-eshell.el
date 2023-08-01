@@ -96,12 +96,13 @@ any directory proferred by `consult-dir'."
     )
   )
 (use-package vterm-toggle
+  :after vterm
   :custom
   (vterm-toggle-hide-method 'delete-window)
   (vterm-toggle-cd-auto-create-buffer nil))
 
 (use-package eshell-vterm
-  :after eshell
+  :after vterm
   :demand t
   :config
   (eshell-vterm-mode)

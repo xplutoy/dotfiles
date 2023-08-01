@@ -5,7 +5,7 @@
 (defvar yx/doc-dir "~/yxdocs/")
 (defvar yx/org-dir "~/yxdocs/yx-slip-notes")
 (defvar yx/var-dir "~/.emacs.d/.cache/")
-(defvar yx/etc-dir "~/.emacs.d/.cache/etc/")
+(defvar yx/etc-dir "~/.emacs.d/etc/")
 (defvar yx/gpg-sign-key "67B86CB8A5630C51!")
 (defvar yx/gpg-encrypt-key "8B1F9B207AF00BCF!")
 
@@ -15,12 +15,10 @@
 
 (defconst -os-default-opener
   (cond
-   (-is-mac
-    "open")
-   (-is-win
-    "start")
-   (t
-    "xdg-open")))
+   (-is-mac "open")
+   (-is-win "start")
+   (t "xdg-open"))
+  )
 
 (prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)

@@ -47,13 +47,35 @@
 
 (use-package treesit
   :ensure nil
+  :preface
+  (defun yx/setup-install-grammars ()
+    "Install Tree-sitter grammars if they are absent."
+    (interactive)
+    (dolist
+        (grammar
+         '((r "https://github.com/r-lib/tree-sitter-r")
+           (c "https://github.com/tree-sitter/tree-sitter-c/")
+           (cpp "https://github.com/tree-sitter/tree-sitter-cpp/")
+           (rust "https://github.com/tree-sitter/tree-sitter-rust")
+           (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+           (julia "https://github.com/tree-sitter/tree-sitter-julia")
+           (python "https://github.com/tree-sitter/tree-sitter-python")
+           ))
+      (add-to-list 'treesit-language-source-alist grammar)
+      (unless (treesit-language-available-p (car grammar))
+        (treesit-install-language-grammar (car grammar) (car treesit-extra-load-path)))))
   :init
   (setq
-   major-mode-remap-alist
-   '((c-mode . c-ts-mode)
-     (julia-mode . julia-ts-mode)
-     (python-mode . python-ts-mode))
    treesit-extra-load-path (list (no-littering-expand-var-file-name "tree-sitter")))
+  (dolist
+      (mapping
+       '((c-mode . c-ts-mode)
+         (c++-mode . c++-ts-mode)
+         (julia-mode . julia-ts-mode)
+         (python-mode . python-ts-mode)))
+    (add-to-list 'major-mode-remap-alist mapping))
+  :config
+  (yx/setup-install-grammars)
   )
 
 (use-package reformatter
@@ -139,7 +161,13 @@
   :ensure nil
   :after treesit
   :load-path "site-lisp/combobulate"
-  :hook ((python-ts-mode c-ts-mode julia-ts-mode) . combobulate-mode)
+  :hook
+  ((c-ts-mode
+    c++-ts-mode
+    julia-ts-mode
+    python-ts-mode
+    emacs-lisp-mode
+    ) . combobulate-mode)
   )
 
 (use-package devdocs)
