@@ -1,21 +1,3 @@
-[submodule "emacs/.emacs.d/site-lisp/holymotion"]
-	path = emacs/.emacs.d/site-lisp/holymotion
-	url = https://github.com/Overdr0ne/holymotion.git
-[submodule "emacs/.emacs.d/site-lisp/color-rg"]
-	path = emacs/.emacs.d/site-lisp/color-rg
-	url = https://github.com/manateelazycat/color-rg.git
-[submodule "emacs/.emacs.d/site-lisp/combobulate"]
-	path = emacs/.emacs.d/site-lisp/combobulate
-	url = https://github.com/mickeynp/combobulate.git
-[submodule "emacs/.emacs.d/site-lisp/eshell-git-prompt-yx"]
-	path = emacs/.emacs.d/site-lisp/eshell-git-prompt-yx
-	url = https://github.com/xplutoy/eshell-git-prompt-yx.git
-[submodule "emacs/.emacs.d/site-lisp/emacs-eat"]
-	path = emacs/.emacs.d/site-lisp/emacs-eat
-	url = https://codeberg.org/akib/emacs-eat.git
-[submodule "emacs/.emacs.d/site-lisp/crux-yx"]
-	path = emacs/.emacs.d/site-lisp/crux-yx
-	url = https://github.com/xplutoy/crux-yx.git
 [submodule "zsh/.zsh/plugins/zsh_unplugged_yx"]
 	path = zsh/.zsh/plugins/zsh_unplugged_yx
 	url = https://github.com/xplutoy/zsh_unplugged_yx.git
