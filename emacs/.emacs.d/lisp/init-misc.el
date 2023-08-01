@@ -87,8 +87,6 @@
 
 (use-package sis
   :defer 1
-  :hook
-  ((org-mode . sis-set-other))
   :init
   ;; C-s/r 默认优先使用英文
   (setq
@@ -102,9 +100,14 @@
    sis-auto-refresh-seconds nil
    sis-inline-tighten-tail-rule 'all)
   :config
-  (sis-ism-lazyman-config
-   "com.apple.keylayout.US"
-   "com.sogou.inputmethod.sogou.pinyin")
+  (cond
+   (-is-mac
+    (sis-ism-lazyman-config
+     "com.apple.keylayout.US"
+     "com.sogou.inputmethod.sogou.pinyin"))
+   (-is-win
+    (sis-ism-lazyman-config nil t 'w32))
+   )
   (sis-global-inline-mode 1)
   (sis-global-context-mode 1)
   (sis-global-respect-mode 1)

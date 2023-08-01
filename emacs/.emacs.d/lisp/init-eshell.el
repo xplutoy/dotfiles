@@ -84,6 +84,7 @@ any directory proferred by `consult-dir'."
 (use-package pcmpl-args :defer 1)
 
 (use-package vterm
+  :unless -is-win
   :bind (:map vterm-mode-map
               ("C-y" . vterm-yank)
               ("M-y" . vterm-yank-pop)
