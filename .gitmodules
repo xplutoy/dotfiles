@@ -1,3 +1,6 @@
 [submodule "zsh/.zsh/plugins/zsh_unplugged_yx"]
 	path = zsh/.zsh/plugins/zsh_unplugged_yx
 	url = https://github.com/xplutoy/zsh_unplugged_yx.git
+[submodule "emacs/.emacs.d"]
+	path = emacs/.emacs.d
+	url = https://github.com/xplutoy/.emacs.d.git
