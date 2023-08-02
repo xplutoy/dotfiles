@@ -1,5 +1,5 @@
 # yx
-export YX_DOCDIR=$HOME/yxdocs/
+export YX_DOCDIR=$HOME/dotdocs/
 export YX_DOTDIR=$HOME/dotfiles/
 
 # term
