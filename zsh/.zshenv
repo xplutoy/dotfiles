@@ -27,3 +27,9 @@ export EAT_SHELL_INTEGRATION_DIR=$HOME/.emacs.d/site-lisp/emacs-eat/integration/
 
 # pinentry
 export GPG_TTY=$(tty)
+
+# global
+export GTAGSOBJDIRPREFIX=~/.cache/gtags/
+[[ ! -d "$GTAGSOBJDIRPREFIX" ]] && mkdir -p "$GTAGSOBJDIRPREFIX"
+export GTAGSCONF=/usr/share/gtags/gtags.conf
+export GTAGSLABEL=native-pygments
