@@ -1,5 +1,5 @@
 # yx
-export YX_DOCDIR=$HOME/dotdocs/
+export YX_DOCDIR=$HOME/yxdocs/
 export YX_DOTDIR=$HOME/dotfiles/
 
 # term
@@ -20,7 +20,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # pass
-export PASSWORD_STORE_DIR=$YX_DOCDIR/password-store/
+export PASSWORD_STORE_DIR=$YX_DOCDIR/password-store
 
 # emacs-eat
 export EAT_SHELL_INTEGRATION_DIR=$HOME/.emacs.d/site-lisp/emacs-eat/integration/

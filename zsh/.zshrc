@@ -49,6 +49,14 @@ alias gstd='git stash drop'
 alias gstp='git stash pop'
 alias gstc='git stash clear'
 
+case "$OSTYPE" in
+  darwin*)
+    alias edge="open -a Microsoft\ Edge $1"
+    ;;
+  linux*)
+    ;;
+esac
+
 # alias navi='navi --tldr'
 alias r='radian'
 
