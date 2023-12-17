@@ -47,15 +47,6 @@ alias gsta='git stash push'
 alias gstd='git stash drop'
 alias gstp='git stash pop'
 alias gstc='git stash clear'
-
-case "$OSTYPE" in
-  darwin*)
-    alias edge="open -a Microsoft\ Edge $1"
-    ;;
-  linux*)
-    ;;
-esac
-
 # alias navi='navi --tldr'
 alias r='radian'
 
@@ -75,6 +66,35 @@ plugin-load $plugins
 compinit
 prompt pure
 zstyle :prompt:pure:git:stash show yes
+
+# env
+export YX_DOCDIR=$HOME/yxdocs/
+export YX_DOTDIR=$HOME/dotfiles/
+
+typeset -U path
+path=(~/.local/bin ~/.ghcup/bin $path)
+export PATH
+
+export TERM=xterm-256color
+
+export EDITOR='vim'
+export VISUAL='vim'
+
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE="$ZDOTDIR/.zsh/.zsh_history"
+
+# pinentry
+export GPG_TTY=$(tty)
+
+# pass
+export PASSWORD_STORE_DIR=$YX_DOCDIR/password-store
+
+# global
+export GTAGSOBJDIRPREFIX=~/.cache/gtags/
+[[ ! -d "$GTAGSOBJDIRPREFIX" ]] && mkdir -p "$GTAGSOBJDIRPREFIX"
+export GTAGSCONF=/usr/share/gtags/gtags.conf
+export GTAGSLABEL=native-pygments
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -101,6 +121,7 @@ export NVM_DIR="$HOME/.nvm"
 # emacs-eat
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+export EAT_SHELL_INTEGRATION_DIR=$HOME/.emacs.d/site-lisp/emacs-eat/integration/
 
 # emacs-vterm
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
