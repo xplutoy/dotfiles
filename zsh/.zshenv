@@ -7,7 +7,7 @@ export TERM=xterm-256color
 
 # path
 typeset -U path
-path=(~/.local/bin $path)
+path=(~/.local/bin ~/.ghcup/bin $path)
 export PATH
 
 # hist
@@ -16,8 +16,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # editor
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='jove'
+export VISUAL='jove'
 
 # pass
 export PASSWORD_STORE_DIR=$YX_DOCDIR/password-store
