@@ -99,14 +99,17 @@ export GTAGSLABEL=native-pygments
 # zoxide
 eval "$(zoxide init zsh)"
 
-# navi
+# navi (C-g)
 eval "$(navi widget zsh)"
 
 # thefuck
 eval $(thefuck --alias)
 
-# fzf
+# fzf (C-r C-t M-c)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -121,7 +124,6 @@ export NVM_DIR="$HOME/.nvm"
 # emacs-eat
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-export EAT_SHELL_INTEGRATION_DIR=$HOME/.emacs.d/site-lisp/emacs-eat/integration/
 
 # emacs-vterm
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \

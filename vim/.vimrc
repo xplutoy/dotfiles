@@ -16,7 +16,7 @@ set relativenumber
 set showmatch matchpairs+=<:>
 set nocursorline                                                " 高亮当前行
 set display+=lastline
-set laststatus=1                                              " 0: hide 2:always
+set laststatus=2                                              " 0: hide 2:always
 set signcolumn=auto
 set noeb vb t_vb=                                             " no beep and no flash
 set ttyfast                                                   " Faster redrawing.
@@ -51,16 +51,16 @@ set autoread
 set autowrite                                                 " 切换buffer时自动write
 set nobackup
 set nowritebackup
+set noswapfile
 set autoindent
 set smartindent
 set breakindent
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 set expandtab
 set textwidth=0                                               " no hard wrap
-set columns=88
 set wrap wrapmargin=0
 set linebreak showbreak=↪
 set iskeyword+=_,$,@,%,#,-                                    " 带有如下符号的单词不要被换行切割
@@ -102,14 +102,16 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+nmap <leader>w :w!<cr>
 nnoremap <leader><leader> :nohl<cr>
-nnoremap <leader>ev  :edit $MYVIMRC<cr>
 
 " `b` is for buffer
 map <leader>bb :buffers<cr>
+map <leader>bd :bdelete<cr>
+map <leader>l  :bnext<cr>
+map <leader>h  :bprevious<cr>
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
-map <leader>bd :bdelete<cr>
 " `t` is for tab
 map <leader>tt :tabnew<cr>
 map <leader>tn :tabnext<cr>
@@ -142,13 +144,7 @@ endif
 call plug#begin()
 " builtin enhencement
 Plug 'junegunn/vim-peekaboo'
-Plug 'simnalamburt/vim-mundo', {'on': 'MundoToggle'}
-" programing tools
-Plug 'tpope/vim-fugitive'
 call plug#end()
-" }}}
-" plug-keymaps {{{
-map <leader>Tu :MundoToggle<cr>
 " }}}
 
 " plug-keymaps {{{
