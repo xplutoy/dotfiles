@@ -2,78 +2,78 @@ vim9script
 
 language en_US.utf-8
 
-syntax on                                                     # enable syntax hightlight and completion
-filetype plugin indent on                                     # enable filetype dectection and ft specific plugin/indent
+syntax on
+filetype plugin indent on
 
-g:mapleader = "\<space>"                                      # use <SPC> as leader key
+g:mapleader = "\<space>"
 
 set nocp
 set bg=dark
 set ruler
-set title                                                     # show file in titlebar
-set showcmd                                                   # show typed command in status bar
+set title
+set showcmd
 set showmode
 set shortmess=mrxoOtTIF
 set emoji
-set number                                                    # show line numbers
+set number
 set relativenumber
 set showmatch matchpairs+=<:>
-set nocursorline                                              # " 高亮当前行
+set nocursorline
 set display+=lastline
-set laststatus=2                                              # 0: hide 2:always
+set laststatus=2
 set signcolumn=auto
-set noeb vb t_vb=                                             # no beep and no flash
-set ttyfast                                                   # Faster redrawing.
-set lazyredraw                                                # Only redraw when necessary.
+set noeb vb t_vb=
+set ttyfast
+set lazyredraw
 set encoding=utf-8
 set fileencoding=utf-8
 set ffs=unix,dos,mac
-set complete-=i                                               # Disable completing keywords in included files (perfermace)
+set complete-=i
 set completeopt=noinsert,menu,noselect
 set wrapscan
 set incsearch hlsearch
-set ignorecase smartcase                                      #only ignores case if there are no capital letters in search
-set wildmenu                                                  # Show list instead of just completing
-set wildmode=list:longest,full                                # Command <Tab> completion, list matches, then longest common part, then all.
+set ignorecase smartcase
+set wildmenu
+set wildmode=list:longest,full
 set history=200
 set nofoldenable foldmethod=marker
-set backspace=indent,eol,start                                # More powerful backspacing
-set linespace=0                                               # no extra spaces between rows
-set report=0                                                  # always report number of lines changed"
-set confirm                                                   # prompt when existing from an unsaved file
-set scrolloff=8                                               # 8 lines above/below cursor when scrolling
+set backspace=indent,eol,start
+set linespace=0
+set report=0
+set confirm
+set scrolloff=8
 set sidescroll=8
-set matchtime=1                                               # show matching bracket for 0.2 seconds
-set path+=/usr/local/include                                  # for gf find
+set matchtime=1
+set path+=/usr/local/include
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set guioptions+=a
 set hidden
 set noautochdir
 set autoread
-set autowrite                                                 # 切换buffer时自动write
+set autowrite
 set nobackup
 set nowritebackup
 set noswapfile
 set autoindent
 set smartindent
 set breakindent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set smarttab
 set expandtab
-set textwidth=0                                               # no hard wrap
+set textwidth=0
 set wrap wrapmargin=0
 set linebreak showbreak=↪
-set iskeyword+=_,$,@,%,#,-                                    # 带有如下符号的单词不要被换行切割
+set iskeyword+=_,$,@,%,#,-
 set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 set synmaxcol=200
 set nrformats+=alpha
 set splitbelow splitright
 set ttimeout ttimeoutlen=100
 set wildignore+=*/.git/*,*/__pycache__/*,*.DS_Store
-set wildignorecase                                            # ignore file and dir name cases in cmd-completion
+set wildignorecase
 set updatetime=500
 set pastetoggle=<F2>
 if has('mouse')
@@ -86,6 +86,11 @@ endif
 if exists('&inccommand')
   set inccommand=nosplit
 endif
+
+# cursor shape
+&t_SI = "\<esc>[5 q"
+&t_SR = "\<esc>[5 q"
+&t_EI = "\<esc>[2 q"
 
 noremap 0  ^
 noremap ^  0
@@ -107,14 +112,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-nmap <leader>w :w!<cr>
 nnoremap <leader><leader> :nohl<cr>
 
 # `b` is for buffer
 map <leader>bb :buffers<cr>
 map <leader>bd :bdelete<cr>
-map <leader>l  :bnext<cr>
-map <leader>h  :bprevious<cr>
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
 # `t` is for tab
@@ -130,10 +132,10 @@ map <leader>cc :cclose<cr>
 map <leader>cn :cnext<cr>
 map <leader>cp :cprevious<cr>
 
-augroup
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup user_cmds
+  au!
+  au BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  au BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
 plug#begin()
