@@ -134,9 +134,12 @@ map <leader>cp :cprevious<cr>
 
 augroup user_cmds
   au!
+  au Filetype man\|help nnoremap <buffer> q <cmd>quit<cr>
+  au BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
   au BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  au BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
+
+runtime ftplugin/man.vim
 
 plug#begin()
 Plug 'junegunn/vim-peekaboo'

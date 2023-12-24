@@ -1,8 +1,8 @@
 -- [[ options ]]
 vim.opt.mouse = 'a'
-vim.opt.number = true
-vim.opt.background = "dark"
 vim.opt.wrap = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -12,10 +12,12 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
-vim.opt.signcolumn = 'yes'
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.undofile = true
 vim.opt.winblend = 5
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.signcolumn = 'auto'
+vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 vim.g.netrw_banner = 0
@@ -24,20 +26,48 @@ vim.g.netrw_winsize = 30
 -- [[ keybingdings ]]
 vim.g.mapleader = ' '
 
-vim.keymap.set({'n', 'x'}, 'x',  '"_x')
-vim.keymap.set({'n', 'x'}, 'gy', '"+y')
-vim.keymap.set({'n', 'x'}, 'gp', '"+p')
+local opts = {
+  silent = true,
+  noremap = true,
+}
 
+vim.keymap.set('x', '<', '<gv', opts)
+vim.keymap.set('x', '>', '>gv', opts)
+
+vim.keymap.set({'n', 'x'}, 'x',  '"_x', opts)
+vim.keymap.set({'n', 'x'}, 'gy', '"+y', opts)
+vim.keymap.set({'n', 'x'}, 'gp', '"+p', opts)
+
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- [[ commands ]]
 vim.api.nvim_create_user_command('ReloadConfig', 'source $MYVIMRC', {})
-
 local group = vim.api.nvim_create_augroup('user_cmds', {clear = true})
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'help', 'man'},
-  group = group,
-  command = 'nnoremap <buffer> q <cmd>quit<cr>'
-})
+vim.api.nvim_create_autocmd(
+  'FileType',
+  { group = group,
+    pattern = {'help', 'man'},
+    command = 'nnoremap <buffer> q <cmd>quit<cr>'
+  })
+vim.api.nvim_create_autocmd(
+  {'BufLeave','FocusLost','InsertEnter','WinLeave' },
+  { group = group,
+    callback = function()
+      if vim.opt.number:get() then vim.opt.relativenumber = false end
+    end,
+  })
+vim.api.nvim_create_autocmd(
+  {'BufEnter','FocusGained','InsertLeave','WinEnter'},
+  { group = group,
+    callback = function()
+      if ( vim.fn.mode() ~= 'i' and vim.opt.number:get() ) then
+        vim.opt.relativenumber = true
+      end
+    end,
+  })
 
 -- [[ plugins ]]
 local function clone_paq()
@@ -63,8 +93,6 @@ end
 bootstrap_paq {
   'savq/paq-nvim',
 
-  'ellisonleao/gruvbox.nvim',
-
   'folke/which-key.nvim',
 
   'nvim-treesitter/nvim-treesitter',
@@ -84,7 +112,7 @@ bootstrap_paq {
 
 -- theme
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
 
 -- which-key
 require('which-key').setup{}
