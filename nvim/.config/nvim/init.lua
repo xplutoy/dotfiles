@@ -7,24 +7,26 @@ vim.opt.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.hlsearch = false
-vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
-vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.undofile = true
 vim.opt.winblend = 5
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.signcolumn = 'auto'
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
+vim.opt.completeopt = {'menu','menuone','noselect'}
 
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
 
 -- [[ keybingdings ]]
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 local opts = {
   silent = true,
@@ -38,10 +40,9 @@ vim.keymap.set({'n', 'x'}, 'x',  '"_x', opts)
 vim.keymap.set({'n', 'x'}, 'gy', '"+y', opts)
 vim.keymap.set({'n', 'x'}, 'gp', '"+p', opts)
 
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+vim.keymap.set('n', '<leader><leader>', ':noh<cr>', opts)
+vim.keymap.set('n', '<esc><esc>', ':noh<return><esc>', opts)
+vim.keymap.set({'n', 'x'}, '<leader>t', ':tabnew<cr>', opts)
 
 -- [[ commands ]]
 vim.api.nvim_create_user_command('ReloadConfig', 'source $MYVIMRC', {})
@@ -53,21 +54,15 @@ vim.api.nvim_create_autocmd(
     command = 'nnoremap <buffer> q <cmd>quit<cr>'
   })
 vim.api.nvim_create_autocmd(
-  {'BufLeave','FocusLost','InsertEnter','WinLeave' },
+  'InsertEnter',
   { group = group,
-    callback = function()
-      if vim.opt.number:get() then vim.opt.relativenumber = false end
-    end,
-  })
+    callback = function() if vim.opt.number:get() then vim.opt.relativenumber = false end end, }
+)
 vim.api.nvim_create_autocmd(
-  {'BufEnter','FocusGained','InsertLeave','WinEnter'},
+  'InsertLeave',
   { group = group,
-    callback = function()
-      if ( vim.fn.mode() ~= 'i' and vim.opt.number:get() ) then
-        vim.opt.relativenumber = true
-      end
-    end,
-  })
+    callback = function() if vim.opt.number:get() then vim.opt.relativenumber = true  end end, }
+)
 
 -- [[ plugins ]]
 local function clone_paq()
@@ -206,7 +201,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<CR>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>']  = cmp.mapping.confirm({select = true}),
   })
 })
 
