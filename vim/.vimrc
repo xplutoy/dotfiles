@@ -1,7 +1,7 @@
 vim9script
 
 set nocp
-set bg=dark                     # must before :syntax enable
+set bg=dark
 syntax enable
 filetype plugin indent on
 language en_US.utf-8
@@ -31,7 +31,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 set ffs=unix,dos,mac
 set complete-=i
-set complete-=t
 set completeopt=noinsert,menu,noselect
 set wrapscan
 set incsearch hlsearch
@@ -47,7 +46,6 @@ set confirm
 set scrolloff=8
 set sidescroll=8
 set matchtime=1
-set path+=/usr/local/include
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set guioptions+=a
@@ -60,12 +58,10 @@ set noswapfile
 set autoindent
 set smartindent
 set breakindent
-set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set smarttab
 set expandtab
-set textwidth=0
 set wrap wrapmargin=0
 set linebreak showbreak=↪
 set iskeyword+=_,$,@,%,#,-
@@ -95,6 +91,8 @@ xnoremap p  "_dP
 xnoremap <  <gv
 xnoremap >  >gv
 
+nnoremap K :Man <cword><cr>
+
 inoremap <C-e> <esc>$a
 inoremap <C-a> <esc>0i
 inoremap <C-f> <esc>lli
@@ -105,8 +103,9 @@ noremap <leader>c :copen<cr>
 noremap <leader>t :tabnew<cr>
 noremap <leader>b :buffers<cr>
 
-nnoremap <leader><leader> :noh<cr>
-nnoremap <esc><esc> :noh<return><esc>
+nnoremap <silent> <C-l> :<C-u>noh<cr><C-l>
+
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 augroup user_cmds
   au!
@@ -117,7 +116,7 @@ augroup user_cmds
   au Filetype man,help nnoremap <buffer> q <cmd>quit<cr>
 augroup END
 
-packadd! editorconfig
+# packadd! editorconfig
 runtime ftplugin/man.vim
 
 plug#begin()

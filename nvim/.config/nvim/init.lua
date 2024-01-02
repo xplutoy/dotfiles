@@ -40,8 +40,7 @@ vim.keymap.set({'n', 'x'}, 'x',  '"_x', opts)
 vim.keymap.set({'n', 'x'}, 'gy', '"+y', opts)
 vim.keymap.set({'n', 'x'}, 'gp', '"+p', opts)
 
-vim.keymap.set('n', '<leader><leader>', ':noh<cr>', opts)
-vim.keymap.set('n', '<esc><esc>', ':noh<return><esc>', opts)
+vim.keymap.set('n', '<C-l>', ':noh<cr><C-l>', opts)
 vim.keymap.set({'n', 'x'}, '<leader>t', ':tabnew<cr>', opts)
 
 -- [[ commands ]]
