@@ -25,7 +25,6 @@ set display+=lastline
 set laststatus=2
 set signcolumn=auto
 set noeb vb t_vb=
-set ttyfast
 set lazyredraw
 set encoding=utf-8
 set fileencoding=utf-8
@@ -64,11 +63,13 @@ set smarttab
 set expandtab
 set wrap wrapmargin=0
 set linebreak showbreak=↪
+set smoothscroll
+set nojs
 set iskeyword+=_,$,@,%,#,-
 set synmaxcol=200
 set nrformats+=alpha
 set splitbelow splitright
-set ttimeout ttimeoutlen=100
+set ttimeout ttimeoutlen=50
 set updatetime=500
 set wildignore+=*/.git/*
 set wildignore+=*/__pycache__/*
@@ -116,7 +117,8 @@ augroup user_cmds
   au Filetype man,help nnoremap <buffer> q <cmd>quit<cr>
 augroup END
 
-# packadd! editorconfig
+packadd! matchit
+packadd! editorconfig
 runtime ftplugin/man.vim
 
 plug#begin()
