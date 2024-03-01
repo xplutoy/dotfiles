@@ -15,6 +15,14 @@ setopt MENU_COMPLETE
 setopt AUTO_LIST
 setopt ALWAYS_TO_END
 setopt COMPLETE_IN_WORD
+setopt BANG_HIST
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
 
 # misc alias
 alias cp='cp -iv'
@@ -52,15 +60,15 @@ alias r='radian'
 
 # plugins
 ZPLUGINDIR=${ZDOTDIR:-~/.config/zsh}/plugins
-source $HOME/.zsh/plugins/zsh_unplugged_yx/zsh_unplugged.zsh
+if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
+  git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+fi
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 plugins=(
   sindresorhus/pure
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
-  zdharma-continuum/fast-syntax-highlighting
-
-  xplutoy/zsh-auto-venv-yx
-  )
+  zdharma-continuum/fast-syntax-highlighting)
 plugin-load $plugins
 
 compinit
@@ -82,13 +90,10 @@ export VISUAL='vim'
 
 export HISTSIZE=10000
 export SAVEHIST=10000
-export HISTFILE="$ZDOTDIR/.zsh/.zsh_history"
+export HISTFILE="$HOME/.zsh_history"
 
 # pinentry
 export GPG_TTY=$(tty)
-
-# pass
-export PASSWORD_STORE_DIR=$YX_DOCDIR/password-store
 
 # global
 export GTAGSOBJDIRPREFIX=~/.cache/gtags/
@@ -125,10 +130,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
-# emacs-vterm
+# vterm
 if [[ "$INSIDE_EMACS" = 'vterm' ]] \
-    && [[ -n ${EMACS_VTERM_PATH} ]] \
-    && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
+     && [[ -n ${EMACS_VTERM_PATH} ]] \
+     && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
   source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
 fi
 
