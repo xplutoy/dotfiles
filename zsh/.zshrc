@@ -137,6 +137,9 @@ if [[ "$INSIDE_EMACS" = 'vterm' ]] \
   source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
 fi
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # homebrew mirror 回退参考：https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
 export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
