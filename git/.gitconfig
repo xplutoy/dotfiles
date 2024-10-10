@@ -3,16 +3,9 @@
     name = yx
     signingkey = 67B86CB8A5630C51!
 [core]
-    pager = delta
     editor = vim
     quotepath = false
     excludesfile = ~/.gitignore_global
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    line-numbers = true
-    navigate = true
-    light = false
 [pull]
     rebase = true
 [merge]
@@ -29,8 +22,8 @@
     diff = true
     ui = true
 [commit]
-    gpgSign = true
+    gpgSign = false
 [gpg]
-    program = gpg
+    program = gpg2
 [init]
     defaultBranch = main

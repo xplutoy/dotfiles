@@ -120,7 +120,3 @@ augroup END
 packadd! matchit
 packadd! editorconfig
 runtime ftplugin/man.vim
-
-plug#begin()
-Plug 'junegunn/vim-peekaboo'
-plug#end()
