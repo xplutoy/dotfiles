@@ -21,6 +21,7 @@ setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
 # misc alias
+alias em='emacsclient -t'
 alias ls='ls --color=auto'
 alias ll="ls -alG"
 alias cp='cp -iv'
@@ -62,10 +63,6 @@ autoload -U promptinit; promptinit
 prompt pure
 zstyle :prompt:pure:git:stash show yes
 
-typeset -U path
-path=(~/.local/bin ~/.ghcup/bin $path)
-export PATH
-
 export TERM=xterm-256color
 
 export EDITOR='vim'
@@ -81,4 +78,3 @@ export GPG_TTY=$(tty)
 # emacs-eat
 [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-

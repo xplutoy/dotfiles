@@ -1,7 +1,6 @@
 vim9script
 
 set nocp
-set bg=dark
 syntax enable
 filetype plugin indent on
 language en_US.utf-8
