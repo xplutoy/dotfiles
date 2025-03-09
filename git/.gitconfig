@@ -1,29 +1,47 @@
 [user]
-    email = yangxue.cs@foxmail.com
-    name = yx
-    signingkey = 67B86CB8A5630C51!
+        email = yangxue.cs@foxmail.com
+        name = yx
+        signingkey = 67B86CB8A5630C51!
 [core]
-    editor = vim
-    quotepath = false
-    excludesfile = ~/.gitignore_global
+        editor = vim
+        quotepath = false
+        excludesfile = ~/.gitignore_global
 [pull]
-    rebase = true
+	rebase = true
 [merge]
-    tool = vimdiff
-    conflictstyle = diff3
+        tool = vimdiff
+	conflictstyle = zdiff3
 [diff]
-    colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
 [difftool]
-    prompt=false
+        prompt=false
 [color]
-    interactive = true
-    branch = true
-    status = true
-    diff = true
-    ui = true
+	interactive = true
+        branch = true
+    	status = true
+	diff = true
+        ui = true
 [commit]
-    gpgSign = false
+	gpgSign = false
+	verbose = true
 [gpg]
-    program = gpg2
+	program = gpg2
 [init]
-    defaultBranch = main
+	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[push]
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[rebase]
+	autoSquash = true
+	autoStash = true
